@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:maraya_flutter/Screens/BrowseScreen.dart';
+import 'package:maraya_flutter/Screens/HomeScreen.dart';
 import 'package:maraya_flutter/Screens/ShopBrandsScreen.dart';
 import '../../Utils/app_routes.dart';
 import '../../Utils/color_utils.dart';
@@ -14,6 +15,7 @@ import '../../Utils/image_utils.dart';
 import '../../Utils/string_utils.dart';
 import '../../Utils/utils.dart';
 import '../../Utils/views.dart';
+import 'CartScreen.dart';
 
 class BrandsScreen extends StatefulWidget {
   static const String route = "BrandsScreen";
@@ -116,6 +118,9 @@ class _BrandsScreenState extends State<BrandsScreen> {
         actions: [
           InkWell(
             onTap: (){
+              Navigator.of(context, rootNavigator: true)
+                  .pushReplacement(MaterialPageRoute(builder: (context) =>
+                  HomeScreen(index: 3,)));
             },
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h),

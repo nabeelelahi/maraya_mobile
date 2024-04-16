@@ -53,4 +53,10 @@ class ImageUtils {
   static String shoe = "assets/images/shoe.png";
   static String eyecross = "assets/images/eyecross.png";
   static String pencil = "assets/images/pencil.png";
+  static String master = "assets/images/master.png";
+  static String visa = "assets/images/visa.png";
+  static String mada = "assets/images/mada.png";
+  static String lock = "assets/images/lock.png";
+  static String downarrow = "assets/images/downarrow.png";
+  static String checkout_image = "assets/images/checkout_image.png";
 }

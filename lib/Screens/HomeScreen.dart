@@ -16,7 +16,8 @@ import '../../Utils/string_utils.dart';
 import 'CategoriesScreen.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  int? index = 0;
+  HomeScreen({Key? key, this.index}) : super(key: key);
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -172,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       statusBarColor: Colors.black,
     ));
 
-    _controller.index = 2;
+    _controller.index = widget.index ?? 0;
   }
 
   @override

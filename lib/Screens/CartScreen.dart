@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:maraya_flutter/Screens/AddAddressScreen.dart';
+import 'package:maraya_flutter/Screens/AddPaymentMethodScreen.dart';
+import 'package:maraya_flutter/Screens/CompleteOrderScreen.dart';
 import '../../Utils/app_routes.dart';
 import '../../Utils/color_utils.dart';
 import '../../Utils/font_utils.dart';
@@ -14,6 +16,7 @@ import '../../Utils/string_utils.dart';
 import '../../Utils/utils.dart';
 import '../../Utils/views.dart';
 import 'FilterScreen.dart';
+import 'HomeScreen.dart';
 import 'ProductDetailScreen.dart';
 
 class CartScreen extends StatefulWidget {
@@ -28,6 +31,8 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
 
   bool IsReview = false;
+  bool cardSelected = false;
+  String title = "Your Bag";
 
   @override
   void initState() {
@@ -46,18 +51,9 @@ class _CartScreenState extends State<CartScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        // leading: InkWell(
-        //   onTap: (){
-        //     Navigator.pop(context);
-        //   },
-        //   child: Icon(
-        //     Icons.arrow_back_ios_new,
-        //     color: Colors.black,
-        //     size: 20.0,
-        //   ),
-        // ),
-        titleSpacing: 10.w,
-        title: Text("Your Bag") ,
+        leading: SizedBox(),
+        titleSpacing: -35.w,
+        title: Text(title) ,
         titleTextStyle: TextStyle(color: ColorUtils.dividerColor ,
             fontFamily: FontUtils.almarenaBold , fontSize: 25.sp),
         centerTitle: false,
@@ -642,6 +638,7 @@ class _CartScreenState extends State<CartScreen> {
                           setState(() {
                             if(value == "review"){
                               IsReview = true;
+                              title = "Review Order";
                             }
                           });
                     });
@@ -668,29 +665,36 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
                 SizedBox(height: 10.h,),
-                Container(
-                  width: double.infinity,
-                  height: 42.h,
-                  decoration: BoxDecoration(
-                    color: ColorUtils.white,
-                    border: Border.all(
-                      width: 1,
-                      color: ColorUtils.dividerColor,
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context, rootNavigator: true)
+                        .pushReplacement(MaterialPageRoute(builder: (context) =>
+                        HomeScreen()));
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 42.h,
+                    decoration: BoxDecoration(
+                      color: ColorUtils.white,
+                      border: Border.all(
+                        width: 1,
+                        color: ColorUtils.dividerColor,
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Continue Shopping",
-                          style: TextStyle(
-                              color: ColorUtils.dividerColor,
-                              fontFamily: FontUtils.almarenaRegular,
-                              fontSize: 20.sp),
-                        ),
-                      ],
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Continue Shopping",
+                            style: TextStyle(
+                                color: ColorUtils.dividerColor,
+                                fontFamily: FontUtils.almarenaRegular,
+                                fontSize: 20.sp),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -715,7 +719,13 @@ class _CartScreenState extends State<CartScreen> {
                           fontWeight: FontWeight.w400,
                           fontFamily: FontUtils.almarenaBold,
                           fontSize: 16.sp),),
-                    Image.asset(ImageUtils.pencil, scale: 1.8,)
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context, rootNavigator: true)
+                            .push(MaterialPageRoute(builder: (context) =>
+                            AddAddressScreen()));
+                      },
+                        child: Image.asset(ImageUtils.pencil, scale: 1.8,))
                   ],
                 ),
                 SizedBox(height: 10.h,),
@@ -738,31 +748,73 @@ class _CartScreenState extends State<CartScreen> {
                           fontWeight: FontWeight.w400,
                           fontFamily: FontUtils.almarenaBold,
                           fontSize: 16.sp),),
-                    Icon(
-                      Icons.add,
-                      color: ColorUtils.dividerColor,
-                      size: 20.0,
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context, rootNavigator: true)
+                            .push(MaterialPageRoute(builder: (context) =>
+                            AddPaymentMethodScreen())).then((value){
+                              if(value == "card"){
+                                setState(() {
+                                  cardSelected = true;
+                                });
+                              }
+                              else{
+                                setState(() {
+                                  cardSelected = false;
+                                });
+                              }
+                        });
+                      },
+                      child: Icon(
+                        cardSelected == true ? Icons.edit : Icons.add,
+                        color: ColorUtils.dividerColor,
+                        size: 20.0,
+                      ),
                     ),
                   ],
                 ),
+                SizedBox(height: 15.h,),
+                Visibility(
+                  visible: cardSelected,
+                  child: Text(
+                   "**** **** **** 1234",
+                    style: TextStyle(
+                        color: ColorUtils.dividerColor,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 18.sp),
+                  ),
+                ),
+                Visibility(
+                    visible: cardSelected,
+                    child: SizedBox(width: 5.w,)),
+                Visibility(
+                    visible: cardSelected,
+                    child: Image.asset(ImageUtils.master, scale: 2.5,)),
                 SizedBox(height: 50.h,),
-                Container(
-                  width: double.infinity,
-                  height: 42.h,
-                  color: ColorUtils.dividerColor,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Secure Checkout",
-                          style: TextStyle(
-                              color: ColorUtils.white,
-                              fontFamily: FontUtils.almarenaRegular,
-                              fontSize: 20.sp),
-                        ),
-                      ],
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context, rootNavigator: false)
+                        .push(MaterialPageRoute(builder: (context) =>
+                        CompleteOrderScreen()));
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 42.h,
+                    color: ColorUtils.dividerColor,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Secure Checkout",
+                            style: TextStyle(
+                                color: ColorUtils.white,
+                                fontFamily: FontUtils.almarenaRegular,
+                                fontSize: 20.sp),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

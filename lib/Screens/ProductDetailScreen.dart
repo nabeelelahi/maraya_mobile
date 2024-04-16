@@ -18,6 +18,7 @@ import '../../Utils/image_utils.dart';
 import '../../Utils/string_utils.dart';
 import '../../Utils/utils.dart';
 import '../../Utils/views.dart';
+import 'HomeScreen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   static const String route = "ProductDetailScreen";
@@ -41,6 +42,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   bool refund = false;
   bool checkout = false;
   bool soldout = false;
+  ScrollController scrollController = ScrollController();
 
 
   @override
@@ -159,6 +161,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         actions: [
           InkWell(
             onTap: (){
+              Navigator.of(context, rootNavigator: true)
+                  .pushReplacement(MaterialPageRoute(builder: (context) =>
+                  HomeScreen(index: 3,)));
             },
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h),
@@ -181,6 +186,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           FocusScope.of(context).requestFocus(FocusNode());
         },
         child: SingleChildScrollView(
+          controller: scrollController,
             physics: ClampingScrollPhysics(),
             child: body()),
       ),
@@ -761,6 +767,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               else{
                 setState(() {
                   checkout = true;
+                  scrollController.animateTo( //go to top of scroll
+                      0,  //scroll offset to go
+                      duration: Duration(milliseconds: 500), //duration of scroll
+                      curve:Curves.fastOutSlowIn //scroll type
+                  );
                 });
               }
 
@@ -1789,9 +1800,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                         checkout == true ? InkWell(
                           onTap: (){
-                            Navigator.of(context, rootNavigator: false)
-                                .push(MaterialPageRoute(builder: (context) =>
-                                CartScreen()));
+                            Navigator.of(context, rootNavigator: true)
+                                .pushReplacement(MaterialPageRoute(builder: (context) =>
+                                HomeScreen(index: 3,)));
                           },
                           child: Container(
                             height: 20.h,

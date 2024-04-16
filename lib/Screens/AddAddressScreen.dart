@@ -508,7 +508,102 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                   textColor: ColorUtils.white,
                   circularRadius: 0,
                   onPress: () {
-                    Navigator.pop(context, "review");
+                    showModalBottomSheet(
+                      context: context,
+                      isDismissible: true,
+                      builder: (context) {
+                        return Container(
+                          height: 170.h,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 310.w,
+                                        child: Text(
+                                          "Add a name for this delivery address",
+                                          style: TextStyle(
+                                              color: ColorUtils.dividerColor,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: FontUtils.almarenaRegular,
+                                              fontSize: 18.sp),),
+                                      ),
+                                      InkWell(
+                                        onTap: (){
+                                          Navigator.pop(context);
+                                        },
+                                          child: Image.asset(ImageUtils.cross, scale: 1.6,))
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 15.h,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 150.w,
+                                      height: 30.h,
+                                      child: EditText(
+                                        context: context,
+                                        hintText: "Home*",
+                                        validator: validateEventName,
+                                        controller: firstNameController,
+                                        textInputType: TextInputType.text,
+                                        textInputAction: TextInputAction.done,
+                                        // currentFocus: _focusNodes[4],
+                                        // nextFocus: _focusNodes[5],
+                                        bordercolor: ColorUtils.white,
+                                        // labelText: StringUtils.EMAIL,
+                                        onSaved: (text) {
+                                          // FirstName = text;
+                                        },
+                                        onChange: (text) {
+                                          // FirstName = text;
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 15.h,),
+                                InkWell(
+                                  onTap: (){
+                                    Navigator.pop(context);
+                                    Navigator.pop(context, "review");
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 42.h,
+                                    color: ColorUtils.dividerColor,
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Save and Continue",
+                                            style: TextStyle(
+                                                color: ColorUtils.white,
+                                                fontFamily: FontUtils.almarenaDisplayRegular,
+                                                fontSize: 20.sp),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
                   },
                 ),
                 SizedBox(height: 20.h,),

@@ -18,6 +18,7 @@ import '../../Utils/image_utils.dart';
 import '../../Utils/string_utils.dart';
 import '../../Utils/utils.dart';
 import '../../Utils/views.dart';
+import 'HomeScreen.dart';
 
 class ShopBrandsScreen extends StatefulWidget {
   static const String route = "ShopBrandsScreen";
@@ -145,6 +146,9 @@ class _ShopBrandsScreenState extends State<ShopBrandsScreen> {
         actions: [
           InkWell(
             onTap: (){
+              Navigator.of(context, rootNavigator: true)
+                  .pushReplacement(MaterialPageRoute(builder: (context) =>
+                  HomeScreen(index: 3,)));
             },
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h),
