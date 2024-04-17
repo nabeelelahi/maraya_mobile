@@ -270,7 +270,7 @@ class EditText extends StatelessWidget {
                   ? Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(width: 5),
+                  SizedBox(width: 5.w),
                   Image.asset(
                     prefixIcon!,
                     color: (currentFocus?.hasFocus ?? false)
@@ -278,7 +278,7 @@ class EditText extends StatelessWidget {
                         : ((controller?.text?.isEmpty ?? true)
                         ?  ColorUtils.dividerColor
                         : ColorUtils.dividerColor),
-                    scale: 1.7,
+                    scale: 2,
                   )
                 ],
               )

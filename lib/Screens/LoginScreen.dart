@@ -1,6 +1,5 @@
 import 'dart:io';
-
-import 'package:country_code_picker/country_code_picker.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,9 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   late BuildContext _context;
   FocusNode emailFocus = FocusNode(), passFocus = FocusNode();
-  String? email, pass;
+  String? code, pass;
+  String countryValue = "";
 
-  final List<FocusNode> _focusNodes = [FocusNode(), FocusNode()];
+  final List<FocusNode> _focusNodes = [FocusNode()];
 
   KeyboardActionsConfig _buildConfig(BuildContext context) {
     return KeyboardActionsConfig(
@@ -38,13 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
       nextFocus: true,
       actions: [
         KeyboardActionsItem(focusNode: _focusNodes[0]),
-        KeyboardActionsItem(focusNode: _focusNodes[1])
       ],
     );
   }
 
-  TextEditingController emailTextController = TextEditingController(),
-      passwordTextController = TextEditingController();
+  TextEditingController phone = TextEditingController();
 
   final GlobalKey<FormState> _formKey =
       GlobalKey<FormState>(debugLabel: '_LoginScreen');
@@ -62,6 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {});
       });
     }
+    setState(() {
+      code = "+966";
+    });
     super.initState();
   }
 
@@ -141,47 +142,99 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 20.h,
                 ),
-                Theme(
-                  data: ThemeData(
-                    primaryColor: ColorUtils.dividerColor,
-                    accentColor: ColorUtils.dividerColor,
-                    colorScheme: ColorScheme.light(primary: ColorUtils.dividerColor),
-                    disabledColor: Colors.brown,
-                    textTheme:
-                    TextTheme(bodyText1: TextStyle(color: ColorUtils.dividerColor)),
-                  ),
-                  child: IntlPhoneField(
-                    style: TextStyle(
-                      height: Platform.isIOS ? 1.3 : 1.5,
-                      fontSize:  18.sp,
-                      color: ColorUtils.black,
-                      fontFamily:  FontUtils.almarenaRegular,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        showCountryPicker(
+                            context: context,
+                            countryListTheme: CountryListThemeData(
+                              flagSize: 25,
+                              backgroundColor: Colors.white,
+                              textStyle: TextStyle(fontSize: 16, color: ColorUtils.dividerColor),
+                              bottomSheetHeight: 500, // Optional. Country list modal height
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20.0),
+                                topRight: Radius.circular(20.0),
+                              ),
+                              //Optional. Styles the search field.
+                              inputDecoration: InputDecoration(
+                                labelText: 'Search',
+                                hintText: 'Start typing to search',
+                                prefixIcon: const Icon(Icons.search),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: const Color(0xFF8C98A8).withOpacity(0.2),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            onSelect: (Country country){
+                              setState(() {
+                                print('Select country: ${country.phoneCode}');
+                                code = "+ ${country.phoneCode.toString()}";
+                              });
+
+                            }
+                        );
+                      },
+                      child: Container(
+                        width: 90.w,
+                        height: 40.h,
+                        padding: EdgeInsets.symmetric(vertical: 7.h),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(ImageUtils.downarrow, scale: 2,),
+                                SizedBox(width: 10.w,),
+                                Text(
+                                  code ?? "",
+                                  style: TextStyle(
+                                    // height: 1,
+                                    fontSize:  18.sp,
+                                    color: ColorUtils.dividerColor,
+                                    fontFamily:  FontUtils.almarenaRegular,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5.h,),
+                            Divider(
+                              height: 3.h,
+                              color: ColorUtils.dividerColor,
+                              thickness: 1,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 5.h),
-                      hintText: translate('strings.PhoneNumber'),
-                      hintStyle: TextStyle(
-                          fontFamily: FontUtils.almarenaRegular,
-                          color: ColorUtils.hintColor,
-                          fontSize: 16.sp, height: 1),
-                      border: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      disabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
+                    SizedBox(
+                      height: 30.h,
+                      width: 220.w,
+                      child: EditText(
+                        context: context,
+                        hintText: "Phone Number",
+                        currentFocus: _focusNodes[0],
+                        controller: phone,
+                        textInputType: TextInputType.number,
+                        textInputAction: TextInputAction.done,
+                        bordercolor: ColorUtils.white,
+                        onSaved: (text) {
+                          // SecondName = text;
+                        },
+                        onChange: (text) {
+                          // SecondName = text;
+                        },
+                      ),
                     ),
-                    initialCountryCode: 'SA',
-                    onChanged: (phone) {
-                      print(phone.completeNumber);
-                    },
-                  ),
+                  ],
                 ),
                 SizedBox(
                   height: 15.h,
@@ -246,6 +299,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ],
     );
   }
+
 
 
 }

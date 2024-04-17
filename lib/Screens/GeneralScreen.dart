@@ -77,35 +77,86 @@ class _GeneralScreenState extends State<GeneralScreen> {
         ),
         Expanded(
           flex: 2,
-          child: Stack(
-            children: [
-              Container(
-                // height: 250.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: ColorUtils.white,
-                  image: DecorationImage(
-                    image: AssetImage(ImageUtils.womenImage),
-                    fit: BoxFit.fill,
+          child: InkWell(
+            onTap: (){
+              Navigator.pushReplacementNamed(context, AppRoutes.Home);
+            },
+            child: Stack(
+              children: [
+                Container(
+                  // height: 250.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: ColorUtils.white,
+                    image: DecorationImage(
+                      image: AssetImage(ImageUtils.womenImage),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                color: ColorUtils.black.withOpacity(0.30),
-                width: double.infinity,
-              ),
-              Positioned(
-                bottom: 10.h,
-                child: InkWell(
-                  onTap: (){
-                    Navigator.pushReplacementNamed(context, AppRoutes.Home);
-                  },
+                Container(
+                  color: ColorUtils.black.withOpacity(0.30),
+                  width: double.infinity,
+                ),
+                Positioned(
+                  bottom: 10.h,
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.pushReplacementNamed(context, AppRoutes.Home);
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 15.w, bottom: 20.h),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Text(
+                          translate('strings.ForWomen'),
+                          style: TextStyle(
+                              fontFamily: FontUtils.almarenaRegular,
+                              color: ColorUtils.white,
+                              decoration: TextDecoration.underline,
+                              decorationColor: ColorUtils.dotGreen,
+                              fontSize: 40.sp,
+                              fontStyle: FontStyle.normal),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: InkWell(
+            onTap: (){
+              Navigator.pushReplacementNamed(context, AppRoutes.Home);
+            },
+            child: Stack(
+              children: [
+                Container(
+                  // height: 250.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: ColorUtils.white,
+                    image: DecorationImage(
+                      image: AssetImage(ImageUtils.menImage),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+                Container(
+                  color: ColorUtils.black.withOpacity(0.30),
+                  width: double.infinity,
+                ),
+                Positioned(
+                  bottom: 10.h,
                   child: Padding(
                     padding: EdgeInsets.only(left: 15.w, bottom: 20.h),
                     child: Align(
                       alignment: Alignment.bottomLeft,
                       child: Text(
-                        translate('strings.ForWomen'),
+                        translate('strings.ForMen'),
                         style: TextStyle(
                             fontFamily: FontUtils.almarenaRegular,
                             color: ColorUtils.white,
@@ -117,49 +168,8 @@ class _GeneralScreenState extends State<GeneralScreen> {
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Stack(
-            children: [
-              Container(
-                // height: 250.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: ColorUtils.white,
-                  image: DecorationImage(
-                    image: AssetImage(ImageUtils.menImage),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              Container(
-                color: ColorUtils.black.withOpacity(0.30),
-                width: double.infinity,
-              ),
-              Positioned(
-                bottom: 10.h,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 15.w, bottom: 20.h),
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      translate('strings.ForMen'),
-                      style: TextStyle(
-                          fontFamily: FontUtils.almarenaRegular,
-                          color: ColorUtils.white,
-                          decoration: TextDecoration.underline,
-                          decorationColor: ColorUtils.dotGreen,
-                          fontSize: 40.sp,
-                          fontStyle: FontStyle.normal),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

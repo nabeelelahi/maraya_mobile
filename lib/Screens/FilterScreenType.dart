@@ -39,6 +39,9 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
   double startval = 0, endval = 0.5;
   double startval1 = 50, endval1 = 10000;
 
+  TextEditingController maxTextController = TextEditingController();
+  TextEditingController minTextController = TextEditingController();
+
 
   @override
   void initState() {
@@ -412,14 +415,18 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
             size: 18.0,
           ),
         ),
-        title: Text("Filter by ${widget.title ?? ""}") ,
+        title: InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Text("Filter by ${widget.title ?? ""}")) ,
         titleTextStyle: TextStyle(color: ColorUtils.dividerColor ,
             fontFamily: FontUtils.almarenaBold , fontSize: 16.sp),
         centerTitle: false,
         systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 25.h),
         child: InkWell(
           onTap: (){
             Navigator.pop(context, true);
@@ -488,6 +495,8 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
             setState(() {
               startval1 = value.start;
               endval1 = value.end;
+              maxTextController.text = "${value.end.toInt().toString()} SAR";
+              minTextController.text = "${value.start.toInt().toString()} SAR";
             });
           },
         ),
@@ -533,7 +542,7 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
             context: context,
             hintText: "Min 50 SAR",
             // validator: validateEmail,
-            // controller: emailTextController,
+            controller: minTextController,
             textInputType: TextInputType.phone,
             textInputAction: TextInputAction.done,
             // currentFocus: _focusNodes[2],
@@ -565,8 +574,8 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
             context: context,
             hintText: "Max 50,000 SAR",
             // validator: validateEmail,
-            // controller: emailTextController,
             textInputType: TextInputType.phone,
+            controller: maxTextController,
             textInputAction: TextInputAction.done,
             // currentFocus: _focusNodes[2],
             bordercolor: ColorUtils.white,

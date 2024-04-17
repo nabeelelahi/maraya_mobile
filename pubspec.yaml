@@ -55,6 +55,7 @@ dependencies:
   intl_phone_field: ^3.0.0
   carousel_slider: ^4.0.0
   country_code_picker: ^3.0.0
+  country_picker: ^2.0.15
 
 dev_dependencies:
   flutter_test:

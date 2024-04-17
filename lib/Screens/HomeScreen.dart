@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return [
       PersistentBottomNavBarItem(
         icon: Transform.scale(
-          scale: 3,
+          scale: 4,
           child: Padding(
             padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
             child: ImageIcon(
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         ),
         inactiveIcon: Transform.scale(
-          scale: 3,
+          scale: 2.5,
           child: Padding(
             padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
             child: ImageIcon(
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ),
       PersistentBottomNavBarItem(
         icon: Transform.scale(
-          scale: 3,
+          scale: 2.5,
           child: Padding(
             padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
             child: ImageIcon(
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         ),
         inactiveIcon: Transform.scale(
-          scale: 3,
+          scale: 2.5,
           child: Padding(
             padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
             child: ImageIcon(
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
       PersistentBottomNavBarItem(
         icon: Transform.scale(
-          scale: 3,
+          scale: 2.5,
           child: Padding(
             padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
             child: ImageIcon(
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         ),
         inactiveIcon: Transform.scale(
-          scale: 3,
+          scale: 2.5,
           child: Padding(
             padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
             child: ImageIcon(
@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ),
       PersistentBottomNavBarItem(
         icon: Transform.scale(
-          scale: 3,
+          scale: 2.5,
           child: Padding(
             padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
             child: ImageIcon(
@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         ),
         inactiveIcon: Transform.scale(
-          scale: 3,
+          scale: 2.5,
           child: Padding(
             padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
             child: ImageIcon(

@@ -113,6 +113,14 @@ class _BrowseScreenState extends State<BrowseScreen> {
         "title": "2XS",
         "state": false
       },
+      {
+        "title": "2XL",
+        "state": false
+      },
+      {
+        "title": "XL",
+        "state": false
+      },
     ];
 
     super.initState();
@@ -213,7 +221,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                       onTap: (){
                         showModalBottomSheet(
                           context: context,
-                          isDismissible: false,
+                          isDismissible: true,
                           builder: (context) {
                             return StatefulBuilder(
                               builder: (BuildContext context, StateSetter setState){
@@ -245,7 +253,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(height: 15.h,),
+                                      // SizedBox(height: 10.h,),
                                       ListView.builder(
                                         itemCount: sort.length,
                                         shrinkWrap: true,
@@ -283,7 +291,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                                                           sort[index]["title"],
                                                           style: TextStyle(
                                                               color: sort[index]["state"] == true ? ColorUtils.white :
-                                                              ColorUtils.dividerColor,
+                                                              ColorUtils.textcolor,
                                                               fontFamily: FontUtils.almarenaRegular,
                                                               fontSize: 16.sp),
                                                         ),
@@ -385,7 +393,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
         Visibility(
           visible: show,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: SizedBox(
               height: 23.h,
               child: ListView.builder(

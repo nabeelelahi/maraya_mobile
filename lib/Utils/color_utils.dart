@@ -122,6 +122,7 @@ class ColorUtils {
   static Color coloryellow = Color(0xffFFE500);
   static Color colorgold = Color(0xffD4A911);
   static Color colorgreen = Color(0xff1CA159);
+  static Color textcolor = Color(0xff222222);
 
 
 

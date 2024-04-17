@@ -154,7 +154,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
         ),
         titleSpacing: -13.w,
-        title: Text("ARMANI") ,
+        title: InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Text("ARMANI")) ,
         titleTextStyle: TextStyle(color: ColorUtils.dividerColor ,
             fontFamily: FontUtils.almarenaBold , fontSize: 25.sp),
         centerTitle: false,
@@ -240,7 +244,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(ImageUtils.plus, scale: 1.4, color: soldout ? ColorUtils.hintColor : ColorUtils.black,),
+                  Image.asset(ImageUtils.minus, scale: 4, color: soldout ? ColorUtils.hintColor : ColorUtils.black,),
                   SizedBox(width: 10.w,),
                   Text(
                     "1",
@@ -250,7 +254,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         fontSize: 22.sp),
                   ),
                   SizedBox(width: 10.w,),
-                  Image.asset(ImageUtils.minus, scale: 1.4, color: soldout ? ColorUtils.hintColor : ColorUtils.black,)
+                  Image.asset(ImageUtils.plus, scale: 4, color: soldout ? ColorUtils.hintColor : ColorUtils.black,)
                 ],
               )
             ],
@@ -309,7 +313,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.w,),
+                  SizedBox(width: 15.w,),
                   InkWell(
                     onTap:(){
                       setState(() {
@@ -341,7 +345,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.w,),
+                  SizedBox(width: 15.w,),
                   InkWell(
                     onTap:(){
                       setState(() {
@@ -373,7 +377,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.w,),
+                  SizedBox(width: 15.w,),
                   InkWell(
                     onTap:(){
                       setState(() {
@@ -410,7 +414,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ],
           ),
         ),
-        SizedBox(height: 10.h,),
+        SizedBox(height: 15.h,),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Row(
@@ -469,7 +473,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.w,),
+                  SizedBox(width: 13.w,),
                   InkWell(
                     onTap:(){
                       setState(() {
@@ -507,7 +511,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.w,),
+                  SizedBox(width: 13.w,),
                   InkWell(
                     onTap:(){
                       setState(() {
@@ -546,7 +550,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.w,),
+                  SizedBox(width: 13.w,),
                   InkWell(
                     onTap:(){
                       setState(() {
@@ -584,7 +588,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.w,),
+                  SizedBox(width: 13.w,),
                   InkWell(
                     onTap:(){
                       setState(() {
@@ -622,7 +626,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.w,),
+                  SizedBox(width: 13.w,),
                   InkWell(
                     onTap:(){
                       setState(() {
@@ -671,6 +675,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: RichText(
+            textAlign: TextAlign.left,
             text: TextSpan(
                 text: 'This model is 6ft tall and is wearing size L. ',
                 style: TextStyle(
@@ -683,7 +688,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           color: ColorUtils.black,
                           decoration: TextDecoration.underline,
                           fontFamily: FontUtils.almarenaRegular,
-                          fontSize: 14.sp),
+                          fontSize: 13.sp),
                   )
                 ]
             ),

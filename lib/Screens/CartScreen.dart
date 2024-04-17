@@ -118,7 +118,7 @@ class _CartScreenState extends State<CartScreen> {
                   ],
                 ),
               ),
-              Image.asset(ImageUtils.handbag, scale: 2.8,)
+              Image.asset(ImageUtils.handbag, scale: 3.3,)
             ],
           ),
           SizedBox(height: 15.h,),
@@ -195,7 +195,7 @@ class _CartScreenState extends State<CartScreen> {
                                     fontFamily: FontUtils.almarenaRegular,
                                     fontSize: 12.sp),
                               ),
-                              Image.asset(ImageUtils.minus, scale: 2.3, color: ColorUtils.black,),
+                              Image.asset(ImageUtils.minus, scale: 4, color: ColorUtils.black,),
                               SizedBox(width: 10.w,),
                               Text(
                                 "1",
@@ -205,12 +205,12 @@ class _CartScreenState extends State<CartScreen> {
                                     fontSize: 12.sp),
                               ),
                               SizedBox(width: 10.w,),
-                              Image.asset(ImageUtils.plus, scale: 2.3, color: ColorUtils.black,)
+                              Image.asset(ImageUtils.plus, scale: 4, color: ColorUtils.black,)
                             ],
                           )
                         ],
                       ),
-                      SizedBox(height: 5.h,),
+                      // SizedBox(height: 5.h,),
                       Container(
                         // color: ColorUtils.dodgerBlue,
                         width: 115.w,
@@ -348,7 +348,7 @@ class _CartScreenState extends State<CartScreen> {
                                     fontFamily: FontUtils.almarenaRegular,
                                     fontSize: 12.sp),
                               ),
-                              Image.asset(ImageUtils.minus, scale: 2.3, color: ColorUtils.black,),
+                              Image.asset(ImageUtils.minus, scale: 4, color: ColorUtils.black,),
                               SizedBox(width: 10.w,),
                               Text(
                                 "1",
@@ -358,12 +358,12 @@ class _CartScreenState extends State<CartScreen> {
                                     fontSize: 12.sp),
                               ),
                               SizedBox(width: 10.w,),
-                              Image.asset(ImageUtils.plus, scale: 2.3, color: ColorUtils.black,)
+                              Image.asset(ImageUtils.plus, scale: 4, color: ColorUtils.black,)
                             ],
                           )
                         ],
                       ),
-                      SizedBox(height: 5.h,),
+                      // SizedBox(height: 5.h,),
                       Container(
                         // color: ColorUtils.dodgerBlue,
                         width: 115.w,

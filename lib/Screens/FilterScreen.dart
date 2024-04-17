@@ -115,7 +115,11 @@ class _FilterScreenState extends State<FilterScreen> {
             size: 18.0,
           ),
         ),
-        title: Text("Apply Filters") ,
+        title: InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Text("Apply Filters")) ,
         titleTextStyle: TextStyle(color: ColorUtils.dividerColor ,
             fontFamily: FontUtils.almarenaBold , fontSize: 16.sp),
         centerTitle: false,
@@ -146,7 +150,7 @@ class _FilterScreenState extends State<FilterScreen> {
         systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 25.h),
         child: InkWell(
           onTap: (){
             Navigator.pop(context, true);

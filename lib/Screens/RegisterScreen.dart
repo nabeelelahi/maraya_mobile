@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bottom_picker/bottom_picker.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,8 +32,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       phone = FocusNode(), email = FocusNode();
   String? Email, FirstName, SecondName, Phone, DateOfBirth;
   bool termsAndConditionCheck = false;
+  String selected = "Mr";
+  String code = "+966";
 
-  final List<FocusNode> _focusNodes = [FocusNode(), FocusNode(), FocusNode()];
+  final List<FocusNode> _focusNodes = [FocusNode(), FocusNode(), FocusNode(), FocusNode()];
 
   KeyboardActionsConfig _buildConfig(BuildContext context) {
     return KeyboardActionsConfig(
@@ -42,6 +45,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         KeyboardActionsItem(focusNode: _focusNodes[0]),
         KeyboardActionsItem(focusNode: _focusNodes[1]),
         KeyboardActionsItem(focusNode: _focusNodes[2]),
+        KeyboardActionsItem(focusNode: _focusNodes[3]),
       ],
     );
   }
@@ -49,6 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailTextController = TextEditingController(),
       firstNameController = TextEditingController(),
       SecondNameController = TextEditingController(),
+      phoneTextController = TextEditingController(),
       DateofBirthController = TextEditingController();
 
   final GlobalKey<FormState> _formKey =
@@ -157,46 +162,70 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(width: 3.w,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(ImageUtils.checkbox, scale: 1.6,),
-                        SizedBox(width: 5.w,),
-                        Text(translate('strings.Mr'),
-                            style: TextStyle(
-                                fontFamily: FontUtils.almarenaRegular,
-                                fontSize: 18.sp,
-                                color: ColorUtils.dividerColor)),
-                      ],
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          selected = "Mr";
+                        });
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          selected == "Mr" ? Image.asset(ImageUtils.checkbox, scale: 1.6,) :
+                          Image.asset(ImageUtils.empty_checkbox, scale: 1.6,),
+                          SizedBox(width: 5.w,),
+                          Text(translate('strings.Mr'),
+                              style: TextStyle(
+                                  fontFamily: FontUtils.almarenaRegular,
+                                  fontSize: 18.sp,
+                                  color: ColorUtils.dividerColor)),
+                        ],
+                      ),
                     ),
                     SizedBox(width: 25.w,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(ImageUtils.checkbox, scale: 1.6,),
-                        SizedBox(width: 5.w,),
-                        Text(translate('strings.Mrs'),
-                            style: TextStyle(
-                                fontFamily: FontUtils.almarenaRegular,
-                                fontSize: 18.sp,
-                                color: ColorUtils.dividerColor)),
-                      ],
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          selected = "Mrs";
+                        });
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          selected == "Mrs" ? Image.asset(ImageUtils.checkbox, scale: 1.6,) :
+                          Image.asset(ImageUtils.empty_checkbox, scale: 1.6,),
+                          SizedBox(width: 5.w,),
+                          Text(translate('strings.Mrs'),
+                              style: TextStyle(
+                                  fontFamily: FontUtils.almarenaRegular,
+                                  fontSize: 18.sp,
+                                  color: ColorUtils.dividerColor)),
+                        ],
+                      ),
                     ),
                     SizedBox(width: 25.w,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(ImageUtils.checkbox, scale: 1.6,),
-                        SizedBox(width: 5.w,),
-                        Text(translate('strings.Miss'),
-                            style: TextStyle(
-                                fontFamily: FontUtils.almarenaRegular,
-                                fontSize: 18.sp,
-                                color: ColorUtils.dividerColor)),
-                      ],
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          selected = "Miss";
+                        });
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          selected == "Miss" ? Image.asset(ImageUtils.checkbox, scale: 1.6,) :
+                          Image.asset(ImageUtils.empty_checkbox, scale: 1.6,),
+                          SizedBox(width: 5.w,),
+                          Text(translate('strings.Miss'),
+                              style: TextStyle(
+                                  fontFamily: FontUtils.almarenaRegular,
+                                  fontSize: 18.sp,
+                                  color: ColorUtils.dividerColor)),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -256,48 +285,101 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SizedBox(
                   height: 15.h,
                 ),
-                Theme(
-                  data: ThemeData(
-                    primaryColor: ColorUtils.dividerColor,
-                    accentColor: ColorUtils.dividerColor,
-                    colorScheme: ColorScheme.light(primary: ColorUtils.dividerColor),
-                    disabledColor: Colors.brown,
-                    textTheme:
-                    TextTheme(bodyText1: TextStyle(color: ColorUtils.dividerColor)),
-                  ),
-                  child: IntlPhoneField(
-                    style: TextStyle(
-                      height: Platform.isIOS ? 1.3 : 1.5,
-                      fontSize:  18.sp,
-                      color: ColorUtils.black,
-                      fontFamily:  FontUtils.almarenaRegular,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        showCountryPicker(
+                            context: context,
+                            countryListTheme: CountryListThemeData(
+                              flagSize: 25,
+                              backgroundColor: Colors.white,
+                              textStyle: TextStyle(fontSize: 16, color: ColorUtils.dividerColor),
+                              bottomSheetHeight: 500, // Optional. Country list modal height
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20.0),
+                                topRight: Radius.circular(20.0),
+                              ),
+                              //Optional. Styles the search field.
+                              inputDecoration: InputDecoration(
+                                labelText: 'Search',
+                                hintText: 'Start typing to search',
+                                prefixIcon: const Icon(Icons.search),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: const Color(0xFF8C98A8).withOpacity(0.2),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            onSelect: (Country country){
+                              setState(() {
+                                print('Select country: ${country.phoneCode}');
+                                code = "+ ${country.phoneCode.toString()}";
+                              });
+
+                            }
+                        );
+                      },
+                      child: Container(
+                        width: 90.w,
+                        height: 40.h,
+                        padding: EdgeInsets.symmetric(vertical: 7.h),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(ImageUtils.downarrow, scale: 2,),
+                                SizedBox(width: 10.w,),
+                                Text(
+                                  code ?? "",
+                                  style: TextStyle(
+                                    // height: 1,
+                                    fontSize:  18.sp,
+                                    color: ColorUtils.dividerColor,
+                                    fontFamily:  FontUtils.almarenaRegular,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5.h,),
+                            Divider(
+                              height: 3.h,
+                              color: ColorUtils.dividerColor,
+                              thickness: 1,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 5.h),
-                      hintText: translate('strings.PhoneNumber'),
-                      hintStyle: TextStyle(
-                          fontFamily: FontUtils.almarenaRegular,
-                          color: ColorUtils.hintColor,
-                          fontSize: 16.sp, height: 1),
-                      border: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      disabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
+                    SizedBox(
+                      height: 30.h,
+                      width: 220.w,
+                      child: EditText(
+                        context: context,
+                        hintText: "Phone Number",
+                        currentFocus: _focusNodes[2],
+                        controller: phoneTextController,
+                        textInputType: TextInputType.number,
+                        textInputAction: TextInputAction.done,
+                        bordercolor: ColorUtils.white,
+                        onSaved: (text) {
+                          // SecondName = text;
+                        },
+                        onChange: (text) {
+                          // SecondName = text;
+                        },
+                      ),
                     ),
-                    initialCountryCode: 'SA',
-                    onChanged: (phone) {
-                      print(phone.completeNumber);
-                    },
-                  ),
+                  ],
                 ),
+                SizedBox(height: 10.h,),
                 EditText(
                   context: context,
                   hintText: translate('strings.Email'),
@@ -305,7 +387,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   controller: emailTextController,
                   textInputType: TextInputType.text,
                   textInputAction: TextInputAction.next,
-                  currentFocus: _focusNodes[2],
+                  currentFocus: _focusNodes[3],
                   bordercolor: ColorUtils.white,
                   // labelText: StringUtils.EMAIL,
                   onSaved: (text) {

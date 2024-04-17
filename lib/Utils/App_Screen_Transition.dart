@@ -6,9 +6,9 @@ class AppScreenTransition{
   late DateTime currentBackPressTime;
 
   static PageTransition setTransition(Widget widget) {
-    var animation = PageTransitionType.rightToLeft;
+    var animation = PageTransitionType.fade;
     return PageTransition(
-        child: widget, type: animation, duration: const Duration(milliseconds: 300));
+        child: widget, type: animation, duration: const Duration(milliseconds: 150));
   }
 
   Future<bool> onWillPop() {
