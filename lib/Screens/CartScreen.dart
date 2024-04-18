@@ -33,6 +33,10 @@ class _CartScreenState extends State<CartScreen> {
   bool IsReview = false;
   bool cardSelected = false;
   String title = "Your Bag";
+  bool quick = true;
+  bool same = false;
+  bool standard = false;
+
 
   @override
   void initState() {
@@ -118,7 +122,7 @@ class _CartScreenState extends State<CartScreen> {
                   ],
                 ),
               ),
-              Image.asset(ImageUtils.handbag, scale: 3.3,)
+              Image.asset(ImageUtils.handbag, scale: 3.5,)
             ],
           ),
           SizedBox(height: 15.h,),
@@ -202,7 +206,7 @@ class _CartScreenState extends State<CartScreen> {
                                 style: TextStyle(
                                     color: ColorUtils.dividerColor,
                                     fontFamily: FontUtils.almarenaRegular,
-                                    fontSize: 12.sp),
+                                    fontSize: 14.sp),
                               ),
                               SizedBox(width: 10.w,),
                               Image.asset(ImageUtils.plus, scale: 4, color: ColorUtils.black,)
@@ -222,7 +226,7 @@ class _CartScreenState extends State<CartScreen> {
                               fontFamily: FontUtils.almarenaRegular,
                               fontSize: 12.sp),),
                       ),
-                      SizedBox(height: 15.h,),
+                      SizedBox(height: 10.h,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -355,7 +359,7 @@ class _CartScreenState extends State<CartScreen> {
                                 style: TextStyle(
                                     color: ColorUtils.dividerColor,
                                     fontFamily: FontUtils.almarenaRegular,
-                                    fontSize: 12.sp),
+                                    fontSize: 14.sp),
                               ),
                               SizedBox(width: 10.w,),
                               Image.asset(ImageUtils.plus, scale: 4, color: ColorUtils.black,)
@@ -375,7 +379,7 @@ class _CartScreenState extends State<CartScreen> {
                               fontFamily: FontUtils.almarenaRegular,
                               fontSize: 12.sp),),
                       ),
-                      SizedBox(height: 13.h,),
+                      SizedBox(height: 10.h,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -416,91 +420,118 @@ class _CartScreenState extends State<CartScreen> {
                 fontFamily: FontUtils.almarenaBold,
                 fontSize: 16.sp),),
           SizedBox(height: 15.h,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(ImageUtils.fill_checkbox, scale: 2,),
-                  SizedBox(width: 5.w,),
-                  Text(
-                    "Quick Delivery (1 - 3 hours), within Riyadh",
-                    style: TextStyle(
-                        color: ColorUtils.dividerColor,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: FontUtils.almarenaRegular,
-                        fontSize: 13.sp),),
-                ],
-              ),
-              Text(
-                "50 SAR",
-                style: TextStyle(
-                    color: ColorUtils.dividerColor,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: FontUtils.almarenaRegular,
-                    fontSize: 14.sp),),
-            ],
+          InkWell(
+            onTap: (){
+              setState(() {
+                quick = true;
+                same = false;
+                standard = false;
+              });
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(quick == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 2,),
+                    SizedBox(width: 5.w,),
+                    Text(
+                      "Quick Delivery (1 - 3 hours), within Riyadh",
+                      style: TextStyle(
+                          color: ColorUtils.dividerColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: FontUtils.almarenaRegular,
+                          fontSize: 13.sp),),
+                  ],
+                ),
+                Text(
+                  "50 SAR",
+                  style: TextStyle(
+                      color: ColorUtils.dividerColor,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: FontUtils.almarenaRegular,
+                      fontSize: 14.sp),),
+              ],
+            ),
           ),
           SizedBox(height: 10.h,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(ImageUtils.empty_checkbox, scale: 2,),
-                  SizedBox(width: 5.w,),
-                  Text(
-                    "Same Day Delivery (24 hours), within Riyadh ",
-                    style: TextStyle(
-                        color: ColorUtils.dividerColor,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: FontUtils.almarenaRegular,
-                        fontSize: 13.sp),),
-                ],
-              ),
-              Text(
-                "20 SAR",
-                style: TextStyle(
-                    color: ColorUtils.dividerColor,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: FontUtils.almarenaRegular,
-                    fontSize: 14.sp),),
-            ],
+          InkWell(
+            onTap: (){
+              setState(() {
+                quick = false;
+                same = true;
+                standard = false;
+              });
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(same == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 2,),
+                    SizedBox(width: 5.w,),
+                    Text(
+                      "Same Day Delivery (24 hours), within Riyadh ",
+                      style: TextStyle(
+                          color: ColorUtils.dividerColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: FontUtils.almarenaRegular,
+                          fontSize: 13.sp),),
+                  ],
+                ),
+                Text(
+                  "20 SAR",
+                  style: TextStyle(
+                      color: ColorUtils.dividerColor,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: FontUtils.almarenaRegular,
+                      fontSize: 14.sp),),
+              ],
+            ),
           ),
           SizedBox(height: 10.h,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(ImageUtils.empty_checkbox, scale: 2,),
-                  SizedBox(width: 5.w,),
-                  Text(
-                    "Standard Delivery (1 - 2 days), within Riyadh KSA",
-                    style: TextStyle(
-                        color: ColorUtils.dividerColor,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: FontUtils.almarenaRegular,
-                        fontSize: 13.sp),),
-                ],
-              ),
-              Text(
-                "20 SAR",
-                style: TextStyle(
-                    color: ColorUtils.dividerColor,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: FontUtils.almarenaRegular,
-                    fontSize: 14.sp),),
-            ],
+          InkWell(
+            onTap: (){
+              setState(() {
+                quick = false;
+                same = false;
+                standard = true;
+              });
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(standard == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 2,),
+                    SizedBox(width: 5.w,),
+                    Text(
+                      "Standard Delivery (1 - 2 days), within Riyadh KSA",
+                      style: TextStyle(
+                          color: ColorUtils.dividerColor,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: FontUtils.almarenaRegular,
+                          fontSize: 13.sp),),
+                  ],
+                ),
+                Text(
+                  "20 SAR",
+                  style: TextStyle(
+                      color: ColorUtils.dividerColor,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: FontUtils.almarenaRegular,
+                      fontSize: 14.sp),),
+              ],
+            ),
           ),
           SizedBox(height: 15.h,),
           Text(
@@ -776,20 +807,22 @@ class _CartScreenState extends State<CartScreen> {
                 SizedBox(height: 15.h,),
                 Visibility(
                   visible: cardSelected,
-                  child: Text(
-                   "**** **** **** 1234",
-                    style: TextStyle(
-                        color: ColorUtils.dividerColor,
-                        fontFamily: FontUtils.almarenaRegular,
-                        fontSize: 18.sp),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "**** **** **** 1234",
+                        style: TextStyle(
+                            color: ColorUtils.dividerColor,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 18.sp),
+                      ),
+                      SizedBox(width: 5.w,),
+                      Image.asset(ImageUtils.master, scale: 2.5,),
+                    ],
                   ),
                 ),
-                Visibility(
-                    visible: cardSelected,
-                    child: SizedBox(width: 5.w,)),
-                Visibility(
-                    visible: cardSelected,
-                    child: Image.asset(ImageUtils.master, scale: 2.5,)),
                 SizedBox(height: 50.h,),
                 InkWell(
                   onTap: (){

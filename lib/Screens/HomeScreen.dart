@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return [
       PersistentBottomNavBarItem(
         icon: Transform.scale(
-          scale: 4,
+          scale: 2.5,
           child: Padding(
             padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
             child: ImageIcon(

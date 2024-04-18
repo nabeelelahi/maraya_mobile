@@ -9,6 +9,8 @@ import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:keyboard_actions/keyboard_actions_config.dart';
+import 'package:maraya_flutter/Screens/LoginScreen.dart';
+import 'package:maraya_flutter/Screens/VerficationScreen.dart';
 import 'package:oktoast/oktoast.dart';
 import '../../Utils/app_routes.dart';
 import '../../Utils/color_utils.dart';
@@ -238,7 +240,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   children: [
                     SizedBox(
                       width: 150.w,
-                      height: 30.h,
+                      height: 35.h,
                       child: EditText(
                         context: context,
                         hintText: translate('strings.FirstName'),
@@ -260,7 +262,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     SizedBox(
                       width: 150.w,
-                      height: 30.h,
+                      height: 35.h,
                       child: EditText(
                         context: context,
                         hintText: translate('strings.SecondName'),
@@ -325,8 +327,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                       child: Container(
                         width: 90.w,
-                        height: 40.h,
-                        padding: EdgeInsets.symmetric(vertical: 7.h),
+                        height: 42.h,
+                        padding: EdgeInsets.symmetric(vertical: 9.h),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -350,16 +352,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             SizedBox(height: 5.h,),
                             Divider(
-                              height: 3.h,
+                              height: 2.h,
                               color: ColorUtils.dividerColor,
-                              thickness: 1,
+                              thickness: 0.5,
                             ),
                           ],
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 30.h,
+                      height: 32.h,
                       width: 220.w,
                       child: EditText(
                         context: context,
@@ -542,7 +544,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textColor: ColorUtils.white,
                   circularRadius: 0,
                   onPress: () {
-                    Navigator.pushNamed(context, AppRoutes.Verfication);
+                    Navigator.of(context, rootNavigator: true)
+                        .push(MaterialPageRoute(builder: (context) =>
+                        VerificationScreen()));
+                    // Navigator.pushNamed(context, AppRoutes.Verfication);
                   },
                 ),
                 SizedBox(
@@ -560,7 +565,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     InkWell(
                         onTap: () {
-                          Navigator.pushReplacementNamed(context, AppRoutes.Login);
+                          Navigator.of(context, rootNavigator: true)
+                              .pushReplacement(MaterialPageRoute(builder: (context) =>
+                              LoginScreen()));
+                          // Navigator.pushReplacementNamed(context, AppRoutes.Login);
                         },
                         child: Text(
                           translate('strings.Login'),

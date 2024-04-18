@@ -79,25 +79,6 @@ flutter:
     - assets/i18n/
 
   fonts:
-    - family: clashDisplayBold
-      fonts:
-        - asset: assets/fonts/ClashDisplayBold.otf
-    - family: clashDisplayExtraLight
-      fonts:
-        - asset: assets/fonts/ClashDisplayExtraLight.otf
-    - family: clashDisplayLight
-      fonts:
-        - asset: assets/fonts/ClashDisplayLight.otf
-    - family: clashDisplayMedium
-      fonts:
-        - asset: assets/fonts/ClashDisplayMedium.otf
-    - family: clashDisplayRegular
-      fonts:
-        - asset: assets/fonts/ClashDisplayRegular.otf
-    - family: clashDisplaySemiBold
-      fonts:
-        - asset: assets/fonts/ClashDisplaySemiBold.otf
-
     - family: almarenaBold
       fonts:
         - asset: assets/fonts/Almarena-Bold.otf

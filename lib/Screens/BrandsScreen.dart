@@ -215,7 +215,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
       onTap: () {
         Navigator.of(context, rootNavigator: false)
             .push(MaterialPageRoute(builder: (context) =>
-            ShopBrandsScreen()));
+            ShopBrandsScreen(),));
       },
       child: Container(
         // padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),

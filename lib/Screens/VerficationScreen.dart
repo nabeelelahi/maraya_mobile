@@ -9,6 +9,7 @@ import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:keyboard_actions/keyboard_actions_config.dart';
+import 'package:maraya_flutter/Screens/GeneralScreen.dart';
 import 'package:oktoast/oktoast.dart';
 import '../../Utils/app_routes.dart';
 import '../../Utils/color_utils.dart';
@@ -178,7 +179,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 },
                 //runs when every textfield is filled
                 onSubmit: (String verificationCode) {
-                  Navigator.pushReplacementNamed(context, AppRoutes.General);
+                  Navigator.of(context, rootNavigator: true)
+                      .pushReplacement(MaterialPageRoute(builder: (context) =>
+                      GeneralScreen()));
+                  // Navigator.pushReplacementNamed(context, AppRoutes.General);
 
                 },
               ),

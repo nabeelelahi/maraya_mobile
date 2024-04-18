@@ -1799,7 +1799,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   imageErrorBuilder: (context, error, stackTrace) {
                                     return Container(child: Image.asset(ImageUtils.loading_placeholder, fit: BoxFit.fill));
                                   },
-                                  fit: BoxFit.fill),
+                                  fit: BoxFit.contain),
                             ),
                           ),
                         ),

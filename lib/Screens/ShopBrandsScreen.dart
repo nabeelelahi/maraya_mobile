@@ -139,7 +139,11 @@ class _ShopBrandsScreenState extends State<ShopBrandsScreen> {
           ),
         ),
         titleSpacing: -12.w,
-        title: Text(translate('strings.ShopBrands')) ,
+        title: InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Text(translate('strings.ShopBrands'))) ,
         titleTextStyle: TextStyle(color: ColorUtils.dividerColor ,
             fontFamily: FontUtils.almarenaBold , fontSize: 25.sp),
         centerTitle: false,
@@ -197,7 +201,7 @@ class _ShopBrandsScreenState extends State<ShopBrandsScreen> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Container(
-            height: 100.h,
+            height: 105.h,
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
             width: double.infinity,
             color: ColorUtils.dividerColor,

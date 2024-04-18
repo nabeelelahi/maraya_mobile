@@ -145,9 +145,13 @@ class _BrowseScreenState extends State<BrowseScreen> {
           ),
         ),
         titleSpacing: -12.w,
-        title: Text(translate('strings.BrowseClothing')) ,
+        title: InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Text(translate('strings.BrowseClothing'))) ,
         titleTextStyle: TextStyle(color: ColorUtils.dividerColor ,
-            fontFamily: FontUtils.almarenaRegular , fontSize: 25.sp),
+            fontFamily: FontUtils.almarenaBold , fontSize: 25.sp),
         centerTitle: false,
         actions: [
           InkWell(

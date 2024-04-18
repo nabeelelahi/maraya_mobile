@@ -62,6 +62,10 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
   bool show = false;
   bool cardSelected = false;
 
+  bool visa = false;
+  bool master = false;
+  bool mada = false;
+
   @override
   void initState() {
 
@@ -90,7 +94,11 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
           ),
         ),
         titleSpacing: -13.w,
-        title: Text("Payment Method") ,
+        title: InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Text("Payment Method")) ,
         titleTextStyle: TextStyle(color: ColorUtils.dividerColor ,
             fontFamily: FontUtils.almarenaBold , fontSize: 25.sp),
         centerTitle: false,
@@ -159,79 +167,272 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                     context: context,
                     isDismissible: true,
                     builder: (context) {
+                      return StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setstate){
+                          return Container(
+                            height: 200.h,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+                              child: Column(
+                                children: [
+                                  InkWell(
+                                    onTap: (){
+                                      setstate(() {
+                                        master = true;
+                                        visa = false;
+                                        mada = false;
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "********1234",
+                                              style: TextStyle(
+                                                  color: ColorUtils.dividerColor,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 14.sp),),
+                                            SizedBox(width: 10.w,),
+                                            Image.asset(ImageUtils.master, scale: 3,)
+                                          ],
+                                        ),
+                                        Image.asset(master == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 15.h,),
+                                  InkWell(
+                                    onTap: (){
+                                      setstate(() {
+                                        master = false;
+                                        visa = true;
+                                        mada = false;
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "********5678",
+                                              style: TextStyle(
+                                                  color: ColorUtils.dividerColor,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 14.sp),),
+                                            SizedBox(width: 10.w,),
+                                            Image.asset(ImageUtils.visa, scale: 3,)
+                                          ],
+                                        ),
+                                        Image.asset(visa == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 15.h,),
+                                  InkWell(
+                                    onTap: (){
+                                      setstate(() {
+                                        master = false;
+                                        visa = false;
+                                        mada = true;
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "********9123",
+                                              style: TextStyle(
+                                                  color: ColorUtils.dividerColor,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 14.sp),),
+                                            SizedBox(width: 10.w,),
+                                            Image.asset(ImageUtils.mada, scale: 3,)
+                                          ],
+                                        ),
+                                        Image.asset(mada == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 20.h,),
+                                  InkWell(
+                                    onTap: (){
+                                      setState(() {
+                                        cardSelected = true;
+                                        nameTextController.text = "Emma Richard";
+                                        numberNameController.text = "**** **** **** 1234";
+                                        cvvNameController.text = "123";
+                                        expireTextController.text = "12/25";
+                                      });
+                                      Navigator.pop(context);
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 42.h,
+                                      color: ColorUtils.dividerColor,
+                                      child: Center(
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Select",
+                                              style: TextStyle(
+                                                  color: ColorUtils.white,
+                                                  fontFamily: FontUtils.almarenaDisplayRegular,
+                                                  fontSize: 20.sp),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
+                child: Text(
+                  "Change",
+                  style: TextStyle(
+                      color: ColorUtils.black,
+                      decoration: TextDecoration.underline,
+                      decorationColor: ColorUtils.dotGreen,
+                      fontFamily: FontUtils.almarenaRegular,
+                      fontSize: 16.sp),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 15.h),
+          InkWell(
+            onTap: (){
+              showModalBottomSheet(
+                context: context,
+                isDismissible: true,
+                builder: (context) {
+                  return StatefulBuilder(
+                    builder: (BuildContext context, StateSetter setstate){
                       return Container(
-                        height: 170.h,
+                        height: 200.h,
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+                          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
                           child: Column(
                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "********1234",
-                                        style: TextStyle(
-                                            color: ColorUtils.dividerColor,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: FontUtils.almarenaRegular,
-                                            fontSize: 14.sp),),
-                                      SizedBox(width: 10.w,),
-                                      Image.asset(ImageUtils.master, scale: 3,)
-                                    ],
-                                  ),
-                                  Image.asset(ImageUtils.checkbox, scale: 1.7,)
-                                ],
+                              InkWell(
+                                onTap: (){
+                                  setstate(() {
+                                    master = true;
+                                    visa = false;
+                                    mada = false;
+                                  });
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "********1234",
+                                          style: TextStyle(
+                                              color: ColorUtils.dividerColor,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: FontUtils.almarenaRegular,
+                                              fontSize: 14.sp),),
+                                        SizedBox(width: 10.w,),
+                                        Image.asset(ImageUtils.master, scale: 3,)
+                                      ],
+                                    ),
+                                    Image.asset(master == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
+                                  ],
+                                ),
                               ),
                               SizedBox(height: 15.h,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "********5678",
-                                        style: TextStyle(
-                                            color: ColorUtils.dividerColor,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: FontUtils.almarenaRegular,
-                                            fontSize: 14.sp),),
-                                      SizedBox(width: 10.w,),
-                                      Image.asset(ImageUtils.visa, scale: 3,)
-                                    ],
-                                  ),
-                                  Image.asset(ImageUtils.empty_checkbox, scale: 1.7,)
-                                ],
+                              InkWell(
+                                onTap: (){
+                                  setstate(() {
+                                    master = false;
+                                    visa = true;
+                                    mada = false;
+                                  });
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "********5678",
+                                          style: TextStyle(
+                                              color: ColorUtils.dividerColor,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: FontUtils.almarenaRegular,
+                                              fontSize: 14.sp),),
+                                        SizedBox(width: 10.w,),
+                                        Image.asset(ImageUtils.visa, scale: 3,)
+                                      ],
+                                    ),
+                                    Image.asset(visa == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
+                                  ],
+                                ),
                               ),
                               SizedBox(height: 15.h,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "********9123",
-                                        style: TextStyle(
-                                            color: ColorUtils.dividerColor,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: FontUtils.almarenaRegular,
-                                            fontSize: 14.sp),),
-                                      SizedBox(width: 10.w,),
-                                      Image.asset(ImageUtils.mada, scale: 3,)
-                                    ],
-                                  ),
-                                  Image.asset(ImageUtils.empty_checkbox, scale: 1.7,)
-                                ],
+                              InkWell(
+                                onTap: (){
+                                  setstate(() {
+                                    master = false;
+                                    visa = false;
+                                    mada = true;
+                                  });
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "********9123",
+                                          style: TextStyle(
+                                              color: ColorUtils.dividerColor,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: FontUtils.almarenaRegular,
+                                              fontSize: 14.sp),),
+                                        SizedBox(width: 10.w,),
+                                        Image.asset(ImageUtils.mada, scale: 3,)
+                                      ],
+                                    ),
+                                    Image.asset(mada == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
+                                  ],
+                                ),
                               ),
                               SizedBox(height: 20.h,),
                               InkWell(
@@ -271,137 +472,6 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                         ),
                       );
                     },
-                  );
-                },
-                child: Text(
-                  "Change",
-                  style: TextStyle(
-                      color: ColorUtils.black,
-                      decoration: TextDecoration.underline,
-                      decorationColor: ColorUtils.dotGreen,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 16.sp),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 15.h),
-          InkWell(
-            onTap: (){
-              showModalBottomSheet(
-                context: context,
-                isDismissible: true,
-                builder: (context) {
-                  return Container(
-                    height: 170.h,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "********1234",
-                                    style: TextStyle(
-                                        color: ColorUtils.dividerColor,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: FontUtils.almarenaRegular,
-                                        fontSize: 14.sp),),
-                                  SizedBox(width: 10.w,),
-                                  Image.asset(ImageUtils.master, scale: 3,)
-                                ],
-                              ),
-                              Image.asset(ImageUtils.checkbox, scale: 1.7,)
-                            ],
-                          ),
-                          SizedBox(height: 15.h,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "********5678",
-                                    style: TextStyle(
-                                        color: ColorUtils.dividerColor,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: FontUtils.almarenaRegular,
-                                        fontSize: 14.sp),),
-                                  SizedBox(width: 10.w,),
-                                  Image.asset(ImageUtils.visa, scale: 3,)
-                                ],
-                              ),
-                              Image.asset(ImageUtils.empty_checkbox, scale: 1.7,)
-                            ],
-                          ),
-                          SizedBox(height: 15.h,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "********9123",
-                                    style: TextStyle(
-                                        color: ColorUtils.dividerColor,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: FontUtils.almarenaRegular,
-                                        fontSize: 14.sp),),
-                                  SizedBox(width: 10.w,),
-                                  Image.asset(ImageUtils.mada, scale: 3,)
-                                ],
-                              ),
-                              Image.asset(ImageUtils.empty_checkbox, scale: 1.7,)
-                            ],
-                          ),
-                          SizedBox(height: 20.h,),
-                          InkWell(
-                            onTap: (){
-                              setState(() {
-                                cardSelected = true;
-                                nameTextController.text = "Emma Richard";
-                                numberNameController.text = "**** **** **** 1234";
-                                cvvNameController.text = "123";
-                                expireTextController.text = "12/25";
-                              });
-                              Navigator.pop(context);
-                            },
-                            child: Container(
-                              width: double.infinity,
-                              height: 42.h,
-                              color: ColorUtils.dividerColor,
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Select",
-                                      style: TextStyle(
-                                          color: ColorUtils.white,
-                                          fontFamily: FontUtils.almarenaDisplayRegular,
-                                          fontSize: 20.sp),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
                   );
                 },
               );
@@ -632,7 +702,7 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                       Image.asset(ImageUtils.cloth1,),
                       SizedBox(width: 10.w,),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 12.h),
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -693,17 +763,17 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                                           fontFamily: FontUtils.almarenaRegular,
                                           fontSize: 12.sp),
                                     ),
-                                    Image.asset(ImageUtils.minus, scale: 2.3, color: ColorUtils.black,),
+                                    Image.asset(ImageUtils.minus, scale: 4, color: ColorUtils.black,),
                                     SizedBox(width: 10.w,),
                                     Text(
                                       "1",
                                       style: TextStyle(
                                           color: ColorUtils.dividerColor,
                                           fontFamily: FontUtils.almarenaRegular,
-                                          fontSize: 12.sp),
+                                          fontSize: 14.sp),
                                     ),
                                     SizedBox(width: 10.w,),
-                                    Image.asset(ImageUtils.plus, scale: 2.3, color: ColorUtils.black,)
+                                    Image.asset(ImageUtils.plus, scale: 4, color: ColorUtils.black,)
                                   ],
                                 )
                               ],
@@ -720,7 +790,7 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                                     fontFamily: FontUtils.almarenaRegular,
                                     fontSize: 12.sp),),
                             ),
-                            SizedBox(height: 15.h,),
+                            SizedBox(height: 10.h,),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -765,7 +835,7 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                       Image.asset(ImageUtils.shoe,),
                       SizedBox(width: 10.w,),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 12.h),
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -846,17 +916,17 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                                           fontFamily: FontUtils.almarenaRegular,
                                           fontSize: 12.sp),
                                     ),
-                                    Image.asset(ImageUtils.minus, scale: 2.3, color: ColorUtils.black,),
+                                    Image.asset(ImageUtils.minus, scale: 4, color: ColorUtils.black,),
                                     SizedBox(width: 10.w,),
                                     Text(
                                       "1",
                                       style: TextStyle(
                                           color: ColorUtils.dividerColor,
                                           fontFamily: FontUtils.almarenaRegular,
-                                          fontSize: 12.sp),
+                                          fontSize: 14.sp),
                                     ),
                                     SizedBox(width: 10.w,),
-                                    Image.asset(ImageUtils.plus, scale: 2.3, color: ColorUtils.black,)
+                                    Image.asset(ImageUtils.plus, scale: 4, color: ColorUtils.black,)
                                   ],
                                 )
                               ],
@@ -873,7 +943,7 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                                     fontFamily: FontUtils.almarenaRegular,
                                     fontSize: 12.sp),),
                             ),
-                            SizedBox(height: 13.h,),
+                            SizedBox(height: 10.h,),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,

@@ -13,6 +13,26 @@ class AppTheme {
       unselectedWidgetColor: ColorUtils.white,
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
-      fontFamily: FontUtils.clashDisplayRegular, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: ColorUtils.white));
+      pageTransitionsTheme: PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: FadePageTransitionsBuilder(), // Example transition, you can use any other transition builder here
+          TargetPlatform.iOS: FadePageTransitionsBuilder(), // Example transition, you can use any other transition builder here
+        },
+      ),
+      fontFamily: FontUtils.clashDisplayRegular, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: ColorUtils.white)
+  );
 
+}
+
+
+
+class FadePageTransitionsBuilder extends PageTransitionsBuilder {
+  @override
+  Widget buildTransitions<T>(PageRoute<T> route, BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+    // Fade transition animation
+    return FadeTransition(
+      opacity: animation,
+      child: child,
+    );
+  }
 }

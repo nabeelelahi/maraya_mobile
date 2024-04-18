@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bottom_picker/bottom_picker.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,12 +30,12 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   late BuildContext _context;
   FocusNode firstName = FocusNode(), secondName = FocusNode(),
       email = FocusNode(), city = FocusNode(), area = FocusNode(), address = FocusNode(),
-      apartment = FocusNode();
+      apartment = FocusNode(), phone = FocusNode();
   String? Email, FirstName, SecondName, Phone, City, Area, Address, Apartment;
   bool termsAndConditionCheck = false;
 
   final List<FocusNode> _focusNodes = [FocusNode(), FocusNode(), FocusNode(), FocusNode(), FocusNode(),
-    FocusNode(), FocusNode(),  FocusNode(),];
+    FocusNode(), FocusNode(),  FocusNode(), FocusNode(),];
 
   KeyboardActionsConfig _buildConfig(BuildContext context) {
     return KeyboardActionsConfig(
@@ -49,6 +50,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         KeyboardActionsItem(focusNode: _focusNodes[5]),
         KeyboardActionsItem(focusNode: _focusNodes[6]),
         KeyboardActionsItem(focusNode: _focusNodes[7]),
+        KeyboardActionsItem(focusNode: _focusNodes[8]),
       ],
     );
   }
@@ -58,6 +60,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       SecondNameController = TextEditingController(),
       cityTextController = TextEditingController(),
       areaTextController = TextEditingController(),
+      phoneTextController = TextEditingController(),
       addressTextController = TextEditingController(),
       apartmentTextController = TextEditingController();
 
@@ -65,6 +68,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       GlobalKey<FormState>(debugLabel: '_AddAddressScreen');
   bool autoValidate = false, obscure = true;
   List<Map<String,dynamic>> filterlist = [];
+  String code = "+966";
 
   @override
   void initState() {
@@ -117,7 +121,11 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           ),
         ),
         titleSpacing: -15.w,
-        title: Text("Shipping Address") ,
+        title: InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Text("Shipping Address")) ,
         titleTextStyle: TextStyle(color: ColorUtils.dividerColor ,
             fontFamily: FontUtils.almarenaBold , fontSize: 25.sp),
         centerTitle: false,
@@ -396,7 +404,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                   children: [
                     SizedBox(
                       width: 150.w,
-                      height: 30.h,
+                      height: 35.h,
                       child: EditText(
                         context: context,
                         hintText: translate('strings.FirstName'),
@@ -418,7 +426,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                     ),
                     SizedBox(
                       width: 150.w,
-                      height: 30.h,
+                      height: 35.h,
                       child: EditText(
                         context: context,
                         hintText: translate('strings.SecondName'),
@@ -443,48 +451,101 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 SizedBox(
                   height: 15.h,
                 ),
-                Theme(
-                  data: ThemeData(
-                    primaryColor: ColorUtils.dividerColor,
-                    accentColor: ColorUtils.dividerColor,
-                    colorScheme: ColorScheme.light(primary: ColorUtils.dividerColor),
-                    disabledColor: Colors.brown,
-                    textTheme:
-                    TextTheme(bodyText1: TextStyle(color: ColorUtils.dividerColor)),
-                  ),
-                  child: IntlPhoneField(
-                    style: TextStyle(
-                      height: Platform.isIOS ? 1.3 : 1.5,
-                      fontSize:  18.sp,
-                      color: ColorUtils.black,
-                      fontFamily:  FontUtils.almarenaRegular,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        showCountryPicker(
+                            context: context,
+                            countryListTheme: CountryListThemeData(
+                              flagSize: 25,
+                              backgroundColor: Colors.white,
+                              textStyle: TextStyle(fontSize: 16, color: ColorUtils.dividerColor),
+                              bottomSheetHeight: 500, // Optional. Country list modal height
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20.0),
+                                topRight: Radius.circular(20.0),
+                              ),
+                              //Optional. Styles the search field.
+                              inputDecoration: InputDecoration(
+                                labelText: 'Search',
+                                hintText: 'Start typing to search',
+                                prefixIcon: const Icon(Icons.search),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: const Color(0xFF8C98A8).withOpacity(0.2),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            onSelect: (Country country){
+                              setState(() {
+                                print('Select country: ${country.phoneCode}');
+                                code = "+ ${country.phoneCode.toString()}";
+                              });
+
+                            }
+                        );
+                      },
+                      child: Container(
+                        width: 90.w,
+                        height: 42.h,
+                        padding: EdgeInsets.symmetric(vertical: 9.h),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(ImageUtils.downarrow, scale: 2,),
+                                SizedBox(width: 10.w,),
+                                Text(
+                                  code ?? "",
+                                  style: TextStyle(
+                                    // height: 1,
+                                    fontSize:  18.sp,
+                                    color: ColorUtils.dividerColor,
+                                    fontFamily:  FontUtils.almarenaRegular,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5.h,),
+                            Divider(
+                              height: 2.h,
+                              color: ColorUtils.dividerColor,
+                              thickness: 0.5,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 5.h),
-                      hintText: "Phone Number*",
-                      hintStyle: TextStyle(
-                          fontFamily: FontUtils.almarenaRegular,
-                          color: ColorUtils.hintColor,
-                          fontSize: 16.sp, height: 1),
-                      border: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      disabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: ColorUtils.dividerColor),),
+                    SizedBox(
+                      height: 32.h,
+                      width: 220.w,
+                      child: EditText(
+                        context: context,
+                        hintText: "Phone Number",
+                        currentFocus: _focusNodes[6],
+                        controller: phoneTextController,
+                        textInputType: TextInputType.number,
+                        textInputAction: TextInputAction.done,
+                        bordercolor: ColorUtils.white,
+                        onSaved: (text) {
+                          // SecondName = text;
+                        },
+                        onChange: (text) {
+                          // SecondName = text;
+                        },
+                      ),
                     ),
-                    initialCountryCode: 'SA',
-                    onChanged: (phone) {
-                      print(phone.completeNumber);
-                    },
-                  ),
+                  ],
                 ),
+                SizedBox(height: 10.h,),
                 EditText(
                   context: context,
                   hintText: translate('strings.Email'),
@@ -543,33 +604,23 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                   ),
                                 ),
                                 SizedBox(height: 15.h,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: 150.w,
-                                      height: 30.h,
-                                      child: EditText(
-                                        context: context,
-                                        hintText: "Home*",
-                                        validator: validateEventName,
-                                        controller: firstNameController,
-                                        textInputType: TextInputType.text,
-                                        textInputAction: TextInputAction.done,
-                                        // currentFocus: _focusNodes[4],
-                                        // nextFocus: _focusNodes[5],
-                                        bordercolor: ColorUtils.white,
-                                        // labelText: StringUtils.EMAIL,
-                                        onSaved: (text) {
-                                          // FirstName = text;
-                                        },
-                                        onChange: (text) {
-                                          // FirstName = text;
-                                        },
-                                      ),
-                                    ),
-                                  ],
+                                EditText(
+                                  context: context,
+                                  hintText: "Home*",
+                                  validator: validateEventName,
+                                  controller: firstNameController,
+                                  textInputType: TextInputType.text,
+                                  textInputAction: TextInputAction.done,
+                                  // currentFocus: _focusNodes[4],
+                                  // nextFocus: _focusNodes[5],
+                                  bordercolor: ColorUtils.white,
+                                  // labelText: StringUtils.EMAIL,
+                                  onSaved: (text) {
+                                    // FirstName = text;
+                                  },
+                                  onChange: (text) {
+                                    // FirstName = text;
+                                  },
                                 ),
                                 SizedBox(height: 15.h,),
                                 InkWell(

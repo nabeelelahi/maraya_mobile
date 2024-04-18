@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:maraya_flutter/Screens/LoginScreen.dart';
 import '../../Utils/app_routes.dart';
 import '../../Utils/color_utils.dart';
 import '../../Utils/font_utils.dart';
@@ -82,7 +83,10 @@ class _SplashScreenState extends State<SplashScreen> {
                       height: 40.h,
                       circularRadius: 0,
                       onPress: () {
-                        Navigator.pushNamed(context, AppRoutes.Login);
+                        Navigator.of(context, rootNavigator: true)
+                            .push(MaterialPageRoute(builder: (context) =>
+                            LoginScreen()));
+                        // Navigator.pushNamed(context, AppRoutes.Login);
                       },
                     ),
                     SizedBox(width: 20.w,),
@@ -93,7 +97,10 @@ class _SplashScreenState extends State<SplashScreen> {
                       height: 40.h,
                       circularRadius: 0,
                       onPress: () {
-                        Navigator.pushNamed(context, AppRoutes.Login);
+                        Navigator.of(context, rootNavigator: true)
+                            .push(MaterialPageRoute(builder: (context) =>
+                            LoginScreen()));
+                        // Navigator.pushNamed(context, AppRoutes.Login);
                       },
                     ),
                   ],
