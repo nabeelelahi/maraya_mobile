@@ -34,6 +34,7 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
   FocusNode Name = FocusNode(), Number = FocusNode(),
       CVV = FocusNode(), Expire = FocusNode();
   String? name, number, cvv, expire;
+  List<String> Images = [ImageUtils.cloth1, ImageUtils.cloth7, ImageUtils.cloth10];
 
   final List<FocusNode> _focusNodes = [FocusNode(), FocusNode(), FocusNode(), FocusNode()];
 
@@ -163,154 +164,154 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
               ),
               InkWell(
                 onTap: (){
-                  showModalBottomSheet(
-                    context: context,
-                    isDismissible: true,
-                    builder: (context) {
-                      return StatefulBuilder(
-                        builder: (BuildContext context, StateSetter setstate){
-                          return Container(
-                            height: 200.h,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
-                              child: Column(
-                                children: [
-                                  InkWell(
-                                    onTap: (){
-                                      setstate(() {
-                                        master = true;
-                                        visa = false;
-                                        mada = false;
-                                      });
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "********1234",
-                                              style: TextStyle(
-                                                  color: ColorUtils.dividerColor,
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: FontUtils.almarenaRegular,
-                                                  fontSize: 14.sp),),
-                                            SizedBox(width: 10.w,),
-                                            Image.asset(ImageUtils.master, scale: 3,)
-                                          ],
-                                        ),
-                                        Image.asset(master == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(height: 15.h,),
-                                  InkWell(
-                                    onTap: (){
-                                      setstate(() {
-                                        master = false;
-                                        visa = true;
-                                        mada = false;
-                                      });
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "********5678",
-                                              style: TextStyle(
-                                                  color: ColorUtils.dividerColor,
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: FontUtils.almarenaRegular,
-                                                  fontSize: 14.sp),),
-                                            SizedBox(width: 10.w,),
-                                            Image.asset(ImageUtils.visa, scale: 3,)
-                                          ],
-                                        ),
-                                        Image.asset(visa == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(height: 15.h,),
-                                  InkWell(
-                                    onTap: (){
-                                      setstate(() {
-                                        master = false;
-                                        visa = false;
-                                        mada = true;
-                                      });
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "********9123",
-                                              style: TextStyle(
-                                                  color: ColorUtils.dividerColor,
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: FontUtils.almarenaRegular,
-                                                  fontSize: 14.sp),),
-                                            SizedBox(width: 10.w,),
-                                            Image.asset(ImageUtils.mada, scale: 3,)
-                                          ],
-                                        ),
-                                        Image.asset(mada == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(height: 20.h,),
-                                  InkWell(
-                                    onTap: (){
-                                      setState(() {
-                                        cardSelected = true;
-                                        nameTextController.text = "Emma Richard";
-                                        numberNameController.text = "**** **** **** 1234";
-                                        cvvNameController.text = "123";
-                                        expireTextController.text = "12/25";
-                                      });
-                                      Navigator.pop(context);
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 42.h,
-                                      color: ColorUtils.dividerColor,
-                                      child: Center(
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "Select",
-                                              style: TextStyle(
-                                                  color: ColorUtils.white,
-                                                  fontFamily: FontUtils.almarenaDisplayRegular,
-                                                  fontSize: 20.sp),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  );
+                  // showModalBottomSheet(
+                  //   context: context,
+                  //   isDismissible: true,
+                  //   builder: (context) {
+                  //     return StatefulBuilder(
+                  //       builder: (BuildContext context, StateSetter setstate){
+                  //         return Container(
+                  //           height: 200.h,
+                  //           child: Padding(
+                  //             padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+                  //             child: Column(
+                  //               children: [
+                  //                 InkWell(
+                  //                   onTap: (){
+                  //                     setstate(() {
+                  //                       master = true;
+                  //                       visa = false;
+                  //                       mada = false;
+                  //                     });
+                  //                   },
+                  //                   child: Row(
+                  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //                     crossAxisAlignment: CrossAxisAlignment.center,
+                  //                     children: [
+                  //                       Row(
+                  //                         mainAxisAlignment: MainAxisAlignment.start,
+                  //                         crossAxisAlignment: CrossAxisAlignment.center,
+                  //                         children: [
+                  //                           Text(
+                  //                             "********1234",
+                  //                             style: TextStyle(
+                  //                                 color: ColorUtils.dividerColor,
+                  //                                 fontWeight: FontWeight.w400,
+                  //                                 fontFamily: FontUtils.almarenaRegular,
+                  //                                 fontSize: 14.sp),),
+                  //                           SizedBox(width: 10.w,),
+                  //                           Image.asset(ImageUtils.master, scale: 3,)
+                  //                         ],
+                  //                       ),
+                  //                       Image.asset(master == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //                 SizedBox(height: 15.h,),
+                  //                 InkWell(
+                  //                   onTap: (){
+                  //                     setstate(() {
+                  //                       master = false;
+                  //                       visa = true;
+                  //                       mada = false;
+                  //                     });
+                  //                   },
+                  //                   child: Row(
+                  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //                     crossAxisAlignment: CrossAxisAlignment.center,
+                  //                     children: [
+                  //                       Row(
+                  //                         mainAxisAlignment: MainAxisAlignment.start,
+                  //                         crossAxisAlignment: CrossAxisAlignment.center,
+                  //                         children: [
+                  //                           Text(
+                  //                             "********5678",
+                  //                             style: TextStyle(
+                  //                                 color: ColorUtils.dividerColor,
+                  //                                 fontWeight: FontWeight.w400,
+                  //                                 fontFamily: FontUtils.almarenaRegular,
+                  //                                 fontSize: 14.sp),),
+                  //                           SizedBox(width: 10.w,),
+                  //                           Image.asset(ImageUtils.visa, scale: 3,)
+                  //                         ],
+                  //                       ),
+                  //                       Image.asset(visa == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //                 SizedBox(height: 15.h,),
+                  //                 InkWell(
+                  //                   onTap: (){
+                  //                     setstate(() {
+                  //                       master = false;
+                  //                       visa = false;
+                  //                       mada = true;
+                  //                     });
+                  //                   },
+                  //                   child: Row(
+                  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //                     crossAxisAlignment: CrossAxisAlignment.center,
+                  //                     children: [
+                  //                       Row(
+                  //                         mainAxisAlignment: MainAxisAlignment.start,
+                  //                         crossAxisAlignment: CrossAxisAlignment.center,
+                  //                         children: [
+                  //                           Text(
+                  //                             "********9123",
+                  //                             style: TextStyle(
+                  //                                 color: ColorUtils.dividerColor,
+                  //                                 fontWeight: FontWeight.w400,
+                  //                                 fontFamily: FontUtils.almarenaRegular,
+                  //                                 fontSize: 14.sp),),
+                  //                           SizedBox(width: 10.w,),
+                  //                           Image.asset(ImageUtils.mada, scale: 3,)
+                  //                         ],
+                  //                       ),
+                  //                       Image.asset(mada == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //                 SizedBox(height: 20.h,),
+                  //                 InkWell(
+                  //                   onTap: (){
+                  //                     setState(() {
+                  //                       cardSelected = true;
+                  //                       nameTextController.text = "Emma Richard";
+                  //                       numberNameController.text = "**** **** **** 1234";
+                  //                       cvvNameController.text = "123";
+                  //                       expireTextController.text = "12/25";
+                  //                     });
+                  //                     Navigator.pop(context);
+                  //                   },
+                  //                   child: Container(
+                  //                     width: double.infinity,
+                  //                     height: 42.h,
+                  //                     color: ColorUtils.dividerColor,
+                  //                     child: Center(
+                  //                       child: Row(
+                  //                         mainAxisAlignment: MainAxisAlignment.center,
+                  //                         crossAxisAlignment: CrossAxisAlignment.center,
+                  //                         children: [
+                  //                           Text(
+                  //                             "Select",
+                  //                             style: TextStyle(
+                  //                                 color: ColorUtils.white,
+                  //                                 fontFamily: FontUtils.almarenaDisplayRegular,
+                  //                                 fontSize: 20.sp),
+                  //                           ),
+                  //                         ],
+                  //                       ),
+                  //                     ),
+                  //                   ),
+                  //                 )
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         );
+                  //       },
+                  //     );
+                  //   },
+                  // );
                 },
                 child: Text(
                   "Change",
@@ -325,196 +326,196 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
             ],
           ),
           SizedBox(height: 15.h),
-          InkWell(
-            onTap: (){
-              showModalBottomSheet(
-                context: context,
-                isDismissible: true,
-                builder: (context) {
-                  return StatefulBuilder(
-                    builder: (BuildContext context, StateSetter setstate){
-                      return Container(
-                        height: 200.h,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
-                          child: Column(
-                            children: [
-                              InkWell(
-                                onTap: (){
-                                  setstate(() {
-                                    master = true;
-                                    visa = false;
-                                    mada = false;
-                                  });
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "********1234",
-                                          style: TextStyle(
-                                              color: ColorUtils.dividerColor,
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: FontUtils.almarenaRegular,
-                                              fontSize: 14.sp),),
-                                        SizedBox(width: 10.w,),
-                                        Image.asset(ImageUtils.master, scale: 3,)
-                                      ],
-                                    ),
-                                    Image.asset(master == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 15.h,),
-                              InkWell(
-                                onTap: (){
-                                  setstate(() {
-                                    master = false;
-                                    visa = true;
-                                    mada = false;
-                                  });
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "********5678",
-                                          style: TextStyle(
-                                              color: ColorUtils.dividerColor,
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: FontUtils.almarenaRegular,
-                                              fontSize: 14.sp),),
-                                        SizedBox(width: 10.w,),
-                                        Image.asset(ImageUtils.visa, scale: 3,)
-                                      ],
-                                    ),
-                                    Image.asset(visa == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 15.h,),
-                              InkWell(
-                                onTap: (){
-                                  setstate(() {
-                                    master = false;
-                                    visa = false;
-                                    mada = true;
-                                  });
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "********9123",
-                                          style: TextStyle(
-                                              color: ColorUtils.dividerColor,
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: FontUtils.almarenaRegular,
-                                              fontSize: 14.sp),),
-                                        SizedBox(width: 10.w,),
-                                        Image.asset(ImageUtils.mada, scale: 3,)
-                                      ],
-                                    ),
-                                    Image.asset(mada == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 20.h,),
-                              InkWell(
-                                onTap: (){
-                                  setState(() {
-                                    cardSelected = true;
-                                    nameTextController.text = "Emma Richard";
-                                    numberNameController.text = "**** **** **** 1234";
-                                    cvvNameController.text = "123";
-                                    expireTextController.text = "12/25";
-                                  });
-                                  Navigator.pop(context);
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 42.h,
-                                  color: ColorUtils.dividerColor,
-                                  child: Center(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Select",
-                                          style: TextStyle(
-                                              color: ColorUtils.white,
-                                              fontFamily: FontUtils.almarenaDisplayRegular,
-                                              fontSize: 20.sp),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
-              );
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
-              color: ColorUtils.listColor,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        cardSelected == true ? "*******1234" : "Saved Cards",
-                        style: TextStyle(
-                            color: ColorUtils.dividerColor,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 18.sp),
-                      ),
-                      Visibility(
-                        visible: cardSelected,
-                          child: SizedBox(width: 5.w,)),
-                      Visibility(
-                          visible: cardSelected,
-                          child: Image.asset(ImageUtils.master, scale: 2.5,)),
-                    ],
-                  ),
-
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    color: ColorUtils.dividerColor,
-                    size: 20.0,
-                  ),
-                ],
-              ),
-            ),
-          ),
+          // InkWell(
+          //   onTap: (){
+          //     showModalBottomSheet(
+          //       context: context,
+          //       isDismissible: true,
+          //       builder: (context) {
+          //         return StatefulBuilder(
+          //           builder: (BuildContext context, StateSetter setstate){
+          //             return Container(
+          //               height: 200.h,
+          //               child: Padding(
+          //                 padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+          //                 child: Column(
+          //                   children: [
+          //                     InkWell(
+          //                       onTap: (){
+          //                         setstate(() {
+          //                           master = true;
+          //                           visa = false;
+          //                           mada = false;
+          //                         });
+          //                       },
+          //                       child: Row(
+          //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                         crossAxisAlignment: CrossAxisAlignment.center,
+          //                         children: [
+          //                           Row(
+          //                             mainAxisAlignment: MainAxisAlignment.start,
+          //                             crossAxisAlignment: CrossAxisAlignment.center,
+          //                             children: [
+          //                               Text(
+          //                                 "********1234",
+          //                                 style: TextStyle(
+          //                                     color: ColorUtils.dividerColor,
+          //                                     fontWeight: FontWeight.w400,
+          //                                     fontFamily: FontUtils.almarenaRegular,
+          //                                     fontSize: 14.sp),),
+          //                               SizedBox(width: 10.w,),
+          //                               Image.asset(ImageUtils.master, scale: 3,)
+          //                             ],
+          //                           ),
+          //                           Image.asset(master == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
+          //                         ],
+          //                       ),
+          //                     ),
+          //                     SizedBox(height: 15.h,),
+          //                     InkWell(
+          //                       onTap: (){
+          //                         setstate(() {
+          //                           master = false;
+          //                           visa = true;
+          //                           mada = false;
+          //                         });
+          //                       },
+          //                       child: Row(
+          //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                         crossAxisAlignment: CrossAxisAlignment.center,
+          //                         children: [
+          //                           Row(
+          //                             mainAxisAlignment: MainAxisAlignment.start,
+          //                             crossAxisAlignment: CrossAxisAlignment.center,
+          //                             children: [
+          //                               Text(
+          //                                 "********5678",
+          //                                 style: TextStyle(
+          //                                     color: ColorUtils.dividerColor,
+          //                                     fontWeight: FontWeight.w400,
+          //                                     fontFamily: FontUtils.almarenaRegular,
+          //                                     fontSize: 14.sp),),
+          //                               SizedBox(width: 10.w,),
+          //                               Image.asset(ImageUtils.visa, scale: 3,)
+          //                             ],
+          //                           ),
+          //                           Image.asset(visa == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
+          //                         ],
+          //                       ),
+          //                     ),
+          //                     SizedBox(height: 15.h,),
+          //                     InkWell(
+          //                       onTap: (){
+          //                         setstate(() {
+          //                           master = false;
+          //                           visa = false;
+          //                           mada = true;
+          //                         });
+          //                       },
+          //                       child: Row(
+          //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                         crossAxisAlignment: CrossAxisAlignment.center,
+          //                         children: [
+          //                           Row(
+          //                             mainAxisAlignment: MainAxisAlignment.start,
+          //                             crossAxisAlignment: CrossAxisAlignment.center,
+          //                             children: [
+          //                               Text(
+          //                                 "********9123",
+          //                                 style: TextStyle(
+          //                                     color: ColorUtils.dividerColor,
+          //                                     fontWeight: FontWeight.w400,
+          //                                     fontFamily: FontUtils.almarenaRegular,
+          //                                     fontSize: 14.sp),),
+          //                               SizedBox(width: 10.w,),
+          //                               Image.asset(ImageUtils.mada, scale: 3,)
+          //                             ],
+          //                           ),
+          //                           Image.asset(mada == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 1.7,)
+          //                         ],
+          //                       ),
+          //                     ),
+          //                     SizedBox(height: 20.h,),
+          //                     InkWell(
+          //                       onTap: (){
+          //                         setState(() {
+          //                           cardSelected = true;
+          //                           nameTextController.text = "Emma Richard";
+          //                           numberNameController.text = "**** **** **** 1234";
+          //                           cvvNameController.text = "123";
+          //                           expireTextController.text = "12/25";
+          //                         });
+          //                         Navigator.pop(context);
+          //                       },
+          //                       child: Container(
+          //                         width: double.infinity,
+          //                         height: 42.h,
+          //                         color: ColorUtils.dividerColor,
+          //                         child: Center(
+          //                           child: Row(
+          //                             mainAxisAlignment: MainAxisAlignment.center,
+          //                             crossAxisAlignment: CrossAxisAlignment.center,
+          //                             children: [
+          //                               Text(
+          //                                 "Select",
+          //                                 style: TextStyle(
+          //                                     color: ColorUtils.white,
+          //                                     fontFamily: FontUtils.almarenaDisplayRegular,
+          //                                     fontSize: 20.sp),
+          //                               ),
+          //                             ],
+          //                           ),
+          //                         ),
+          //                       ),
+          //                     )
+          //                   ],
+          //                 ),
+          //               ),
+          //             );
+          //           },
+          //         );
+          //       },
+          //     );
+          //   },
+          //   child: Container(
+          //     padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+          //     color: ColorUtils.listColor,
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //       crossAxisAlignment: CrossAxisAlignment.center,
+          //       children: [
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.start,
+          //           crossAxisAlignment: CrossAxisAlignment.center,
+          //           children: [
+          //             Text(
+          //               cardSelected == true ? "*******1234" : "Saved Cards",
+          //               style: TextStyle(
+          //                   color: ColorUtils.dividerColor,
+          //                   fontFamily: FontUtils.almarenaRegular,
+          //                   fontSize: 18.sp),
+          //             ),
+          //             Visibility(
+          //               visible: cardSelected,
+          //                 child: SizedBox(width: 5.w,)),
+          //             Visibility(
+          //                 visible: cardSelected,
+          //                 child: Image.asset(ImageUtils.master, scale: 2.5,)),
+          //           ],
+          //         ),
+          //
+          //         Icon(
+          //           Icons.arrow_forward_ios,
+          //           color: ColorUtils.dividerColor,
+          //           size: 20.0,
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
           SizedBox(height: 15.h,),
           Text(
-            "Enter Card Details",
+            "Add New Card",
             style: TextStyle(
                 color: ColorUtils.black,
                 fontFamily: FontUtils.almarenaBold,
@@ -699,7 +700,15 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(ImageUtils.cloth1,),
+                      InkWell(
+                          onTap: () async {
+                            await showDialog(
+                                context: context,
+                                barrierDismissible: true,
+                                builder: (_) => ImageDialog(Images)
+                            );
+                          },
+                          child: Image.asset(ImageUtils.cloth1,)),
                       SizedBox(width: 10.w,),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
@@ -1098,11 +1107,11 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
           SizedBox(height: 30.h,),
           InkWell(
             onTap: (){
-              // Navigator.of(context, rootNavigator: false)
-              //     .push(MaterialPageRoute(builder: (context) =>
-              //     CompleteOrderScreen()));
+              Navigator.of(context, rootNavigator: false)
+                  .push(MaterialPageRoute(builder: (context) =>
+                  CompleteOrderScreen()));
               // Navigator.pop(context);
-              Navigator.pop(context, "card");
+              // Navigator.pop(context, "card");
             },
             child: Container(
               width: double.infinity,
@@ -1131,6 +1140,57 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
 
         ],
       ),
+    );
+  }
+
+  Widget ImageDialog(List<String> images){
+    int INDEX = 0;
+    return Dialog(
+        child: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState){
+              return Stack(
+                children: [
+                  Container(
+                    height: 400.h,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: Image.asset(images[INDEX]).image,
+                            fit: BoxFit.fill
+                        )
+                    ),
+                  ),
+                  Positioned(
+                      right: 5.w,
+                      top: 200.h,
+                      child: InkWell(
+                          onTap: (){
+                            setState(() {
+                              if(INDEX == 2){}
+                              else if(INDEX < 2){
+                                INDEX = INDEX++;
+                                print(INDEX++);
+                              }
+                            });
+                          },
+                          child: Icon(Icons.keyboard_arrow_right_sharp, size: 40, color: ColorUtils.black,))),
+                  Positioned(
+                      left: 5.w,
+                      top: 200.h,
+                      child: InkWell(
+                          onTap: (){
+                            setState(() {
+                              if(INDEX == 0){}
+                              else if(INDEX > 0){
+                                print(INDEX--);
+                                INDEX = INDEX--;
+                              }
+                            });
+                          },
+                          child: Icon(Icons.keyboard_arrow_left_sharp, size: 40, color: ColorUtils.black,)))
+                ],
+              );
+            }
+        )
     );
   }
 }

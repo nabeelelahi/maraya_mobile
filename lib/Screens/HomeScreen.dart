@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         icon: Transform.scale(
           scale: 2.5,
           child: Padding(
-            padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.home),
               color: ColorUtils.white,
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         inactiveIcon: Transform.scale(
           scale: 2.5,
           child: Padding(
-            padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.home),
               color: ColorUtils.white,
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         icon: Transform.scale(
           scale: 2.5,
           child: Padding(
-            padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.brands),
               color: ColorUtils.white,
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         inactiveIcon: Transform.scale(
           scale: 2.5,
           child: Padding(
-            padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.brands),
               color: ColorUtils.white,
@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         icon: Transform.scale(
           scale: 2.5,
           child: Padding(
-            padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.category),
               color: ColorUtils.white,
@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         inactiveIcon: Transform.scale(
           scale: 2.5,
           child: Padding(
-            padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.category),
               color: ColorUtils.white,
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         icon: Transform.scale(
           scale: 2.5,
           child: Padding(
-            padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.cart_black),
               color: ColorUtils.white,
@@ -144,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         inactiveIcon: Transform.scale(
           scale: 2.5,
           child: Padding(
-            padding: Platform.isAndroid ? EdgeInsets.only(top: 6) : EdgeInsets.only(top: 4),
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.cart_black),
               color: ColorUtils.white,

@@ -194,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Image.asset(ImageUtils.downarrow, scale: 2,),
+                                Image.asset(ImageUtils.downarrow, scale: 2.5,),
                                 SizedBox(width: 10.w,),
                                 Text(
                                   code ?? "",
@@ -211,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Divider(
                               height: 2.h,
                               color: ColorUtils.dividerColor,
-                              thickness: 0.5,
+                              thickness: 0.8,
                             ),
                           ],
                         ),

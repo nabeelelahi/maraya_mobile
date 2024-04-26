@@ -174,8 +174,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          selected == "Mr" ? Image.asset(ImageUtils.checkbox, scale: 1.6,) :
-                          Image.asset(ImageUtils.empty_checkbox, scale: 1.6,),
+                          selected == "Mr" ? Image.asset(ImageUtils.checkbox, scale: 3,) :
+                          Image.asset(ImageUtils.empty_checkbox, scale: 3,),
                           SizedBox(width: 5.w,),
                           Text(translate('strings.Mr'),
                               style: TextStyle(
@@ -196,8 +196,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          selected == "Mrs" ? Image.asset(ImageUtils.checkbox, scale: 1.6,) :
-                          Image.asset(ImageUtils.empty_checkbox, scale: 1.6,),
+                          selected == "Mrs" ? Image.asset(ImageUtils.checkbox, scale: 3,) :
+                          Image.asset(ImageUtils.empty_checkbox, scale: 3,),
                           SizedBox(width: 5.w,),
                           Text(translate('strings.Mrs'),
                               style: TextStyle(
@@ -218,8 +218,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          selected == "Miss" ? Image.asset(ImageUtils.checkbox, scale: 1.6,) :
-                          Image.asset(ImageUtils.empty_checkbox, scale: 1.6,),
+                          selected == "Miss" ? Image.asset(ImageUtils.checkbox, scale: 3,) :
+                          Image.asset(ImageUtils.empty_checkbox, scale: 3,),
                           SizedBox(width: 5.w,),
                           Text(translate('strings.Miss'),
                               style: TextStyle(
@@ -337,7 +337,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Image.asset(ImageUtils.downarrow, scale: 2,),
+                                Image.asset(ImageUtils.downarrow, scale: 2.5,),
                                 SizedBox(width: 10.w,),
                                 Text(
                                   code ?? "",
@@ -354,7 +354,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Divider(
                               height: 2.h,
                               color: ColorUtils.dividerColor,
-                              thickness: 0.5,
+                              thickness: 0.8,
                             ),
                           ],
                         ),
@@ -420,6 +420,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       titleStyle:  TextStyle(
                           fontWeight:  FontWeight.bold,
                           fontSize:  15,
+                          color:  Colors.black
+                      ),
+                      pickerTextStyle:  TextStyle(
+                          fontWeight:  FontWeight.w400,
+                          fontSize:  17.sp,
                           color:  Colors.black
                       ),
                       onSubmit: (date) {

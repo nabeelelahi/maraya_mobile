@@ -84,11 +84,15 @@ class _BrowseScreenState extends State<BrowseScreen> {
         "state": false
       },
       {
+        "title": "",
+        "state": false
+      },
+      {
         "title": "Price: lowest to high",
         "state": false
       },
       {
-        "title": "Price: high to lowest",
+        "title": "Price: highest to low",
         "state": false
       },
     ];
@@ -230,11 +234,11 @@ class _BrowseScreenState extends State<BrowseScreen> {
                             return StatefulBuilder(
                               builder: (BuildContext context, StateSetter setState){
                                 return Container(
-                                  height: 250.h,
+                                  height: 300.h,
                                   child: Column(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+                                        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -267,12 +271,18 @@ class _BrowseScreenState extends State<BrowseScreen> {
                                           return  InkWell(
                                             onTap: (){
                                               setState(() {
-                                                if(sort[index]["state"] == true){
-                                                  sort[index]["state"] = false;
-                                                }
+
+                                                if(sort[index]["title"] == ""){}
                                                 else{
-                                                  sort[index]["state"] = true;
+                                                  if(sort[index]["state"] == true){
+                                                    sort[index]["state"] = false;
+                                                  }
+                                                  else{
+                                                    sort[index]["state"] = true;
+                                                  }
                                                 }
+
+
                                               });
                                             },
                                             child: Column(
@@ -396,50 +406,60 @@ class _BrowseScreenState extends State<BrowseScreen> {
         SizedBox(height: 10.h,),
         Visibility(
           visible: show,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            child: SizedBox(
-              height: 23.h,
-              child: ListView.builder(
-                shrinkWrap: true,
-                padding: EdgeInsets.only(bottom: 5,),
-                scrollDirection: Axis.horizontal,
-                physics: ClampingScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 4.h),
-                        color: ColorUtils.black,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "x",
-                              style: TextStyle(
-                                  color: ColorUtils.white,
-                                  fontFamily: FontUtils.almarenaRegular,
-                                  fontSize: 12.sp),
-                            ),
-                            SizedBox(width: 5.w,),
-                            Text(
-                              filterlist[index]["title"],
-                              style: TextStyle(
-                                  color: ColorUtils.white,
-                                  fontFamily: FontUtils.almarenaRegular,
-                                  fontSize: 12.sp),
-                            ),
-                          ],
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: SizedBox(
+                height: 23.h,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(bottom: 5,),
+                  scrollDirection: Axis.horizontal,
+                  physics: ClampingScrollPhysics(),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 4.h),
+                          color: ColorUtils.black,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                onTap: (){
+                                  setState(() {
+                                    filterlist.removeAt(index);
+                                  });
+                                },
+                                child: Text(
+                                  "x",
+                                  style: TextStyle(
+                                      color: ColorUtils.white,
+                                      fontFamily: FontUtils.almarenaRegular,
+                                      fontSize: 12.sp),
+                                ),
+                              ),
+                              SizedBox(width: 5.w,),
+                              Text(
+                                filterlist[index]["title"],
+                                style: TextStyle(
+                                    color: ColorUtils.white,
+                                    fontFamily: FontUtils.almarenaRegular,
+                                    fontSize: 12.sp),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 10.w,)
-                    ],
-                  );
-                },
-                itemCount: filterlist.length,
+                        SizedBox(width: 10.w,)
+                      ],
+                    );
+                  },
+                  itemCount: filterlist.length,
+                ),
               ),
             ),
           ),

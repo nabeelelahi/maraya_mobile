@@ -155,53 +155,40 @@ class _BrandsScreenState extends State<BrandsScreen> {
         SizedBox(height: 10.h,),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 180.w,
-                // height: 60.h,
-                child: EditText(
-                  context: context,
-                  hintText: "Search",
-                  validator: validateEventName,
-                  // controller: DateofBirthController,
-                  textInputType: TextInputType.text,
-                  textInputAction: TextInputAction.done,
-                  // prefixIcon: ImageUtils.calendar,
-                  suffixIcon: ImageUtils.search,
-                  bordercolor: ColorUtils.white,
-                  onSaved: (text) {
-                    // DateOfBirth = text;
-                  },
-                  onChange: (text) {
-                    // DateOfBirth = text;
-                  },
-                ),
-              ),
-            ],
+          child: EditText(
+            context: context,
+            hintText: "Search",
+            validator: validateEventName,
+            // controller: DateofBirthController,
+            textInputType: TextInputType.text,
+            textInputAction: TextInputAction.done,
+            // prefixIcon: ImageUtils.calendar,
+            suffixIcon: ImageUtils.search,
+            bordercolor: ColorUtils.white,
+            onSaved: (text) {
+              // DateOfBirth = text;
+            },
+            onChange: (text) {
+              // DateOfBirth = text;
+            },
           ),
         ),
         SizedBox(height: 15.h,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: GridView.builder(
-            padding: EdgeInsets.zero,
-            itemCount: categories.length,
-            physics:  NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisSpacing: 0.w,
-              mainAxisSpacing: 0.h,
-              // childAspectRatio: 16/5,
-              mainAxisExtent: 60.h,
-              crossAxisCount: 2,
-            ),
-            itemBuilder: (context, index) {
-              return logsWidget(context, categories[index]);
-            },
+        GridView.builder(
+          padding: EdgeInsets.zero,
+          itemCount: categories.length,
+          physics:  NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: 0.w,
+            mainAxisSpacing: 0.h,
+            // childAspectRatio: 16/5,
+            mainAxisExtent: 60.h,
+            crossAxisCount: 2,
           ),
+          itemBuilder: (context, index) {
+            return logsWidget(context, categories[index]);
+          },
         ),
         SizedBox(height: 130.h,)
 

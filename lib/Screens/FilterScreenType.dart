@@ -486,7 +486,7 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
         RangeSlider(
           min: 50,
           max: 50000,
-          divisions: 10, //slide interval
+          divisions: 50, //slide interval
           labels: RangeLabels("SAR. $startval1", "SAR. $endval1"),
           values: RangeValues(startval1, endval1),
           activeColor: ColorUtils.dividerColor,
@@ -508,14 +508,14 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "${startval1.toInt()} SAR",
+                "${startval1.toInt()}",
                 style: TextStyle(
                     color: ColorUtils.dividerColor,
                     fontFamily: FontUtils.almarenaRegular,
                     fontSize: 14.sp),
               ),
               Text(
-                "${endval1.toInt()} SAR",
+                "${endval1.toInt()}",
                 style: TextStyle(
                     color: ColorUtils.dividerColor,
                     fontFamily: FontUtils.almarenaRegular,
@@ -528,7 +528,7 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Text(
-            "Minimum Price",
+            "Minimum Price (SAR)",
             style: TextStyle(
                 color: ColorUtils.dividerColor,
                 fontFamily: FontUtils.almarenaRegular,
@@ -540,7 +540,7 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: EditText(
             context: context,
-            hintText: "Min 50 SAR",
+            hintText: "Min 50",
             // validator: validateEmail,
             controller: minTextController,
             textInputType: TextInputType.phone,
@@ -560,7 +560,7 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Text(
-            "Minimum Price",
+            "Minimum Price (SAR)",
             style: TextStyle(
                 color: ColorUtils.dividerColor,
                 fontFamily: FontUtils.almarenaRegular,
@@ -572,7 +572,7 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: EditText(
             context: context,
-            hintText: "Max 50,000 SAR",
+            hintText: "Max 50,000",
             // validator: validateEmail,
             textInputType: TextInputType.phone,
             controller: maxTextController,
@@ -641,8 +641,8 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
                       ),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: main[index]["state"] == true ? Image.asset(ImageUtils.fill_checkbox, scale: 1.7,) :
-                        Image.asset(ImageUtils.empty_checkbox, scale: 1.7,),
+                        child: main[index]["state"] == true ? Image.asset(ImageUtils.checkbox, scale: 3,) :
+                        Image.asset(ImageUtils.empty_checkbox, scale: 3,),
                       ),
                     ],
                   ),

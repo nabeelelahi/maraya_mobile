@@ -36,6 +36,12 @@ class _CartScreenState extends State<CartScreen> {
   bool quick = true;
   bool same = false;
   bool standard = false;
+  List<Map<String,dynamic>> colors = [];
+  List<Map<String,dynamic>> sizes = [];
+  List<String> Images = [ImageUtils.cloth1, ImageUtils.cloth7, ImageUtils.cloth10];
+
+  bool address1 = true, address2 = false, address3 = false;
+  bool bycard = true, byTabby = false, byTamara = false, byApple = false;
 
 
   @override
@@ -43,6 +49,51 @@ class _CartScreenState extends State<CartScreen> {
 
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp]);
+
+    colors =[
+      {
+        "color": ColorUtils.clothColor1,
+        "state": true,
+      },
+      {
+        "color": ColorUtils.black,
+        "state": false,
+      },
+      {
+        "color": ColorUtils.clothColor2,
+        "state": false,
+      },
+      {
+        "color": ColorUtils.blueyGrey,
+        "state": false,
+      },
+    ];
+    sizes =[
+      {
+        "size": "2XS",
+        "state": true,
+      },
+      {
+        "size": "S",
+        "state": false,
+      },
+      {
+        "size": "M",
+        "state": false,
+      },
+      {
+        "size": "L",
+        "state": false,
+      },
+      {
+        "size": "XL",
+        "state": false,
+      },
+      {
+        "size": "2XL",
+        "state": false,
+      },
+    ];
 
     super.initState();
   }
@@ -135,7 +186,15 @@ class _CartScreenState extends State<CartScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(ImageUtils.cloth1,),
+                InkWell(
+                    onTap: () async {
+                      await showDialog(
+                          context: context,
+                          barrierDismissible: true,
+                          builder: (_) => ImageDialog(Images)
+                      );
+                    },
+                    child: Image.asset(ImageUtils.cloth1,)),
                 SizedBox(width: 10.w,),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 12.h),
@@ -402,7 +461,477 @@ class _CartScreenState extends State<CartScreen> {
                                 fontFamily: FontUtils.almarenaRegular,
                                 fontSize: 10.sp),),
                           SizedBox(width: 55.w,),
-                          Image.asset(ImageUtils.pencil, scale: 1.6,)
+                          InkWell(
+                            onTap: (){
+                              showModalBottomSheet(
+                                  context: context,
+                                  isDismissible: true,
+                                  useRootNavigator: true,
+                                  builder: (context) {
+                                    return StatefulBuilder(
+                                      builder: (BuildContext context, StateSetter setState){
+                                        return Container(
+                                          height: 260.h,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      "Change color or size",
+                                                      style: TextStyle(
+                                                          color: ColorUtils.dividerColor,
+                                                          fontFamily: FontUtils.almarenaRegular,
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 20.sp),
+                                                    ),
+                                                    InkWell(
+                                                      onTap: (){
+                                                        Navigator.pop(context);
+                                                      },
+                                                        child: Image.asset(ImageUtils.cross, scale: 2,))
+                                                  ],
+                                                ),
+                                                SizedBox(height: 20.h,),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding: EdgeInsets.only(top: 3.h),
+                                                      child: Text(
+                                                        "Color : ",
+                                                        style: TextStyle(
+                                                            color: ColorUtils.black,
+                                                            fontFamily: FontUtils.almarenaRegular,
+                                                            fontSize: 16.sp),
+                                                      ),
+                                                    ),
+                                                    SizedBox(width: 10.w,),
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              colors[0]["state"] = true;
+                                                              colors[1]["state"] = false;
+                                                              colors[2]["state"] = false;
+                                                              colors[3]["state"] = false;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 20.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                CircleAvatar(
+                                                                  radius: 12,
+                                                                  backgroundColor: colors[0]["color"],
+                                                                ),
+                                                                Visibility(
+                                                                  visible: colors[0]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.black,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 15.w,),
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              colors[0]["state"] = false;
+                                                              colors[1]["state"] = true;
+                                                              colors[2]["state"] = false;
+                                                              colors[3]["state"] = false;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 20.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                CircleAvatar(
+                                                                  radius: 12,
+                                                                  backgroundColor: colors[1]["color"],
+                                                                ),
+                                                                Visibility(
+                                                                  visible: colors[1]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.black,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 15.w,),
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              colors[0]["state"] = false;
+                                                              colors[1]["state"] = false;
+                                                              colors[2]["state"] = true;
+                                                              colors[3]["state"] = false;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 20.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                CircleAvatar(
+                                                                  radius: 12,
+                                                                  backgroundColor: colors[2]["color"],
+                                                                ),
+                                                                Visibility(
+                                                                  visible: colors[2]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.black,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 15.w,),
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              colors[0]["state"] = false;
+                                                              colors[1]["state"] = false;
+                                                              colors[2]["state"] = false;
+                                                              colors[3]["state"] = true;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 20.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                CircleAvatar(
+                                                                  radius: 12,
+                                                                  backgroundColor: colors[3]["color"],
+                                                                ),
+                                                                Visibility(
+                                                                  visible: colors[3]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.black,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                                SizedBox(height: 10.h,),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding: EdgeInsets.only(top: 3.h),
+                                                      child: Text(
+                                                        "Size : ",
+                                                        style: TextStyle(
+                                                            color: ColorUtils.black,
+                                                            fontFamily: FontUtils.almarenaRegular,
+                                                            fontSize: 16.sp),
+                                                      ),
+                                                    ),
+                                                    SizedBox(width: 10.w,),
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              sizes[0]["state"] = true;
+                                                              sizes[1]["state"] = false;
+                                                              sizes[2]["state"] = false;
+                                                              sizes[3]["state"] = false;
+                                                              sizes[4]["state"] = false;
+                                                              sizes[5]["state"] = false;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 28.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                Text(
+                                                                  sizes[0]["size"],
+                                                                  style: TextStyle(
+                                                                      color: ColorUtils.black,
+                                                                      fontFamily: FontUtils.almarenaRegular,
+                                                                      fontSize: 14.sp),
+                                                                ),
+                                                                Visibility(
+                                                                  visible: sizes[0]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.black,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 13.w,),
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              sizes[0]["state"] = false;
+                                                              sizes[1]["state"] = true;
+                                                              sizes[2]["state"] = false;
+                                                              sizes[3]["state"] = false;
+                                                              sizes[4]["state"] = false;
+                                                              sizes[5]["state"] = false;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 13.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                Text(
+                                                                  sizes[1]["size"],
+                                                                  style: TextStyle(
+                                                                      color: ColorUtils.black,
+                                                                      fontFamily: FontUtils.almarenaRegular,
+                                                                      fontSize: 14.sp),
+                                                                ),
+                                                                Visibility(
+                                                                  visible: sizes[1]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.black,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 13.w,),
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              sizes[0]["state"] = false;
+                                                              sizes[1]["state"] = false;
+                                                              sizes[2]["state"] = true;
+                                                              sizes[3]["state"] = false;
+                                                              sizes[4]["state"] = false;
+                                                              sizes[5]["state"] = false;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 13.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                Text(
+                                                                  sizes[2]["size"],
+                                                                  style: TextStyle(
+                                                                      color: ColorUtils.hintColor,
+                                                                      fontFamily: FontUtils.almarenaRegular,
+                                                                      fontSize: 14.sp),
+                                                                ),
+                                                                Visibility(
+                                                                  visible: sizes[2]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.hintColor,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 13.w,),
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              sizes[0]["state"] = false;
+                                                              sizes[1]["state"] = false;
+                                                              sizes[2]["state"] = false;
+                                                              sizes[3]["state"] = true;
+                                                              sizes[4]["state"] = false;
+                                                              sizes[5]["state"] = false;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 13.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                Text(
+                                                                  sizes[3]["size"],
+                                                                  style: TextStyle(
+                                                                      color: ColorUtils.black,
+                                                                      fontFamily: FontUtils.almarenaRegular,
+                                                                      fontSize: 14.sp),
+                                                                ),
+                                                                Visibility(
+                                                                  visible: sizes[3]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.black,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 13.w,),
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              sizes[0]["state"] = false;
+                                                              sizes[1]["state"] = false;
+                                                              sizes[2]["state"] = false;
+                                                              sizes[3]["state"] = false;
+                                                              sizes[4]["state"] = true;
+                                                              sizes[5]["state"] = false;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 20.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                Text(
+                                                                  sizes[4]["size"],
+                                                                  style: TextStyle(
+                                                                      color: ColorUtils.black,
+                                                                      fontFamily: FontUtils.almarenaRegular,
+                                                                      fontSize: 14.sp),
+                                                                ),
+                                                                Visibility(
+                                                                  visible: sizes[4]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.black,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 13.w,),
+                                                        InkWell(
+                                                          onTap:(){
+                                                            setState(() {
+                                                              sizes[0]["state"] = false;
+                                                              sizes[1]["state"] = false;
+                                                              sizes[2]["state"] = false;
+                                                              sizes[3]["state"] = false;
+                                                              sizes[4]["state"] = false;
+                                                              sizes[5]["state"] = true;
+                                                            });
+                                                          },
+                                                          child: SizedBox(
+                                                            width: 28.w,
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                Text(
+                                                                  sizes[5]["size"],
+                                                                  style: TextStyle(
+                                                                      color: ColorUtils.hintColor,
+                                                                      fontFamily: FontUtils.almarenaRegular,
+                                                                      fontSize: 14.sp),
+                                                                ),
+                                                                Visibility(
+                                                                  visible: sizes[5]["state"],
+                                                                  child: Divider(
+                                                                    height: 10,
+                                                                    color: ColorUtils.hintColor,
+                                                                    thickness: 2,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+
+                                                  ],
+                                                ),
+                                                SizedBox(height: 10.h,),
+                                                RichText(
+                                                  textAlign: TextAlign.left,
+                                                  text: TextSpan(
+                                                      text: 'This model is 6ft tall and is wearing size L. ',
+                                                      style: TextStyle(
+                                                          color: ColorUtils.black,
+                                                          fontFamily: FontUtils.almarenaRegular,
+                                                          fontSize: 14.sp),
+                                                      children: <TextSpan>[
+                                                        TextSpan(text: 'View Size Chart',
+                                                          style: TextStyle(
+                                                              color: ColorUtils.black,
+                                                              decoration: TextDecoration.underline,
+                                                              fontFamily: FontUtils.almarenaRegular,
+                                                              fontSize: 13.sp),
+                                                        )
+                                                      ]
+                                                  ),
+                                                ),
+                                                SizedBox(height: 20.h,),
+                                                MyButton(
+                                                  text: "Select",
+                                                  textColor: ColorUtils.white,
+                                                  circularRadius: 0,
+                                                  onPress: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  });
+                            },
+                              child: Image.asset(ImageUtils.pencil, scale: 1.6,))
                         ],
                       )
                     ],
@@ -436,7 +965,7 @@ class _CartScreenState extends State<CartScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset(quick == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 2,),
+                    Image.asset(quick == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,),
                     SizedBox(width: 5.w,),
                     Text(
                       "Quick Delivery (1 - 3 hours), within Riyadh",
@@ -458,108 +987,127 @@ class _CartScreenState extends State<CartScreen> {
             ),
           ),
           SizedBox(height: 10.h,),
-          InkWell(
-            onTap: (){
-              setState(() {
-                quick = false;
-                same = true;
-                standard = false;
-              });
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(same == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 2,),
-                    SizedBox(width: 5.w,),
-                    Text(
-                      "Same Day Delivery (24 hours), within Riyadh ",
-                      style: TextStyle(
-                          color: ColorUtils.dividerColor,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: FontUtils.almarenaRegular,
-                          fontSize: 13.sp),),
-                  ],
-                ),
-                Text(
-                  "20 SAR",
-                  style: TextStyle(
-                      color: ColorUtils.dividerColor,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 14.sp),),
-              ],
+          Visibility(
+            visible: IsReview == true ? false : true,
+            child: InkWell(
+              onTap: (){
+                setState(() {
+                  quick = false;
+                  same = true;
+                  standard = false;
+                });
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(same == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,),
+                      SizedBox(width: 5.w,),
+                      Text(
+                        "Same Day Delivery (24 hours), within Riyadh ",
+                        style: TextStyle(
+                            color: ColorUtils.dividerColor,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 13.sp),),
+                    ],
+                  ),
+                  Text(
+                    "20 SAR",
+                    style: TextStyle(
+                        color: ColorUtils.dividerColor,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 14.sp),),
+                ],
+              ),
             ),
           ),
           SizedBox(height: 10.h,),
-          InkWell(
-            onTap: (){
-              setState(() {
-                quick = false;
-                same = false;
-                standard = true;
-              });
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(standard == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 2,),
-                    SizedBox(width: 5.w,),
-                    Text(
-                      "Standard Delivery (1 - 2 days), within Riyadh KSA",
-                      style: TextStyle(
-                          color: ColorUtils.dividerColor,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: FontUtils.almarenaRegular,
-                          fontSize: 13.sp),),
-                  ],
-                ),
-                Text(
-                  "20 SAR",
-                  style: TextStyle(
-                      color: ColorUtils.dividerColor,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 14.sp),),
-              ],
+          Visibility(
+            visible: IsReview == true ? false : true,
+            child: InkWell(
+              onTap: (){
+                setState(() {
+                  quick = false;
+                  same = false;
+                  standard = true;
+                });
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(standard == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,),
+                      SizedBox(width: 5.w,),
+                      Text(
+                        "Standard Delivery (1 - 2 days), within Riyadh KSA",
+                        style: TextStyle(
+                            color: ColorUtils.dividerColor,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 13.sp),),
+                    ],
+                  ),
+                  Text(
+                    "20 SAR",
+                    style: TextStyle(
+                        color: ColorUtils.dividerColor,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 14.sp),),
+                ],
+              ),
             ),
           ),
-          SizedBox(height: 15.h,),
-          Text(
-            "Add Promo Code",
-            style: TextStyle(
-                color: ColorUtils.dividerColor,
-                fontWeight: FontWeight.w400,
-                fontFamily: FontUtils.almarenaBold,
-                fontSize: 16.sp),),
-          SizedBox(height: 5.h,),
-          EditText(
-            context: context,
-            hintText: "Promo Code",
-            // validator: validateEmail,
-            // controller: emailTextController,
-            textInputType: TextInputType.text,
-            textInputAction: TextInputAction.next,
-            // currentFocus: _focusNodes[2],
-            bordercolor: ColorUtils.white,
-            // labelText: StringUtils.EMAIL,
-            onSaved: (text) {
-              // Email = text;
-            },
-            onChange: (text) {
-              // Email = text;
-            },
+          Visibility(
+              visible: IsReview == true ? false : true,
+              child: SizedBox(height: 15.h,)),
+          Visibility(
+            visible: IsReview == true ? false : true,
+            child: Text(
+              "Add Promo Code",
+              style: TextStyle(
+                  color: ColorUtils.dividerColor,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: FontUtils.almarenaBold,
+                  fontSize: 16.sp),),
           ),
-          SizedBox(height: 40.h,),
+          Visibility(
+              visible: IsReview == true ? false : true,
+              child: SizedBox(height: 5.h,)),
+          Visibility(
+            visible: IsReview == true ? false : true,
+            child: EditText(
+              context: context,
+              hintText: "Promo Code",
+              // validator: validateEmail,
+              // controller: emailTextController,
+              textInputType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              // currentFocus: _focusNodes[2],
+              bordercolor: ColorUtils.white,
+              // labelText: StringUtils.EMAIL,
+              onSaved: (text) {
+                // Email = text;
+              },
+              onChange: (text) {
+                // Email = text;
+              },
+            ),
+          ),
+          Visibility(
+              visible: IsReview == true ? false : true,
+              child: SizedBox(height: 30.h,)),
+          SizedBox(height: 10.h,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -663,15 +1211,218 @@ class _CartScreenState extends State<CartScreen> {
               children: [
                 InkWell(
                   onTap: (){
-                    Navigator.of(context, rootNavigator: true)
-                        .push(MaterialPageRoute(builder: (context) =>
-                        AddAddressScreen())).then((value){
-                          setState(() {
-                            if(value == "review"){
-                              IsReview = true;
-                              title = "Review Order";
-                            }
-                          });
+                    showModalBottomSheet(
+                        context: context,
+                        isDismissible: true,
+                        useRootNavigator: true,
+                        builder: (context) {
+                      return StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setstate){
+                          return Container(
+                            height: 350.h,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Select Delivery Address",
+                                    style: TextStyle(
+                                        color: ColorUtils.black,
+                                        fontFamily: FontUtils.almarenaRegular,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20.sp),
+                                  ),
+                                  SizedBox(height: 20.h,),
+                                  InkWell(
+                                    onTap: (){
+                                      setstate(() {
+                                        address1 = true;
+                                        address2 = false;
+                                        address3 = false;
+
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Home1",
+                                              style: TextStyle(
+                                                  color: ColorUtils.dividerColor,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 14.sp),),
+                                            SizedBox(height: 5.h,),
+                                            Text(
+                                              "House Number 1, abc road, xyz area, Riyadh",
+                                              style: TextStyle(
+                                                  color: ColorUtils.hintColor,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 14.sp),),
+                                          ],
+                                        ),
+                                        Image.asset(address1 == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 15.h,),
+                                  InkWell(
+                                    onTap: (){
+                                      setstate(() {
+                                        address1 = false;
+                                        address2 = true;
+                                        address3 = false;
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Home2",
+                                              style: TextStyle(
+                                                  color: ColorUtils.dividerColor,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 14.sp),),
+                                            SizedBox(height: 5.h,),
+                                            Text(
+                                              "House Number 1, abc road, xyz area, Riyadh",
+                                              style: TextStyle(
+                                                  color: ColorUtils.hintColor,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 14.sp),),
+                                          ],
+                                        ),
+                                        Image.asset(address2 == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 15.h,),
+                                  InkWell(
+                                    onTap: (){
+                                      setstate(() {
+                                        address1 = false;
+                                        address2 = false;
+                                        address3 = true;
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Home3",
+                                              style: TextStyle(
+                                                  color: ColorUtils.dividerColor,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 14.sp),),
+                                            SizedBox(height: 5.h,),
+                                            Text(
+                                              "House Number 1, abc road, xyz area, Riyadh",
+                                              style: TextStyle(
+                                                  color: ColorUtils.hintColor,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 14.sp),),
+                                          ],
+                                        ),
+                                        Image.asset(address3 == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 10.h,),
+                                  Divider(
+                                    height: 10.h,
+                                    color: ColorUtils.hintColor,
+                                    thickness: 2,
+                                  ),
+                                  SizedBox(height: 15.h,),
+                                  InkWell(
+                                    onTap: (){
+                                      Navigator.pop(context);
+                                      Navigator.of(context, rootNavigator: true)
+                                          .push(MaterialPageRoute(builder: (context) =>
+                                          AddAddressScreen())).then((value){
+                                        setState(() {
+                                          if(value == "review"){
+                                            IsReview = true;
+                                            title = "Review Order";
+                                          }
+                                        });
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Add a New Address",
+                                          style: TextStyle(
+                                              color: ColorUtils.black,
+                                              fontWeight: FontWeight.w700,
+                                              fontFamily: FontUtils.almarenaRegular,
+                                              fontSize: 14.sp),),
+                                        Image.asset(ImageUtils.empty_checkbox, scale: 3,)
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 40.h,),
+                                  InkWell(
+                                    onTap: (){
+                                      Navigator.pop(context);
+                                      setState(() {
+                                        IsReview = true;
+                                        title = "Review Order";
+                                      });
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 42.h,
+                                      color: ColorUtils.dividerColor,
+                                      child: Center(
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Secure Checkout",
+                                              style: TextStyle(
+                                                  color: ColorUtils.white,
+                                                  fontFamily: FontUtils.almarenaRegular,
+                                                  fontSize: 20.sp),
+                                            ),
+                                            SizedBox(width: 5.w,),
+                                            Image.asset(ImageUtils.lock, scale: 3,)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
                     });
                   },
                   child: Container(
@@ -767,68 +1518,255 @@ class _CartScreenState extends State<CartScreen> {
                       fontWeight: FontWeight.w400,
                       fontFamily: FontUtils.almarenaRegular,
                       fontSize: 14.sp),),
-                SizedBox(height: 15.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Select Payment Method",
-                      style: TextStyle(
-                          color: ColorUtils.black,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: FontUtils.almarenaBold,
-                          fontSize: 16.sp),),
-                    InkWell(
-                      onTap: (){
-                        Navigator.of(context, rootNavigator: true)
-                            .push(MaterialPageRoute(builder: (context) =>
-                            AddPaymentMethodScreen())).then((value){
-                              if(value == "card"){
-                                setState(() {
-                                  cardSelected = true;
-                                });
-                              }
-                              else{
-                                setState(() {
-                                  cardSelected = false;
-                                });
-                              }
-                        });
-                      },
-                      child: Icon(
-                        cardSelected == true ? Icons.edit : Icons.add,
-                        color: ColorUtils.dividerColor,
-                        size: 20.0,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 15.h,),
-                Visibility(
-                  visible: cardSelected,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "**** **** **** 1234",
-                        style: TextStyle(
-                            color: ColorUtils.dividerColor,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 18.sp),
-                      ),
-                      SizedBox(width: 5.w,),
-                      Image.asset(ImageUtils.master, scale: 2.5,),
-                    ],
-                  ),
-                ),
+                // SizedBox(height: 15.h,),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   crossAxisAlignment: CrossAxisAlignment.center,
+                //   children: [
+                //     Text(
+                //       "Select Payment Method",
+                //       style: TextStyle(
+                //           color: ColorUtils.black,
+                //           fontWeight: FontWeight.w400,
+                //           fontFamily: FontUtils.almarenaBold,
+                //           fontSize: 16.sp),),
+                //     InkWell(
+                //       onTap: (){
+                //         Navigator.of(context, rootNavigator: true)
+                //             .push(MaterialPageRoute(builder: (context) =>
+                //             AddPaymentMethodScreen())).then((value){
+                //               if(value == "card"){
+                //                 setState(() {
+                //                   cardSelected = true;
+                //                 });
+                //               }
+                //               else{
+                //                 setState(() {
+                //                   cardSelected = false;
+                //                 });
+                //               }
+                //         });
+                //       },
+                //       child: Icon(
+                //         cardSelected == true ? Icons.edit : Icons.add,
+                //         color: ColorUtils.dividerColor,
+                //         size: 20.0,
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // SizedBox(height: 15.h,),
+                // Visibility(
+                //   visible: cardSelected,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.start,
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     children: [
+                //       Text(
+                //         "**** **** **** 1234",
+                //         style: TextStyle(
+                //             color: ColorUtils.dividerColor,
+                //             fontFamily: FontUtils.almarenaRegular,
+                //             fontSize: 18.sp),
+                //       ),
+                //       SizedBox(width: 5.w,),
+                //       Image.asset(ImageUtils.master, scale: 2.5,),
+                //     ],
+                //   ),
+                // ),
                 SizedBox(height: 50.h,),
                 InkWell(
                   onTap: (){
-                    Navigator.of(context, rootNavigator: false)
-                        .push(MaterialPageRoute(builder: (context) =>
-                        CompleteOrderScreen()));
+                    showModalBottomSheet(
+                      context: context,
+                      isDismissible: true,
+                      useRootNavigator: true,
+                      builder: (context) {
+                        return StatefulBuilder(
+                          builder: (BuildContext context, StateSetter setstate){
+                            return Container(
+                              height: 250.h,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+                                child: Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: (){
+                                        setstate(() {
+                                          bycard = true;
+                                          byTabby = false;
+                                          byTamara = false;
+                                          byApple = false;
+                                        });
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Add Credit / Debit Card",
+                                                style: TextStyle(
+                                                    color: ColorUtils.dividerColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: FontUtils.almarenaRegular,
+                                                    fontSize: 14.sp),),
+                                              SizedBox(width: 10.w,),
+                                              Image.asset(ImageUtils.master, scale: 3,),
+                                              SizedBox(width: 5.w,),
+                                              Image.asset(ImageUtils.visa, scale: 3,),
+                                              SizedBox(width: 5.w,),
+                                              Image.asset(ImageUtils.mada, scale: 3,),
+                                            ],
+                                          ),
+                                          Image.asset(bycard == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 15.h,),
+                                    InkWell(
+                                      onTap: (){
+                                        setstate(() {
+                                          bycard = false;
+                                          byTabby = true;
+                                          byTamara = false;
+                                          byApple = false;
+                                        });
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Instalments with Tabby",
+                                                style: TextStyle(
+                                                    color: ColorUtils.dividerColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: FontUtils.almarenaRegular,
+                                                    fontSize: 14.sp),),
+                                              SizedBox(width: 10.w,),
+                                              Image.asset(ImageUtils.tabby, scale: 3,)
+                                            ],
+                                          ),
+                                          Image.asset(byTabby == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 15.h,),
+                                    InkWell(
+                                      onTap: (){
+                                        setstate(() {
+                                          bycard = false;
+                                          byTabby = false;
+                                          byTamara = true;
+                                          byApple = false;
+                                        });
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Instalments with Tamara",
+                                                style: TextStyle(
+                                                    color: ColorUtils.dividerColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: FontUtils.almarenaRegular,
+                                                    fontSize: 14.sp),),
+                                              SizedBox(width: 10.w,),
+                                              Image.asset(ImageUtils.tamara, scale: 3,)
+                                            ],
+                                          ),
+                                          Image.asset(byTamara == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 15.h,),
+                                    InkWell(
+                                      onTap: (){
+                                        setstate(() {
+                                          bycard = false;
+                                          byTabby = false;
+                                          byTamara = false;
+                                          byApple = true;
+                                        });
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Apple Pay",
+                                                style: TextStyle(
+                                                    color: ColorUtils.dividerColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: FontUtils.almarenaRegular,
+                                                    fontSize: 14.sp),),
+                                              SizedBox(width: 10.w,),
+                                              Image.asset(ImageUtils.apple_pay, scale: 3,)
+                                            ],
+                                          ),
+                                          Image.asset(byApple == true ? ImageUtils.checkbox : ImageUtils.empty_checkbox, scale: 3,)
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 40.h,),
+                                    InkWell(
+                                      onTap: (){
+                                        Navigator.pop(context);
+                                        Navigator.of(context, rootNavigator: true)
+                                            .push(MaterialPageRoute(builder: (context) =>
+                                            AddPaymentMethodScreen()));
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 42.h,
+                                        color: ColorUtils.dividerColor,
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Secure Checkout",
+                                                style: TextStyle(
+                                                    color: ColorUtils.white,
+                                                    fontFamily: FontUtils.almarenaRegular,
+                                                    fontSize: 20.sp),
+                                              ),
+                                              SizedBox(width: 5.w,),
+                                              Image.asset(ImageUtils.lock, scale: 3,)
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    );
+                    // Navigator.of(context, rootNavigator: false)
+                    //     .push(MaterialPageRoute(builder: (context) =>
+                    //     CompleteOrderScreen()));
                   },
                   child: Container(
                     width: double.infinity,
@@ -840,7 +1778,7 @@ class _CartScreenState extends State<CartScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Secure Checkout",
+                            "Add Payment Method",
                             style: TextStyle(
                                 color: ColorUtils.white,
                                 fontFamily: FontUtils.almarenaRegular,
@@ -946,6 +1884,57 @@ class _CartScreenState extends State<CartScreen> {
           ),
         )
       ],
+    );
+  }
+
+  Widget ImageDialog(List<String> images){
+    int INDEX = 0;
+    return Dialog(
+        child: StatefulBuilder(
+        builder: (BuildContext context, StateSetter setState){
+          return Stack(
+            children: [
+              Container(
+                height: 400.h,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: Image.asset(images[INDEX]).image,
+                        fit: BoxFit.fill
+                    )
+                ),
+              ),
+              Positioned(
+                  right: 5.w,
+                  top: 200.h,
+                  child: InkWell(
+                      onTap: (){
+                        setState(() {
+                          if(INDEX == 2){}
+                          else if(INDEX < 2){
+                            INDEX = INDEX++;
+                            print(INDEX++);
+                          }
+                        });
+                      },
+                      child: Icon(Icons.keyboard_arrow_right_sharp, size: 40, color: ColorUtils.black,))),
+              Positioned(
+                  left: 5.w,
+                  top: 200.h,
+                  child: InkWell(
+                      onTap: (){
+                        setState(() {
+                          if(INDEX == 0){}
+                          else if(INDEX > 0){
+                            print(INDEX--);
+                            INDEX = INDEX--;
+                          }
+                        });
+                      },
+                      child: Icon(Icons.keyboard_arrow_left_sharp, size: 40, color: ColorUtils.black,)))
+            ],
+          );
+        }
+        )
     );
   }
 }

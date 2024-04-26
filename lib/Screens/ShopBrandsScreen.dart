@@ -35,6 +35,7 @@ class _ShopBrandsScreenState extends State<ShopBrandsScreen> {
   List<Map<String,dynamic>> sort = [];
   List<Map<String,dynamic>> filterlist = [];
   bool show = false;
+  int Max = 2;
 
 
   @override
@@ -201,7 +202,7 @@ class _ShopBrandsScreenState extends State<ShopBrandsScreen> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Container(
-            height: 105.h,
+            // height: 105.h,
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
             width: double.infinity,
             color: ColorUtils.dividerColor,
@@ -219,8 +220,8 @@ class _ShopBrandsScreenState extends State<ShopBrandsScreen> {
                 ),
                 SizedBox(height: 10.h,),
                 Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore ",
-                  maxLines: 2,
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore ",
+                  maxLines: Max,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       color: ColorUtils.offwhite,
@@ -228,11 +229,25 @@ class _ShopBrandsScreenState extends State<ShopBrandsScreen> {
                       fontSize: 14.sp),
                 ),
                 SizedBox(height: 5.h,),
-                Center(
-                  child: Icon(
-                    Icons.keyboard_arrow_down,
-                    color: Colors.white,
-                    size: 25.0,
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      if(Max == 2){
+                        Max = 6;
+                      }
+                      else{
+                        Max = 2;
+                      }
+
+                    });
+                  },
+                  child: Center(
+                    child: Icon(
+                      Max == 2 ? Icons.keyboard_arrow_down :
+                      Icons.keyboard_arrow_up,
+                      color: Colors.white,
+                      size: 25.0,
+                    ),
                   ),
                 )
               ],

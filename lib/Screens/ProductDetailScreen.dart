@@ -1758,6 +1758,42 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final controller = PageController();
     return Column(
       children: [
+        checkout == true ? InkWell(
+          onTap: (){
+            Navigator.of(context, rootNavigator: true)
+                .pushReplacement(MaterialPageRoute(builder: (context) =>
+                HomeScreen(index: 3,)));
+          },
+          child: Container(
+            height: 20.h,
+            width: double.infinity,
+            color: ColorUtils.black,
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Added to Bag, Checkout Now",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: ColorUtils.white,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 16.sp),
+                  ),
+                  SizedBox(width: 10.w,),
+                  Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 20.0,
+                  ),
+
+                ],
+              ),
+            ),
+          ),
+        ) : Container(),
         Stack(alignment: Alignment.topCenter, children: [
           CarouselSlider(
             carouselController: _controller,
@@ -1766,7 +1802,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               enlargeCenterPage: true,
               viewportFraction: 1,
               reverse: false,
-              autoPlay: true,
+              autoPlay: false,
               autoPlayInterval: Duration(seconds: 5),
               autoPlayAnimationDuration: Duration(milliseconds: 800),
               autoPlayCurve: Curves.fastOutSlowIn,
@@ -1803,42 +1839,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             ),
                           ),
                         ),
-                        checkout == true ? InkWell(
-                          onTap: (){
-                            Navigator.of(context, rootNavigator: true)
-                                .pushReplacement(MaterialPageRoute(builder: (context) =>
-                                HomeScreen(index: 3,)));
-                          },
-                          child: Container(
-                            height: 20.h,
-                            width: double.infinity,
-                            color: ColorUtils.black,
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Added to Bag, Checkout Now",
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        color: ColorUtils.white,
-                                        fontFamily: FontUtils.almarenaRegular,
-                                        fontSize: 16.sp),
-                                  ),
-                                  SizedBox(width: 10.w,),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    color: Colors.white,
-                                    size: 20.0,
-                                  ),
-
-                                ],
-                              ),
-                            ),
-                          ),
-                        ) : Container(),
                       ]);
                 },
               );

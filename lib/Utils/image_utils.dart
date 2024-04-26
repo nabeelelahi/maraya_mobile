@@ -59,4 +59,7 @@ class ImageUtils {
   static String lock = "assets/images/lock.png";
   static String downarrow = "assets/images/downarrow.png";
   static String checkout_image = "assets/images/checkout_image.png";
+  static String tabby = "assets/images/tabby.png";
+  static String tamara = "assets/images/tamara.png";
+  static String apple_pay = "assets/images/apple_pay.png";
 }
