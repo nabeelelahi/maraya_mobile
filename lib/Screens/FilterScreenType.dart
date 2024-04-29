@@ -591,6 +591,30 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
       ],
     ) : Column(
       children: [
+        Visibility(
+          visible: widget.title == "Brand" || widget.title == "Product Type" ||
+              widget.title == "Size" || widget.title == "Color" ? true : false,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15.w),
+            child: EditText(
+              context: context,
+              hintText: "Search",
+              validator: validateEventName,
+              // controller: DateofBirthController,
+              textInputType: TextInputType.text,
+              textInputAction: TextInputAction.done,
+              // prefixIcon: ImageUtils.calendar,
+              suffixIcon: ImageUtils.search,
+              bordercolor: ColorUtils.white,
+              onSaved: (text) {
+                // DateOfBirth = text;
+              },
+              onChange: (text) {
+                // DateOfBirth = text;
+              },
+            ),
+          ),
+        ),
         SizedBox(height: 10.h,),
         widget.title == "Color" ? _renderColor() : _renderSteps(),
 
@@ -708,8 +732,8 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
                       ),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: color[index]["state"] == true ? Image.asset(ImageUtils.fill_checkbox, scale: 1.7,) :
-                        Image.asset(ImageUtils.empty_checkbox, scale: 1.7,),
+                        child: color[index]["state"] == true ? Image.asset(ImageUtils.checkbox, scale: 3,) :
+                        Image.asset(ImageUtils.empty_checkbox, scale: 3,),
                       ),
                     ],
                   ),

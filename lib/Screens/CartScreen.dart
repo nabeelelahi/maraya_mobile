@@ -308,7 +308,849 @@ class _CartScreenState extends State<CartScreen> {
                                 fontFamily: FontUtils.almarenaRegular,
                                 fontSize: 10.sp),),
                           SizedBox(width: 55.w,),
-                          Image.asset(ImageUtils.pencil, scale: 1.6,)
+                          InkWell(
+                              onTap: (){
+                                showModalBottomSheet(
+                                    context: context,
+                                    isDismissible: true,
+                                    useRootNavigator: true,
+                                    builder: (context) {
+                                      return StatefulBuilder(
+                                        builder: (BuildContext context, StateSetter setState){
+                                          return Container(
+                                            height: 260.h,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        "Change color or size",
+                                                        style: TextStyle(
+                                                            color: ColorUtils.dividerColor,
+                                                            fontFamily: FontUtils.almarenaRegular,
+                                                            fontWeight: FontWeight.w400,
+                                                            fontSize: 20.sp),
+                                                      ),
+                                                      InkWell(
+                                                          onTap: (){
+                                                            Navigator.pop(context);
+                                                          },
+                                                          child: Image.asset(ImageUtils.cross, scale: 2,))
+                                                    ],
+                                                  ),
+                                                  SizedBox(height: 20.h,),
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Padding(
+                                                        padding: EdgeInsets.only(top: 3.h),
+                                                        child: Text(
+                                                          "Color : ",
+                                                          style: TextStyle(
+                                                              color: ColorUtils.black,
+                                                              fontFamily: FontUtils.almarenaRegular,
+                                                              fontSize: 16.sp),
+                                                        ),
+                                                      ),
+                                                      SizedBox(width: 10.w,),
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                colors[0]["state"] = true;
+                                                                colors[1]["state"] = false;
+                                                                colors[2]["state"] = false;
+                                                                colors[3]["state"] = false;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  CircleAvatar(
+                                                                    radius: 12,
+                                                                    backgroundColor: colors[0]["color"],
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: colors[0]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.black,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 15.w,),
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                colors[0]["state"] = false;
+                                                                colors[1]["state"] = true;
+                                                                colors[2]["state"] = false;
+                                                                colors[3]["state"] = false;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  CircleAvatar(
+                                                                    radius: 12,
+                                                                    backgroundColor: colors[1]["color"],
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: colors[1]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.black,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 15.w,),
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                colors[0]["state"] = false;
+                                                                colors[1]["state"] = false;
+                                                                colors[2]["state"] = true;
+                                                                colors[3]["state"] = false;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  CircleAvatar(
+                                                                    radius: 12,
+                                                                    backgroundColor: colors[2]["color"],
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: colors[2]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.black,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 15.w,),
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                colors[0]["state"] = false;
+                                                                colors[1]["state"] = false;
+                                                                colors[2]["state"] = false;
+                                                                colors[3]["state"] = true;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  CircleAvatar(
+                                                                    radius: 12,
+                                                                    backgroundColor: colors[3]["color"],
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: colors[3]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.black,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                  SizedBox(height: 10.h,),
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Padding(
+                                                        padding: EdgeInsets.only(top: 3.h),
+                                                        child: Text(
+                                                          "Size : ",
+                                                          style: TextStyle(
+                                                              color: ColorUtils.black,
+                                                              fontFamily: FontUtils.almarenaRegular,
+                                                              fontSize: 16.sp),
+                                                        ),
+                                                      ),
+                                                      SizedBox(width: 10.w,),
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                sizes[0]["state"] = true;
+                                                                sizes[1]["state"] = false;
+                                                                sizes[2]["state"] = false;
+                                                                sizes[3]["state"] = false;
+                                                                sizes[4]["state"] = false;
+                                                                sizes[5]["state"] = false;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 28.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  Text(
+                                                                    sizes[0]["size"],
+                                                                    style: TextStyle(
+                                                                        color: ColorUtils.black,
+                                                                        fontFamily: FontUtils.almarenaRegular,
+                                                                        fontSize: 14.sp),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: sizes[0]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.black,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 13.w,),
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                sizes[0]["state"] = false;
+                                                                sizes[1]["state"] = true;
+                                                                sizes[2]["state"] = false;
+                                                                sizes[3]["state"] = false;
+                                                                sizes[4]["state"] = false;
+                                                                sizes[5]["state"] = false;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 13.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  Text(
+                                                                    sizes[1]["size"],
+                                                                    style: TextStyle(
+                                                                        color: ColorUtils.black,
+                                                                        fontFamily: FontUtils.almarenaRegular,
+                                                                        fontSize: 14.sp),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: sizes[1]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.black,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 13.w,),
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                sizes[0]["state"] = false;
+                                                                sizes[1]["state"] = false;
+                                                                sizes[2]["state"] = true;
+                                                                sizes[3]["state"] = false;
+                                                                sizes[4]["state"] = false;
+                                                                sizes[5]["state"] = false;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 13.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  Text(
+                                                                    sizes[2]["size"],
+                                                                    style: TextStyle(
+                                                                        color: ColorUtils.hintColor,
+                                                                        fontFamily: FontUtils.almarenaRegular,
+                                                                        fontSize: 14.sp),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: sizes[2]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.hintColor,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 13.w,),
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                sizes[0]["state"] = false;
+                                                                sizes[1]["state"] = false;
+                                                                sizes[2]["state"] = false;
+                                                                sizes[3]["state"] = true;
+                                                                sizes[4]["state"] = false;
+                                                                sizes[5]["state"] = false;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 13.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  Text(
+                                                                    sizes[3]["size"],
+                                                                    style: TextStyle(
+                                                                        color: ColorUtils.black,
+                                                                        fontFamily: FontUtils.almarenaRegular,
+                                                                        fontSize: 14.sp),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: sizes[3]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.black,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 13.w,),
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                sizes[0]["state"] = false;
+                                                                sizes[1]["state"] = false;
+                                                                sizes[2]["state"] = false;
+                                                                sizes[3]["state"] = false;
+                                                                sizes[4]["state"] = true;
+                                                                sizes[5]["state"] = false;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  Text(
+                                                                    sizes[4]["size"],
+                                                                    style: TextStyle(
+                                                                        color: ColorUtils.black,
+                                                                        fontFamily: FontUtils.almarenaRegular,
+                                                                        fontSize: 14.sp),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: sizes[4]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.black,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 13.w,),
+                                                          InkWell(
+                                                            onTap:(){
+                                                              setState(() {
+                                                                sizes[0]["state"] = false;
+                                                                sizes[1]["state"] = false;
+                                                                sizes[2]["state"] = false;
+                                                                sizes[3]["state"] = false;
+                                                                sizes[4]["state"] = false;
+                                                                sizes[5]["state"] = true;
+                                                              });
+                                                            },
+                                                            child: SizedBox(
+                                                              width: 28.w,
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  Text(
+                                                                    sizes[5]["size"],
+                                                                    style: TextStyle(
+                                                                        color: ColorUtils.hintColor,
+                                                                        fontFamily: FontUtils.almarenaRegular,
+                                                                        fontSize: 14.sp),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: sizes[5]["state"],
+                                                                    child: Divider(
+                                                                      height: 10,
+                                                                      color: ColorUtils.hintColor,
+                                                                      thickness: 2,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      )
+
+                                                    ],
+                                                  ),
+                                                  SizedBox(height: 10.h,),
+                                                  SizedBox(
+                                                    width: double.infinity,
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                      children: [
+                                                        Text(
+                                                          'This model is 6ft tall and is wearing size L.',
+                                                          style: TextStyle(
+                                                              color: ColorUtils.black,
+                                                              fontFamily: FontUtils.almarenaRegular,
+                                                              fontSize: 14.sp),),
+                                                        SizedBox(width: 1.w,),
+                                                        InkWell(
+                                                          onTap: (){
+                                                            showDialog(
+                                                                context: context,
+                                                                builder: (BuildContext context) {
+                                                                  return Dialog(
+                                                                    shape: RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                        BorderRadius.circular(0.0)), //this right here
+                                                                    child: Container(
+                                                                      height: 300.h,
+                                                                      child: Padding(
+                                                                        padding: const EdgeInsets.all(12.0),
+                                                                        child: Column(
+                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                          children: [
+                                                                            Align(
+                                                                                alignment: Alignment.centerRight,
+                                                                                child: InkWell(
+                                                                                    onTap: (){
+                                                                                      Navigator.pop(context);
+                                                                                    },
+                                                                                    child: Image.asset(ImageUtils.cross, scale: 2,))),
+                                                                            SizedBox(height: 15.h,),
+                                                                            Table(
+                                                                              border: TableBorder.all(color: Colors.black),
+                                                                              children: [
+                                                                                TableRow(
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "SIZE",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "BUST",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "WAIST",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "HIP",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ]),
+                                                                                TableRow(
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "XS",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "32",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "26",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "35",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ]),
+                                                                                TableRow(
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "S",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "34",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "28",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "38",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ]),
+                                                                                TableRow(
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "M",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "38",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "30",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "40",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ]),
+                                                                                TableRow(
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "L",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "38",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "32",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "42",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ]),
+                                                                                TableRow(
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "XL",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "40",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "34",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "44",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ]),
+                                                                                TableRow(
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "XXL",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "42",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "36",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                        child: Text(
+                                                                                          "46",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: ColorUtils.dividerColor,
+                                                                                              fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                              fontSize: 16.sp),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ]),
+                                                                              ],
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                });
+                                                          },
+                                                          child: Text(
+                                                            'View Size Chart',
+                                                            style: TextStyle(
+                                                                color: ColorUtils.black,
+                                                                decoration: TextDecoration.underline,
+                                                                fontFamily: FontUtils.almarenaRegular,
+                                                                fontSize: 13.sp),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 20.h,),
+                                                  MyButton(
+                                                    text: "Select",
+                                                    textColor: ColorUtils.white,
+                                                    circularRadius: 0,
+                                                    onPress: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    });
+                              },
+                              child: Image.asset(ImageUtils.pencil, scale: 1.6,))
                         ],
                       )
                     ],
@@ -895,24 +1737,393 @@ class _CartScreenState extends State<CartScreen> {
                                                   ],
                                                 ),
                                                 SizedBox(height: 10.h,),
-                                                RichText(
-                                                  textAlign: TextAlign.left,
-                                                  text: TextSpan(
-                                                      text: 'This model is 6ft tall and is wearing size L. ',
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'This model is 6ft tall and is wearing size L. ',
                                                       style: TextStyle(
                                                           color: ColorUtils.black,
                                                           fontFamily: FontUtils.almarenaRegular,
-                                                          fontSize: 14.sp),
-                                                      children: <TextSpan>[
-                                                        TextSpan(text: 'View Size Chart',
-                                                          style: TextStyle(
-                                                              color: ColorUtils.black,
-                                                              decoration: TextDecoration.underline,
-                                                              fontFamily: FontUtils.almarenaRegular,
-                                                              fontSize: 13.sp),
-                                                        )
-                                                      ]
-                                                  ),
+                                                          fontSize: 14.sp),),
+                                                    SizedBox(width: 1.w,),
+                                                    InkWell(
+                                                      onTap: (){
+                                                        showDialog(
+                                                            context: context,
+                                                            builder: (BuildContext context) {
+                                                              return Dialog(
+                                                                shape: RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                    BorderRadius.circular(0.0)), //this right here
+                                                                child: Container(
+                                                                  height: 300.h,
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.all(12.0),
+                                                                    child: Column(
+                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                      children: [
+                                                                        Align(
+                                                                            alignment: Alignment.centerRight,
+                                                                            child: InkWell(
+                                                                                onTap: (){
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                child: Image.asset(ImageUtils.cross, scale: 2,))),
+                                                                        SizedBox(height: 15.h,),
+                                                                        Table(
+                                                                          border: TableBorder.all(color: Colors.black),
+                                                                          children: [
+                                                                            TableRow(
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "SIZE",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "BUST",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "WAIST",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "HIP",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                ]),
+                                                                            TableRow(
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "XS",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "32",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "26",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "35",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                ]),
+                                                                            TableRow(
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "S",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "34",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "28",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "38",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                ]),
+                                                                            TableRow(
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "M",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "38",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "30",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "40",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                ]),
+                                                                            TableRow(
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "L",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "38",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "32",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "42",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                ]),
+                                                                            TableRow(
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "XL",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "40",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "34",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "44",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                ]),
+                                                                            TableRow(
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "XXL",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "42",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "36",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                                                    child: Text(
+                                                                                      "46",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                          color: ColorUtils.dividerColor,
+                                                                                          fontFamily: FontUtils.almarenaDisplayBold,
+                                                                                          fontSize: 16.sp),
+                                                                                    ),
+                                                                                  ),
+                                                                                ]),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            });
+                                                      },
+                                                      child: Text(
+                                                        'View Size Chart',
+                                                        style: TextStyle(
+                                                            color: ColorUtils.black,
+                                                            decoration: TextDecoration.underline,
+                                                            fontFamily: FontUtils.almarenaRegular,
+                                                            fontSize: 13.sp),
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
                                                 SizedBox(height: 20.h,),
                                                 MyButton(
