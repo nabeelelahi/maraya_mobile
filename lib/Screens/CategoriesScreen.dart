@@ -86,7 +86,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         titleSpacing: 10.w,
         title: Text(translate('strings.BrowseCategories')) ,
         titleTextStyle: TextStyle(color: ColorUtils.dividerColor ,
-            fontFamily: FontUtils.almarenaRegular , fontSize: 25.sp),
+            fontFamily: FontUtils.almarenaBold , fontSize: 25.sp),
         centerTitle: false,
         actions: [
           InkWell(
@@ -95,7 +95,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h, right: 5.w),
                 child: Image.asset(ImageUtils.person,
-                  scale: 2,)),
+                  scale: 2.5,)),
           )
         ],
         systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -136,7 +136,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   });
                 },
                 child: Container(
-                  width: 60.w,
+                  // width: 60.w,
                   color: menSelected == true ? ColorUtils.black : ColorUtils.containerColor,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),

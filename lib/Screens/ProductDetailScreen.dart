@@ -172,7 +172,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h),
                 child: Image.asset(ImageUtils.cart_black,
-                  scale: 1.7,)),
+                  scale: 2.5,)),
           ),
           InkWell(
             onTap: (){
@@ -180,7 +180,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h, right: 5.w),
                 child: Image.asset(ImageUtils.person,
-                  scale: 1.7,)),
+                  scale: 2.5,)),
           )
         ],
         systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -189,1021 +189,1044 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
         },
-        child: SingleChildScrollView(
-          controller: scrollController,
-            physics: ClampingScrollPhysics(),
-            child: body()),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            checkout == true ? InkWell(
+              onTap: (){
+                Navigator.of(context, rootNavigator: true)
+                    .pushReplacement(MaterialPageRoute(builder: (context) =>
+                    HomeScreen(index: 3,)));
+              },
+              child: Container(
+                height: 20.h,
+                width: double.infinity,
+                color: ColorUtils.black,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Added to Bag, Checkout Now",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: ColorUtils.white,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 16.sp),
+                      ),
+                      SizedBox(width: 10.w,),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                        size: 20.0,
+                      ),
+
+                    ],
+                  ),
+                ),
+              ),
+            ) : Container(),
+            Expanded(child: body())
+          ],
+        ),
       ),
     );
   }
 
   Widget body() {
-    return Column(
-      children: [
-        SizedBox(height: 10.h,),
-        CustomcarouselWidget(context, [ImageUtils.cloth1, ImageUtils.cloth7, ImageUtils.cloth10 ]),
-        SizedBox(height: 10.h,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 300.w,
-                child: Text(
-                  "Asymmetric Draped Maxi Dress in Sequins",
-                  style: TextStyle(
-                      color: ColorUtils.black,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 26.sp),
-                ),
-              ),
-              Image.asset(ImageUtils.heart, scale: 1.4,)
-            ],
-          ),
-        ),
-        SizedBox(height: 10.h,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 140.w,
-                child: Text(
-                  "1,000 SAR",
-                  style: TextStyle(
-                      color: ColorUtils.black,
-                      fontFamily: FontUtils.almarenaDisplayRegular,
-                      fontSize: 22.sp),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(ImageUtils.minus, scale: 4, color: soldout ? ColorUtils.hintColor : ColorUtils.black,),
-                  SizedBox(width: 10.w,),
-                  Text(
-                    "1",
+    return SingleChildScrollView(
+      physics: ClampingScrollPhysics(),
+      // controller: scrollController,
+      child: Column(
+        children: [
+          SizedBox(height: 10.h,),
+          CustomcarouselWidget(context, [ImageUtils.cloth1, ImageUtils.cloth7, ImageUtils.cloth10 ]),
+          SizedBox(height: 10.h,),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 300.w,
+                  child: Text(
+                    "Asymmetric Draped Maxi Dress in Sequins",
                     style: TextStyle(
                         color: ColorUtils.black,
                         fontFamily: FontUtils.almarenaRegular,
-                        fontSize: 22.sp),
+                        fontSize: 26.sp),
                   ),
-                  SizedBox(width: 10.w,),
-                  Image.asset(ImageUtils.plus, scale: 4, color: soldout ? ColorUtils.hintColor : ColorUtils.black,)
-                ],
-              )
-            ],
-          ),
-        ),
-        SizedBox(height: 10.h,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 3.h),
-                child: Text(
-                  "Color : ",
-                  style: TextStyle(
-                      color: ColorUtils.black,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 16.sp),
                 ),
-              ),
-              SizedBox(width: 10.w,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        colors[0]["state"] = true;
-                        colors[1]["state"] = false;
-                        colors[2]["state"] = false;
-                        colors[3]["state"] = false;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 20.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 12,
-                            backgroundColor: colors[0]["color"],
-                          ),
-                          Visibility(
-                            visible: colors[0]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.black,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 15.w,),
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        colors[0]["state"] = false;
-                        colors[1]["state"] = true;
-                        colors[2]["state"] = false;
-                        colors[3]["state"] = false;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 20.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 12,
-                            backgroundColor: colors[1]["color"],
-                          ),
-                          Visibility(
-                            visible: colors[1]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.black,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 15.w,),
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        colors[0]["state"] = false;
-                        colors[1]["state"] = false;
-                        colors[2]["state"] = true;
-                        colors[3]["state"] = false;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 20.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 12,
-                            backgroundColor: colors[2]["color"],
-                          ),
-                          Visibility(
-                            visible: colors[2]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.black,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 15.w,),
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        colors[0]["state"] = false;
-                        colors[1]["state"] = false;
-                        colors[2]["state"] = false;
-                        colors[3]["state"] = true;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 20.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 12,
-                            backgroundColor: colors[3]["color"],
-                          ),
-                          Visibility(
-                            visible: colors[3]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.black,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-        SizedBox(height: 15.h,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 3.h),
-                child: Text(
-                  "Size : ",
-                  style: TextStyle(
-                      color: ColorUtils.black,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 16.sp),
-                ),
-              ),
-              SizedBox(width: 10.w,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        sizes[0]["state"] = true;
-                        sizes[1]["state"] = false;
-                        sizes[2]["state"] = false;
-                        sizes[3]["state"] = false;
-                        sizes[4]["state"] = false;
-                        sizes[5]["state"] = false;
-                        soldout = false;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 28.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            sizes[0]["size"],
-                            style: TextStyle(
-                                color: ColorUtils.black,
-                                fontFamily: FontUtils.almarenaRegular,
-                                fontSize: 14.sp),
-                          ),
-                          Visibility(
-                            visible: sizes[0]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.black,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 13.w,),
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        sizes[0]["state"] = false;
-                        sizes[1]["state"] = true;
-                        sizes[2]["state"] = false;
-                        sizes[3]["state"] = false;
-                        sizes[4]["state"] = false;
-                        sizes[5]["state"] = false;
-                        soldout = false;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 13.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            sizes[1]["size"],
-                            style: TextStyle(
-                                color: ColorUtils.black,
-                                fontFamily: FontUtils.almarenaRegular,
-                                fontSize: 14.sp),
-                          ),
-                          Visibility(
-                            visible: sizes[1]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.black,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 13.w,),
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        sizes[0]["state"] = false;
-                        sizes[1]["state"] = false;
-                        sizes[2]["state"] = true;
-                        sizes[3]["state"] = false;
-                        sizes[4]["state"] = false;
-                        sizes[5]["state"] = false;
-                        checkout = false;
-                        soldout = true;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 13.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            sizes[2]["size"],
-                            style: TextStyle(
-                                color: ColorUtils.hintColor,
-                                fontFamily: FontUtils.almarenaRegular,
-                                fontSize: 14.sp),
-                          ),
-                          Visibility(
-                            visible: sizes[2]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.hintColor,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 13.w,),
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        sizes[0]["state"] = false;
-                        sizes[1]["state"] = false;
-                        sizes[2]["state"] = false;
-                        sizes[3]["state"] = true;
-                        sizes[4]["state"] = false;
-                        sizes[5]["state"] = false;
-                        soldout = false;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 13.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            sizes[3]["size"],
-                            style: TextStyle(
-                                color: ColorUtils.black,
-                                fontFamily: FontUtils.almarenaRegular,
-                                fontSize: 14.sp),
-                          ),
-                          Visibility(
-                            visible: sizes[3]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.black,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 13.w,),
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        sizes[0]["state"] = false;
-                        sizes[1]["state"] = false;
-                        sizes[2]["state"] = false;
-                        sizes[3]["state"] = false;
-                        sizes[4]["state"] = true;
-                        sizes[5]["state"] = false;
-                        soldout = false;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 20.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            sizes[4]["size"],
-                            style: TextStyle(
-                                color: ColorUtils.black,
-                                fontFamily: FontUtils.almarenaRegular,
-                                fontSize: 14.sp),
-                          ),
-                          Visibility(
-                            visible: sizes[4]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.black,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 13.w,),
-                  InkWell(
-                    onTap:(){
-                      setState(() {
-                        sizes[0]["state"] = false;
-                        sizes[1]["state"] = false;
-                        sizes[2]["state"] = false;
-                        sizes[3]["state"] = false;
-                        sizes[4]["state"] = false;
-                        sizes[5]["state"] = true;
-                        checkout = false;
-                        soldout = true;
-                      });
-                    },
-                    child: SizedBox(
-                      width: 28.w,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            sizes[5]["size"],
-                            style: TextStyle(
-                                color: ColorUtils.hintColor,
-                                fontFamily: FontUtils.almarenaRegular,
-                                fontSize: 14.sp),
-                          ),
-                          Visibility(
-                            visible: sizes[5]["state"],
-                            child: Divider(
-                              height: 10,
-                              color: ColorUtils.hintColor,
-                              thickness: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              )
-
-            ],
-          ),
-        ),
-        SizedBox(height: 10.h,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-            Text(
-            'This model is 6ft tall and is wearing size L. ',
-            style: TextStyle(
-                color: ColorUtils.black,
-                fontFamily: FontUtils.almarenaRegular,
-                fontSize: 14.sp),),
-              SizedBox(width: 1.w,),
-              InkWell(
-                onTap: (){
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Dialog(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                              BorderRadius.circular(0.0)), //this right here
-                          child: Container(
-                            height: 300.h,
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Align(
-                                      alignment: Alignment.centerRight,
-                                      child: InkWell(
-                                          onTap: (){
-                                            Navigator.pop(context);
-                                          },
-                                          child: Image.asset(ImageUtils.cross, scale: 2,))),
-                                  SizedBox(height: 15.h,),
-                                  Table(
-                                    border: TableBorder.all(color: Colors.black),
-                                    children: [
-                                      TableRow(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "SIZE",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "BUST",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "WAIST",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "HIP",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                          ]),
-                                      TableRow(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "XS",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "32",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "26",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "35",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                          ]),
-                                      TableRow(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "S",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "34",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "28",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "38",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                          ]),
-                                      TableRow(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "M",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "38",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "30",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "40",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                          ]),
-                                      TableRow(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "L",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "38",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "32",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "42",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                          ]),
-                                      TableRow(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "XL",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "40",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "34",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "44",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                          ]),
-                                      TableRow(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "XXL",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "42",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "36",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                                              child: Text(
-                                                "46",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: ColorUtils.dividerColor,
-                                                    fontFamily: FontUtils.almarenaDisplayBold,
-                                                    fontSize: 16.sp),
-                                              ),
-                                            ),
-                                          ]),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      });
-                },
-                child: Text(
-                  'View Size Chart',
-                  style: TextStyle(
-                      color: ColorUtils.black,
-                      decoration: TextDecoration.underline,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 13.sp),
-                ),
-              )
-            ],
-          ),
-        ),
-        SizedBox(height: 10.h,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: InkWell(
-            onTap: (){
-              if(soldout){
-                showModalBottomSheet(
-                  context: context,
-                  isDismissible: false,
-                  builder: (context) {
-                    return Container(
-                      height: 150.h,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10.h),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 300.w,
-                                    child: Text(
-                                      "We apologize but this item is currently out of stock. We will notify you once it is restocked  ",
-                                      style: TextStyle(
-                                          color: ColorUtils.dividerColor,
-                                          fontWeight: FontWeight.w400,
-                                          fontFamily: FontUtils.almarenaDisplayLight,
-                                          fontSize: 18.sp),),
-                                  ),
-                                  // InkWell(
-                                  //   onTap: (){
-                                  //     Navigator.pop(context);
-                                  //   },
-                                  //     child: Image.asset(ImageUtils.cross, scale: 1.6,))
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 15.h,),
-                            InkWell(
-                              onTap: (){
-                                Navigator.pop(context);
-                              },
-                              child: Container(
-                                width: double.infinity,
-                                height: 42.h,
-                                color: ColorUtils.dividerColor,
-                                child: Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Notify Me",
-                                        style: TextStyle(
-                                            color: ColorUtils.white,
-                                            fontFamily: FontUtils.almarenaDisplayRegular,
-                                            fontSize: 20.sp),
-                                      ),
-                                      SizedBox(width: 10.w,),
-                                      Image.asset(ImageUtils.bell, scale: 1.6, color: ColorUtils.white,)
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                );
-              }
-              else{
-                setState(() {
-                  checkout = true;
-                  scrollController.animateTo( //go to top of scroll
-                      0,  //scroll offset to go
-                      duration: Duration(milliseconds: 500), //duration of scroll
-                      curve:Curves.fastOutSlowIn //scroll type
-                  );
-                });
-              }
-
-            },
-            child: Container(
-              width: double.infinity,
-              height: 42.h,
-              color: ColorUtils.dividerColor,
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      soldout ? "Out of Stock" : "Add to Bag",
-                      style: TextStyle(
-                          color: ColorUtils.white,
-                          fontFamily: FontUtils.almarenaDisplayRegular,
-                          fontSize: 20.sp),
-                    ),
-                    SizedBox(width: 10.w,),
-                    Image.asset(ImageUtils.bag, scale: 1.6, color: ColorUtils.white,)
-                  ],
-                ),
-              ),
+                Image.asset(ImageUtils.heart, scale: 1.4,)
+              ],
             ),
           ),
-        ),
-        SizedBox(height: 20.h,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(ImageUtils.van, scale: 1.7,),
-              SizedBox(width: 10.w,),
-              Text(
-                "3 hours delivery in Riyadh. ",
-                style: TextStyle(
-                    color: ColorUtils.black,
-                    fontFamily: FontUtils.almarenaDisplayRegular,
-                    fontSize: 16.sp),
-              ),
-            ],
-          )
-        ),
-        SizedBox(height: 10.h,),
-        Padding(
+          SizedBox(height: 10.h,),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 140.w,
+                  child: Text(
+                    "1,000 SAR",
+                    style: TextStyle(
+                        color: ColorUtils.black,
+                        fontFamily: FontUtils.almarenaDisplayRegular,
+                        fontSize: 22.sp),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(ImageUtils.minus, scale: 4, color: soldout ? ColorUtils.hintColor : ColorUtils.black,),
+                    SizedBox(width: 10.w,),
+                    Text(
+                      "1",
+                      style: TextStyle(
+                          color: ColorUtils.black,
+                          fontFamily: FontUtils.almarenaRegular,
+                          fontSize: 22.sp),
+                    ),
+                    SizedBox(width: 10.w,),
+                    Image.asset(ImageUtils.plus, scale: 4, color: soldout ? ColorUtils.hintColor : ColorUtils.black,)
+                  ],
+                )
+              ],
+            ),
+          ),
+          SizedBox(height: 10.h,),
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(ImageUtils.clock, scale: 1.7,),
+                Padding(
+                  padding: EdgeInsets.only(top: 3.h),
+                  child: Text(
+                    "Color : ",
+                    style: TextStyle(
+                        color: ColorUtils.black,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 16.sp),
+                  ),
+                ),
+                SizedBox(width: 10.w,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          colors[0]["state"] = true;
+                          colors[1]["state"] = false;
+                          colors[2]["state"] = false;
+                          colors[3]["state"] = false;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 20.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 12,
+                              backgroundColor: colors[0]["color"],
+                            ),
+                            Visibility(
+                              visible: colors[0]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.black,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15.w,),
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          colors[0]["state"] = false;
+                          colors[1]["state"] = true;
+                          colors[2]["state"] = false;
+                          colors[3]["state"] = false;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 20.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 12,
+                              backgroundColor: colors[1]["color"],
+                            ),
+                            Visibility(
+                              visible: colors[1]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.black,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15.w,),
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          colors[0]["state"] = false;
+                          colors[1]["state"] = false;
+                          colors[2]["state"] = true;
+                          colors[3]["state"] = false;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 20.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 12,
+                              backgroundColor: colors[2]["color"],
+                            ),
+                            Visibility(
+                              visible: colors[2]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.black,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15.w,),
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          colors[0]["state"] = false;
+                          colors[1]["state"] = false;
+                          colors[2]["state"] = false;
+                          colors[3]["state"] = true;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 20.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 12,
+                              backgroundColor: colors[3]["color"],
+                            ),
+                            Visibility(
+                              visible: colors[3]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.black,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+          SizedBox(height: 15.h,),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 3.h),
+                  child: Text(
+                    "Size : ",
+                    style: TextStyle(
+                        color: ColorUtils.black,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 16.sp),
+                  ),
+                ),
+                SizedBox(width: 10.w,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          sizes[0]["state"] = true;
+                          sizes[1]["state"] = false;
+                          sizes[2]["state"] = false;
+                          sizes[3]["state"] = false;
+                          sizes[4]["state"] = false;
+                          sizes[5]["state"] = false;
+                          soldout = false;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 28.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              sizes[0]["size"],
+                              style: TextStyle(
+                                  color: ColorUtils.black,
+                                  fontFamily: FontUtils.almarenaRegular,
+                                  fontSize: 14.sp),
+                            ),
+                            Visibility(
+                              visible: sizes[0]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.black,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 13.w,),
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          sizes[0]["state"] = false;
+                          sizes[1]["state"] = true;
+                          sizes[2]["state"] = false;
+                          sizes[3]["state"] = false;
+                          sizes[4]["state"] = false;
+                          sizes[5]["state"] = false;
+                          soldout = false;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 13.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              sizes[1]["size"],
+                              style: TextStyle(
+                                  color: ColorUtils.black,
+                                  fontFamily: FontUtils.almarenaRegular,
+                                  fontSize: 14.sp),
+                            ),
+                            Visibility(
+                              visible: sizes[1]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.black,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 13.w,),
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          sizes[0]["state"] = false;
+                          sizes[1]["state"] = false;
+                          sizes[2]["state"] = true;
+                          sizes[3]["state"] = false;
+                          sizes[4]["state"] = false;
+                          sizes[5]["state"] = false;
+                          checkout = false;
+                          soldout = true;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 13.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              sizes[2]["size"],
+                              style: TextStyle(
+                                  color: ColorUtils.hintColor,
+                                  fontFamily: FontUtils.almarenaRegular,
+                                  fontSize: 14.sp),
+                            ),
+                            Visibility(
+                              visible: sizes[2]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.hintColor,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 13.w,),
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          sizes[0]["state"] = false;
+                          sizes[1]["state"] = false;
+                          sizes[2]["state"] = false;
+                          sizes[3]["state"] = true;
+                          sizes[4]["state"] = false;
+                          sizes[5]["state"] = false;
+                          soldout = false;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 13.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              sizes[3]["size"],
+                              style: TextStyle(
+                                  color: ColorUtils.black,
+                                  fontFamily: FontUtils.almarenaRegular,
+                                  fontSize: 14.sp),
+                            ),
+                            Visibility(
+                              visible: sizes[3]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.black,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 13.w,),
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          sizes[0]["state"] = false;
+                          sizes[1]["state"] = false;
+                          sizes[2]["state"] = false;
+                          sizes[3]["state"] = false;
+                          sizes[4]["state"] = true;
+                          sizes[5]["state"] = false;
+                          soldout = false;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 20.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              sizes[4]["size"],
+                              style: TextStyle(
+                                  color: ColorUtils.black,
+                                  fontFamily: FontUtils.almarenaRegular,
+                                  fontSize: 14.sp),
+                            ),
+                            Visibility(
+                              visible: sizes[4]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.black,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 13.w,),
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          sizes[0]["state"] = false;
+                          sizes[1]["state"] = false;
+                          sizes[2]["state"] = false;
+                          sizes[3]["state"] = false;
+                          sizes[4]["state"] = false;
+                          sizes[5]["state"] = true;
+                          checkout = false;
+                          soldout = true;
+                        });
+                      },
+                      child: SizedBox(
+                        width: 28.w,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              sizes[5]["size"],
+                              style: TextStyle(
+                                  color: ColorUtils.hintColor,
+                                  fontFamily: FontUtils.almarenaRegular,
+                                  fontSize: 14.sp),
+                            ),
+                            Visibility(
+                              visible: sizes[5]["state"],
+                              child: Divider(
+                                height: 10,
+                                color: ColorUtils.hintColor,
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+
+              ],
+            ),
+          ),
+          SizedBox(height: 10.h,),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+              Text(
+              'This model is 6ft tall and is wearing size L. ',
+              style: TextStyle(
+                  color: ColorUtils.black,
+                  fontFamily: FontUtils.almarenaRegular,
+                  fontSize: 13.sp),),
+                SizedBox(width: 1.w,),
+                InkWell(
+                  onTap: (){
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                BorderRadius.circular(0.0)), //this right here
+                            child: Container(
+                              height: 300.h,
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Align(
+                                        alignment: Alignment.centerRight,
+                                        child: InkWell(
+                                            onTap: (){
+                                              Navigator.pop(context);
+                                            },
+                                            child: Image.asset(ImageUtils.cross, scale: 2,))),
+                                    SizedBox(height: 15.h,),
+                                    Table(
+                                      border: TableBorder.all(color: Colors.black),
+                                      children: [
+                                        TableRow(
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "SIZE",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "BUST",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "WAIST",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "HIP",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                            ]),
+                                        TableRow(
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "XS",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "32",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "26",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "35",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                            ]),
+                                        TableRow(
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "S",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "34",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "28",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "38",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                            ]),
+                                        TableRow(
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "M",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "38",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "30",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "40",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                            ]),
+                                        TableRow(
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "L",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "38",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "32",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "42",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                            ]),
+                                        TableRow(
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "XL",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "40",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "34",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "44",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                            ]),
+                                        TableRow(
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "XXL",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "42",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "36",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                                child: Text(
+                                                  "46",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: ColorUtils.dividerColor,
+                                                      fontFamily: FontUtils.almarenaDisplayBold,
+                                                      fontSize: 16.sp),
+                                                ),
+                                              ),
+                                            ]),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        });
+                  },
+                  child: Text(
+                    'View Size Chart',
+                    style: TextStyle(
+                        color: ColorUtils.black,
+                        decoration: TextDecoration.underline,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 14.sp),
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(height: 10.h,),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: InkWell(
+              onTap: (){
+                if(soldout){
+                  showModalBottomSheet(
+                    context: context,
+                    isDismissible: false,
+                    builder: (context) {
+                      return Container(
+                        height: 150.h,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: 10.h),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 300.w,
+                                      child: Text(
+                                        "We apologize but this item is currently out of stock. We will notify you once it is restocked  ",
+                                        style: TextStyle(
+                                            color: ColorUtils.dividerColor,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: FontUtils.almarenaDisplayLight,
+                                            fontSize: 18.sp),),
+                                    ),
+                                    // InkWell(
+                                    //   onTap: (){
+                                    //     Navigator.pop(context);
+                                    //   },
+                                    //     child: Image.asset(ImageUtils.cross, scale: 1.6,))
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 15.h,),
+                              InkWell(
+                                onTap: (){
+                                  Navigator.pop(context);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 42.h,
+                                  color: ColorUtils.dividerColor,
+                                  child: Center(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Notify Me",
+                                          style: TextStyle(
+                                              color: ColorUtils.white,
+                                              fontFamily: FontUtils.almarenaDisplayRegular,
+                                              fontSize: 20.sp),
+                                        ),
+                                        SizedBox(width: 10.w,),
+                                        Image.asset(ImageUtils.bell, scale: 1.6, color: ColorUtils.white,)
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+                else{
+                  setState(() {
+                    checkout = true;
+                    scrollController.animateTo( //go to top of scroll
+                        0,  //scroll offset to go
+                        duration: Duration(milliseconds: 500), //duration of scroll
+                        curve:Curves.fastOutSlowIn //scroll type
+                    );
+                  });
+                }
+
+              },
+              child: Container(
+                width: double.infinity,
+                height: 42.h,
+                color: ColorUtils.dividerColor,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        soldout ? "Out of Stock" : "Add to Bag",
+                        style: TextStyle(
+                            color: ColorUtils.white,
+                            fontFamily: FontUtils.almarenaDisplayRegular,
+                            fontSize: 20.sp),
+                      ),
+                      SizedBox(width: 10.w,),
+                      Image.asset(ImageUtils.bag, scale: 1.6, color: ColorUtils.white,)
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 20.h,),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(ImageUtils.van, scale: 1.7,),
                 SizedBox(width: 10.w,),
                 Text(
-                  "24 hours return ",
+                  "3 hours delivery in Riyadh. ",
                   style: TextStyle(
                       color: ColorUtils.black,
                       fontFamily: FontUtils.almarenaDisplayRegular,
@@ -1211,676 +1234,642 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
               ],
             )
-        ),
-        SizedBox(height: 18.h,),
-        InkWell(
-          onTap: (){
-            setState(() {
-              if(product){
-                product = false;
-              }
-              else{
-                product = true;
-              }
-            });
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      product == false ? Icons.keyboard_arrow_right : Icons.keyboard_arrow_down,
-                      color: Colors.black,
-                      size: 30.0,
-                    ),
-                    SizedBox(width: 10.w,),
-                    Text(
-                      "Product Description",
-                      style: TextStyle(
-                          color: ColorUtils.black,
-                          fontFamily: FontUtils.almarenaRegular,
-                          fontSize: 16.sp),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                  child: Divider(
-                    height: 10,
-                    color: ColorUtils.black,
-                    thickness: 2,
-                  ),
-                ),
-              ],
-            ),
           ),
-        ),
-        Visibility(
-          visible: product,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(height: 10.h,),
-        InkWell(
-          onTap: (){
-            setState(() {
-              if(care){
-                care = false;
-              }
-              else{
-                care = true;
-              }
-            });
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      care == false ? Icons.keyboard_arrow_right : Icons.keyboard_arrow_down,
-                      color: Colors.black,
-                      size: 30.0,
-                    ),
-                    SizedBox(width: 10.w,),
-                    Text(
-                      "Product Care",
-                      style: TextStyle(
-                          color: ColorUtils.black,
-                          fontFamily: FontUtils.almarenaRegular,
-                          fontSize: 16.sp),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                  child: Divider(
-                    height: 10,
-                    color: ColorUtils.black,
-                    thickness: 2,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Visibility(
-          visible: care,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(height: 10.h,),
-        InkWell(
-          onTap: (){
-            setState(() {
-              if(shipping){
-                shipping = false;
-              }
-              else{
-                shipping = true;
-              }
-            });
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      shipping == false ? Icons.keyboard_arrow_right : Icons.keyboard_arrow_down,
-                      color: Colors.black,
-                      size: 30.0,
-                    ),
-                    SizedBox(width: 10.w,),
-                    Text(
-                      "Shipping Information",
-                      style: TextStyle(
-                          color: ColorUtils.black,
-                          fontFamily: FontUtils.almarenaRegular,
-                          fontSize: 16.sp),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                  child: Divider(
-                    height: 10,
-                    color: ColorUtils.black,
-                    thickness: 2,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Visibility(
-          visible: shipping,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(height: 10.h,),
-        InkWell(
-          onTap: (){
-            setState(() {
-              if(refund){
-                refund = false;
-              }
-              else{
-                refund = true;
-              }
-            });
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      refund == false ? Icons.keyboard_arrow_right : Icons.keyboard_arrow_down,
-                      color: Colors.black,
-                      size: 30.0,
-                    ),
-                    SizedBox(width: 10.w,),
-                    Text(
-                      "Returns and Exchange",
-                      style: TextStyle(
-                          color: ColorUtils.black,
-                          fontFamily: FontUtils.almarenaRegular,
-                          fontSize: 16.sp),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                  child: Divider(
-                    height: 10,
-                    color: ColorUtils.black,
-                    thickness: 2,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Visibility(
-          visible: refund,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 4,
-                      backgroundColor: ColorUtils.hintColor,
-                    ),
-                    SizedBox(width: 10.w,),
-                    SizedBox(
-                      width: 320.w,
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: ColorUtils.black,
-                            fontFamily: FontUtils.almarenaRegular,
-                            fontSize: 14.sp),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(height: 20.h,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Container(
-            width: double.infinity,
-            height: 42.h,
-            decoration: BoxDecoration(
-              color: ColorUtils.white,
-              border: Border.all(
-                width: 1.5,
-                color: Colors.black,
-              ),
-            ),
-            child: Center(
+          SizedBox(height: 10.h,),
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Image.asset(ImageUtils.clock, scale: 1.7,),
+                  SizedBox(width: 10.w,),
                   Text(
-                    "Ask us Anything",
+                    "24 hours return ",
                     style: TextStyle(
                         color: ColorUtils.black,
                         fontFamily: FontUtils.almarenaDisplayRegular,
-                        fontSize: 20.sp),
+                        fontSize: 16.sp),
                   ),
-                  SizedBox(width: 10.w,),
-                  Image.asset(ImageUtils.whatsapp, scale: 1.6, color: ColorUtils.black,)
+                ],
+              )
+          ),
+          SizedBox(height: 18.h,),
+          InkWell(
+            onTap: (){
+              setState(() {
+                if(product){
+                  product = false;
+                }
+                else{
+                  product = true;
+                }
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        product == false ? Icons.keyboard_arrow_right : Icons.keyboard_arrow_down,
+                        color: Colors.black,
+                        size: 30.0,
+                      ),
+                      SizedBox(width: 10.w,),
+                      Text(
+                        "Product Description",
+                        style: TextStyle(
+                            color: ColorUtils.black,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 16.sp),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: Divider(
+                      height: 10,
+                      color: ColorUtils.black,
+                      thickness: 2,
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-        ),
-        SizedBox(height: 15.h,),
-        Container(
-          color: ColorUtils.black,
-          width: double.infinity,
-          height: 320.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
-                child: Text(
-                  "Buy the Look",
-                  style: TextStyle(
-                      color: ColorUtils.white,
-                      fontFamily: FontUtils.almarenaDisplayRegular,
-                      fontSize: 25.sp),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: GridView.builder(
-                  padding: EdgeInsets.only(bottom: 3.h),
-                  itemCount: 2,
-                  physics:  NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisSpacing: 5.w,
-                    mainAxisSpacing: 120.h,
-                    crossAxisCount: 2,
+          Visibility(
+            visible: product,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
                   ),
-                  itemBuilder: (context, index) {
-                    return logsWidget(context, categories[index]);
-                  },
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10.h,),
+          InkWell(
+            onTap: (){
+              setState(() {
+                if(care){
+                  care = false;
+                }
+                else{
+                  care = true;
+                }
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        care == false ? Icons.keyboard_arrow_right : Icons.keyboard_arrow_down,
+                        color: Colors.black,
+                        size: 30.0,
+                      ),
+                      SizedBox(width: 10.w,),
+                      Text(
+                        "Product Care",
+                        style: TextStyle(
+                            color: ColorUtils.black,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 16.sp),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: Divider(
+                      height: 10,
+                      color: ColorUtils.black,
+                      thickness: 2,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Visibility(
+            visible: care,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10.h,),
+          InkWell(
+            onTap: (){
+              setState(() {
+                if(shipping){
+                  shipping = false;
+                }
+                else{
+                  shipping = true;
+                }
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        shipping == false ? Icons.keyboard_arrow_right : Icons.keyboard_arrow_down,
+                        color: Colors.black,
+                        size: 30.0,
+                      ),
+                      SizedBox(width: 10.w,),
+                      Text(
+                        "Shipping Information",
+                        style: TextStyle(
+                            color: ColorUtils.black,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 16.sp),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: Divider(
+                      height: 10,
+                      color: ColorUtils.black,
+                      thickness: 2,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Visibility(
+            visible: shipping,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10.h,),
+          InkWell(
+            onTap: (){
+              setState(() {
+                if(refund){
+                  refund = false;
+                }
+                else{
+                  refund = true;
+                }
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        refund == false ? Icons.keyboard_arrow_right : Icons.keyboard_arrow_down,
+                        color: Colors.black,
+                        size: 30.0,
+                      ),
+                      SizedBox(width: 10.w,),
+                      Text(
+                        "Returns and Exchange",
+                        style: TextStyle(
+                            color: ColorUtils.black,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 16.sp),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: Divider(
+                      height: 10,
+                      color: ColorUtils.black,
+                      thickness: 2,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Visibility(
+            visible: refund,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 4,
+                        backgroundColor: ColorUtils.hintColor,
+                      ),
+                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 320.w,
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaRegular,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 20.h,),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: Container(
+              width: double.infinity,
+              height: 42.h,
+              decoration: BoxDecoration(
+                color: ColorUtils.white,
+                border: Border.all(
+                  width: 1.5,
+                  color: Colors.black,
                 ),
               ),
-            ],
-          ),
-        ),
-        SizedBox(height: 5.h,),
-        Container(
-          color: ColorUtils.white,
-          width: double.infinity,
-          height: 320.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+              child: Center(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "More from Armani",
+                      "Ask us Anything",
                       style: TextStyle(
                           color: ColorUtils.black,
                           fontFamily: FontUtils.almarenaDisplayRegular,
-                          fontSize: 25.sp),
+                          fontSize: 20.sp),
                     ),
-                    Text(
-                      "View All",
-                      style: TextStyle(
-                          color: ColorUtils.black,
-                          decoration: TextDecoration.underline,
-                          decorationColor: ColorUtils.dotGreen,
-                          fontFamily: FontUtils.almarenaDisplayRegular,
-                          fontSize: 16.sp),
-                    ),
+                    SizedBox(width: 10.w,),
+                    Image.asset(ImageUtils.whatsapp, scale: 1.6, color: ColorUtils.black,)
                   ],
-                )
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: GridView.builder(
-                  padding: EdgeInsets.only(bottom: 3.h),
-                  itemCount: 2,
-                  physics:  NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisSpacing: 5.w,
-                    mainAxisSpacing: 120.h,
-                    crossAxisCount: 2,
-                  ),
-                  itemBuilder: (context, index) {
-                    return logsWidget(context, categories1[index]);
-                  },
                 ),
               ),
-            ],
+            ),
           ),
-        ),
-        Container(
-          color: ColorUtils.white,
-          width: double.infinity,
-          height: 320.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
+          SizedBox(height: 15.h,),
+          Container(
+            color: ColorUtils.black,
+            width: double.infinity,
+            height: 320.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+                  child: Text(
+                    "Buy the Look",
+                    style: TextStyle(
+                        color: ColorUtils.white,
+                        fontFamily: FontUtils.almarenaDisplayRegular,
+                        fontSize: 25.sp),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: GridView.builder(
+                    padding: EdgeInsets.only(bottom: 3.h),
+                    itemCount: 2,
+                    physics:  NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 5.w,
+                      mainAxisSpacing: 120.h,
+                      crossAxisCount: 2,
+                    ),
+                    itemBuilder: (context, index) {
+                      return logsWidget(context, categories[index]);
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 5.h,),
+          Container(
+            color: ColorUtils.white,
+            width: double.infinity,
+            height: 320.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        "Explore Dresses",
+                        "More from Armani",
                         style: TextStyle(
                             color: ColorUtils.black,
                             fontFamily: FontUtils.almarenaDisplayRegular,
@@ -1897,136 +1886,189 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ],
                   )
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: GridView.builder(
-                  padding: EdgeInsets.only(bottom: 3.h),
-                  itemCount: 2,
-                  physics:  NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisSpacing: 5.w,
-                    mainAxisSpacing: 120.h,
-                    crossAxisCount: 2,
-                  ),
-                  itemBuilder: (context, index) {
-                    return logsWidget(context, categories2[index]);
-                  },
                 ),
-              ),
-            ],
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: GridView.builder(
+                    padding: EdgeInsets.only(bottom: 3.h),
+                    itemCount: 2,
+                    physics:  NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 5.w,
+                      mainAxisSpacing: 120.h,
+                      crossAxisCount: 2,
+                    ),
+                    itemBuilder: (context, index) {
+                      return logsWidget(context, categories1[index]);
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        SizedBox(height: 10.h,),
-        Container(
-          color: ColorUtils.black,
-          width: double.infinity,
-          height: 720.h,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+          Container(
+            color: ColorUtils.white,
+            width: double.infinity,
+            height: 320.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(ImageUtils.banner),
-                SizedBox(height: 15.h,),
-                Text(
-                  "About Armani",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: ColorUtils.white,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 22.sp),
+                Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Explore Dresses",
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              fontFamily: FontUtils.almarenaDisplayRegular,
+                              fontSize: 25.sp),
+                        ),
+                        Text(
+                          "View All",
+                          style: TextStyle(
+                              color: ColorUtils.black,
+                              decoration: TextDecoration.underline,
+                              decorationColor: ColorUtils.dotGreen,
+                              fontFamily: FontUtils.almarenaDisplayRegular,
+                              fontSize: 16.sp),
+                        ),
+                      ],
+                    )
                 ),
-                SizedBox(height: 10.h,),
-                Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                  maxLines: 7,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: ColorUtils.white,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 16.sp),
-                ),
-                Divider(
-                  height: 40,
-                  color: ColorUtils.dotGreen,
-                  thickness: 2.5,
-                ),
-                SizedBox(height: 10.h,),
-                Text(
-                  "Contact Us",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: ColorUtils.white,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 18.sp),
-                ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(ImageUtils.whatsapp, scale: 1.7, color: ColorUtils.white,),
-                    SizedBox(width: 7.w,),
-                    Text(
-                      "+966 12 345 678",
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: ColorUtils.white,
-                          fontFamily: FontUtils.almarenaRegular,
-                          fontSize: 16.sp),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: GridView.builder(
+                    padding: EdgeInsets.only(bottom: 3.h),
+                    itemCount: 2,
+                    physics:  NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 5.w,
+                      mainAxisSpacing: 120.h,
+                      crossAxisCount: 2,
                     ),
-                  ],
+                    itemBuilder: (context, index) {
+                      return logsWidget(context, categories2[index]);
+                    },
+                  ),
                 ),
-                SizedBox(height: 10.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(ImageUtils.phone, scale: 1.7,),
-                    SizedBox(width: 7.w,),
-                    Text(
-                      "+966 12 345 678",
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: ColorUtils.white,
-                          fontFamily: FontUtils.almarenaRegular,
-                          fontSize: 16.sp),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 25.h,),
-                Text(
-                  "Visit our store",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: ColorUtils.white,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 18.sp),
-                ),
-                SizedBox(height: 10.h,),
-                Text(
-                  "Shop#1, Riyadh Street, Riyadh ",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: ColorUtils.white,
-                      fontFamily: FontUtils.almarenaRegular,
-                      fontSize: 16.sp),
-                ),
-                SizedBox(height: 10.h,),
-                Image.asset(ImageUtils.map)
               ],
             ),
           ),
-        ),
+          SizedBox(height: 10.h,),
+          Container(
+            color: ColorUtils.black,
+            width: double.infinity,
+            height: 720.h,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(ImageUtils.banner),
+                  SizedBox(height: 15.h,),
+                  Text(
+                    "About Armani",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: ColorUtils.white,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 22.sp),
+                  ),
+                  SizedBox(height: 10.h,),
+                  Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                    maxLines: 7,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: ColorUtils.white,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 16.sp),
+                  ),
+                  Divider(
+                    height: 40,
+                    color: ColorUtils.dotGreen,
+                    thickness: 2.5,
+                  ),
+                  SizedBox(height: 10.h,),
+                  Text(
+                    "Contact Us",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: ColorUtils.white,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 18.sp),
+                  ),
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(ImageUtils.whatsapp, scale: 1.7, color: ColorUtils.white,),
+                      SizedBox(width: 7.w,),
+                      Text(
+                        "+966 12 345 678",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: ColorUtils.white,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 16.sp),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(ImageUtils.phone, scale: 1.7,),
+                      SizedBox(width: 7.w,),
+                      Text(
+                        "+966 12 345 678",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: ColorUtils.white,
+                            fontFamily: FontUtils.almarenaRegular,
+                            fontSize: 16.sp),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 25.h,),
+                  Text(
+                    "Visit our store",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: ColorUtils.white,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 18.sp),
+                  ),
+                  SizedBox(height: 10.h,),
+                  Text(
+                    "Shop#1, Riyadh Street, Riyadh ",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: ColorUtils.white,
+                        fontFamily: FontUtils.almarenaRegular,
+                        fontSize: 16.sp),
+                  ),
+                  SizedBox(height: 10.h,),
+                  Image.asset(ImageUtils.map)
+                ],
+              ),
+            ),
+          ),
 
 
 
@@ -2036,13 +2078,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
 
 
-        // SizedBox(height: 200.h,),
+          // SizedBox(height: 200.h,),
 
-      ],
+        ],
+      ),
     );
   }
 
 
+  List<String> Images = [ImageUtils.cloth1, ImageUtils.cloth7, ImageUtils.cloth10];
   Widget logsWidget(BuildContext context, Map<String,dynamic> category) {
     return Wrap(
       alignment: WrapAlignment.spaceEvenly,
@@ -2127,42 +2171,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final controller = PageController();
     return Column(
       children: [
-        checkout == true ? InkWell(
-          onTap: (){
-            Navigator.of(context, rootNavigator: true)
-                .pushReplacement(MaterialPageRoute(builder: (context) =>
-                HomeScreen(index: 3,)));
-          },
-          child: Container(
-            height: 20.h,
-            width: double.infinity,
-            color: ColorUtils.black,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Added to Bag, Checkout Now",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        color: ColorUtils.white,
-                        fontFamily: FontUtils.almarenaRegular,
-                        fontSize: 16.sp),
-                  ),
-                  SizedBox(width: 10.w,),
-                  Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 20.0,
-                  ),
-
-                ],
-              ),
-            ),
-          ),
-        ) : Container(),
         Stack(alignment: Alignment.topCenter, children: [
           CarouselSlider(
             carouselController: _controller,
@@ -2186,29 +2194,38 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             items: media.map<Widget>((i) {
               return Builder(
                 builder: (BuildContext context) {
-                  return Stack(
-                      // fit: StackFit.expand,
-                      alignment: Alignment.topCenter,
-                      children: [
-                        Positioned.fill(
-                          child: Container(
-                            height: 150.h,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(0.0),
-                              child: FadeInImage(
-                                  fadeInDuration: const Duration(milliseconds: 10),
-                                  fadeInCurve: Curves.easeInExpo,
-                                  fadeOutCurve: Curves.easeOutExpo,
-                                  placeholder: Image.asset(ImageUtils.loading_placeholder, fit: BoxFit.fill ).image,
-                                  image: Image.asset(i,fit: BoxFit.cover,).image,
-                                  imageErrorBuilder: (context, error, stackTrace) {
-                                    return Container(child: Image.asset(ImageUtils.loading_placeholder, fit: BoxFit.fill));
-                                  },
-                                  fit: BoxFit.contain),
+                  return InkWell(
+                    onTap: () async {
+                      await showDialog(
+                      context: context,
+                      barrierDismissible: true,
+                      builder: (_) => ImageDialog(Images)
+                      );
+                    },
+                    child: Stack(
+                        // fit: StackFit.expand,
+                        alignment: Alignment.topCenter,
+                        children: [
+                          Positioned.fill(
+                            child: Container(
+                              height: 150.h,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(0.0),
+                                child: FadeInImage(
+                                    fadeInDuration: const Duration(milliseconds: 10),
+                                    fadeInCurve: Curves.easeInExpo,
+                                    fadeOutCurve: Curves.easeOutExpo,
+                                    placeholder: Image.asset(ImageUtils.loading_placeholder, fit: BoxFit.fill ).image,
+                                    image: Image.asset(i,fit: BoxFit.cover,).image,
+                                    imageErrorBuilder: (context, error, stackTrace) {
+                                      return Container(child: Image.asset(ImageUtils.loading_placeholder, fit: BoxFit.fill));
+                                    },
+                                    fit: BoxFit.contain),
+                              ),
                             ),
                           ),
-                        ),
-                      ]);
+                        ]),
+                  );
                 },
               );
             }).toList(),
@@ -2244,6 +2261,57 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           }).toList(),
         ),
       ],
+    );
+  }
+
+  Widget ImageDialog(List<String> images){
+    int INDEX = 0;
+    return Dialog(
+        child: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState){
+              return Stack(
+                children: [
+                  Container(
+                    height: 400.h,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: Image.asset(images[INDEX]).image,
+                            fit: BoxFit.fill
+                        )
+                    ),
+                  ),
+                  Positioned(
+                      right: 5.w,
+                      top: 200.h,
+                      child: InkWell(
+                          onTap: (){
+                            setState(() {
+                              if(INDEX == 2){}
+                              else if(INDEX < 2){
+                                INDEX = INDEX++;
+                                print(INDEX++);
+                              }
+                            });
+                          },
+                          child: Icon(Icons.keyboard_arrow_right_sharp, size: 40, color: ColorUtils.black,))),
+                  Positioned(
+                      left: 5.w,
+                      top: 200.h,
+                      child: InkWell(
+                          onTap: (){
+                            setState(() {
+                              if(INDEX == 0){}
+                              else if(INDEX > 0){
+                                print(INDEX--);
+                                INDEX = INDEX--;
+                              }
+                            });
+                          },
+                          child: Icon(Icons.keyboard_arrow_left_sharp, size: 40, color: ColorUtils.black,)))
+                ],
+              );
+            }
+        )
     );
   }
 }

@@ -84,10 +84,6 @@ class _BrowseScreenState extends State<BrowseScreen> {
         "state": false
       },
       {
-        "title": "",
-        "state": false
-      },
-      {
         "title": "Price: lowest to high",
         "state": false
       },
@@ -164,7 +160,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h),
                 child: Image.asset(ImageUtils.cart_black,
-                  scale: 1.7,)),
+                  scale: 2.5,)),
           ),
           InkWell(
             onTap: (){
@@ -172,7 +168,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h, right: 5.w),
                 child: Image.asset(ImageUtils.person,
-                  scale: 1.7,)),
+                  scale: 2.5,)),
           )
         ],
         systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -234,7 +230,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                             return StatefulBuilder(
                               builder: (BuildContext context, StateSetter setState){
                                 return Container(
-                                  height: 300.h,
+                                  height: 250.h,
                                   child: Column(
                                     children: [
                                       Padding(
@@ -271,7 +267,6 @@ class _BrowseScreenState extends State<BrowseScreen> {
                                           return  InkWell(
                                             onTap: (){
                                               setState(() {
-
                                                 if(sort[index]["title"] == ""){}
                                                 else{
                                                   if(sort[index]["state"] == true){
@@ -279,10 +274,14 @@ class _BrowseScreenState extends State<BrowseScreen> {
                                                   }
                                                   else{
                                                     sort[index]["state"] = true;
+                                                    for(int i = 0; i < sort.length; i++){
+                                                      if(i == index){}
+                                                      else{
+                                                        sort[i]["state"] = false;
+                                                      }
+                                                    }
                                                   }
                                                 }
-
-
                                               });
                                             },
                                             child: Column(
@@ -292,9 +291,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                                                 Container(
                                                   width: double.infinity,
                                                   height: 40.h,
-                                                  color: sort[index]["state"] == true ? ColorUtils.black :
-                                                  ColorUtils.white,
-                                                  // color: ColorUtils.black,
+                                                  color: ColorUtils.white,
                                                   child: Padding(
                                                     padding: EdgeInsets.symmetric(horizontal: 15.w),
                                                     child: Row(
@@ -304,14 +301,35 @@ class _BrowseScreenState extends State<BrowseScreen> {
                                                         Text(
                                                           sort[index]["title"],
                                                           style: TextStyle(
-                                                              color: sort[index]["state"] == true ? ColorUtils.white :
-                                                              ColorUtils.textcolor,
+                                                              color: ColorUtils.dividerColor,
                                                               fontFamily: FontUtils.almarenaRegular,
                                                               fontSize: 16.sp),
+                                                        ),
+                                                        Align(
+                                                          alignment: Alignment.centerRight,
+                                                          child: sort[index]["state"] == true ? Image.asset(ImageUtils.checkbox, scale: 3,) :
+                                                          Image.asset(ImageUtils.empty_checkbox, scale: 3,),
                                                         ),
                                                       ],
                                                     ),
                                                   ),
+                                                  // child: Padding(
+                                                  //   padding: EdgeInsets.symmetric(horizontal: 15.w),
+                                                  //   child: Row(
+                                                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                                                  //     children: [
+                                                  //       Text(
+                                                  //         sort[index]["title"],
+                                                  //         style: TextStyle(
+                                                  //             color: sort[index]["state"] == true ? ColorUtils.white :
+                                                  //             ColorUtils.textcolor,
+                                                  //             fontFamily: FontUtils.almarenaRegular,
+                                                  //             fontSize: 16.sp),
+                                                  //       ),
+                                                  //     ],
+                                                  //   ),
+                                                  // ),
                                                 ),
                                               ],
                                             ),
@@ -345,7 +363,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                     SizedBox(width: 10.w,),
                     InkWell(
                       onTap: (){
-                        Navigator.of(context, rootNavigator: true)
+                        Navigator.of(context, rootNavigator: false)
                             .push(MaterialPageRoute(builder: (context) =>
                             FilterScreen())).then((value){
                               if(value == true){

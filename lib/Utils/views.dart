@@ -234,8 +234,8 @@ class EditText extends StatelessWidget {
                   ? IconButton(
                 splashColor: Colors.transparent,
                 icon: (obscure ?? false)
-                    ? ImageIcon(AssetImage(ImageUtils.eyecross),size: 25, color: ColorUtils.black.withOpacity(0.5),)
-                    : ImageIcon(AssetImage(ImageUtils.eyecross),size: 25, color: ColorUtils.black.withOpacity(0.5),),
+                    ? ImageIcon(AssetImage(ImageUtils.downarrow),size: 25, color: ColorUtils.black.withOpacity(0.5),)
+                    : ImageIcon(AssetImage(ImageUtils.downarrow),size: 25, color: ColorUtils.black.withOpacity(0.5),),
                 // color:
                 //     (obscure ?? false) ? ColorUtils.charcoalGrey : ColorUtils.marigold,
                 onPressed: suffixClick,
@@ -255,7 +255,7 @@ class EditText extends StatelessWidget {
                 onTap: suffixClick,
                 child: Image.asset(
                   suffixIcon!,
-                  scale: 2,
+                  scale: 3,
                   // color: ColorUtils.black,
                 ),
               )
@@ -278,7 +278,7 @@ class EditText extends StatelessWidget {
                         : ((controller?.text?.isEmpty ?? true)
                         ?  ColorUtils.dividerColor
                         : ColorUtils.dividerColor),
-                    scale: 2,
+                    scale: 3,
                   )
                 ],
               )
@@ -536,7 +536,7 @@ class BackBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       padding: EdgeInsets.only(left: 5.w),
-      icon: Image.asset(ImageUtils.eyecross, scale: 2.8,),
+      icon: Image.asset(ImageUtils.downarrow, scale: 2.8,),
       onPressed: () {
         Navigator.of(context).pop();
       },
@@ -553,7 +553,7 @@ class WhiteBackBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       padding: EdgeInsets.only(left: 15.w),
-      icon: Image.asset(ImageUtils.eyecross, scale: 2.4,),
+      icon: Image.asset(ImageUtils.downarrow, scale: 2.4,),
       onPressed: () {
         Navigator.of(context).pop();
       },
@@ -572,7 +572,7 @@ class CrossBtn extends StatelessWidget {
           width: 24,
           height: 24,
           child: Image.asset(
-            ImageUtils.eyecross,
+            ImageUtils.downarrow,
             fit: BoxFit.cover,
           )),
       onPressed: () {
@@ -591,7 +591,7 @@ class CrossBlackBtn extends StatelessWidget {
           width: 24,
           height: 24,
           child: Image.asset(
-            ImageUtils.eyecross,
+            ImageUtils.downarrow,
             fit: BoxFit.cover,
           )),
       onPressed: () {
@@ -931,114 +931,96 @@ class _SpinnerState extends State<Spinner> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.heading ?? "",
-          style: TextStyle(
-              fontFamily: FontUtils.almarenaRegular,
-              color: ColorUtils.black,
-              fontSize: 12.sp,
-              fontStyle: FontStyle.normal),
-        ),
-        SizedBox(height: 4.h,),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: widget.dropdownValue != null ? ColorUtils.darkGrey.withOpacity(0.2) : Colors.transparent),
-            color: widget.dropdownValue != null ? ColorUtils.white : ColorUtils.filled,
+            border: Border.all(color: widget.dropdownValue != null ? Colors.transparent : Colors.transparent),
+            color: widget.dropdownValue != null ? ColorUtils.white : ColorUtils.white,
             // boxShadow: Colors.grey,
           ),
-          child: DropdownButton<String>(
-            dropdownColor: ColorUtils.white,
-            hint: Row(
-              children: <Widget>[
-                if (widget.icon != null)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 0, left: 4),
-                    child: Image.asset(
-                      widget.icon!,
-                      color:  ColorUtils.charcoalGrey.withOpacity(0.5),
-                      scale: 3.3,
-                    )
-                  ),
-                SizedBox(
-                  width: widget.icon != null ? 13 : 0,
-                ),
-                Text(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              DropdownButton<String>(
+                dropdownColor: ColorUtils.white,
+                hint: Text(
                   widget.hint,
                   style: TextStyle(
                       fontFamily: FontUtils.almarenaRegular,
-                      color: ColorUtils.charcoalGrey.withOpacity(0.4),
-                      fontSize: 14.sp, height: 1),
+                      color: ColorUtils.hintColor,
+                      fontSize: 16.sp, height: 1),
                 ),
-              ],
-            ),
-            isExpanded: true,
-            value: widget.dropdownValue,
-            iconEnabledColor: ColorUtils.main_black,
-            borderRadius:
-            BorderRadius.circular(20),
-            // icon: Icon(
-            //   widget.arrowIcon,
-            //   color: ColorUtils.black,
-            // ),
-            icon: SizedBox(
-              width: 25.w,
-              height: 15,
-              child: Image.asset(
-                ImageUtils.eyecross,
-                scale: 3.5,
-                color: Colors.black,
-              ),
-            ),
-            elevation: 16,
-            style: TextStyle(
-              height: 1.2,
-              fontSize:  14.sp,
-              color: ColorUtils.darkGreyTwo.withOpacity(0.7),
-              fontFamily:  FontUtils.almarenaRegular,
-            ),
-            underline: Container(
-              height: 1,
-              color: Colors.transparent,
-            ),
-            onChanged: (String? newValue) {
-              setState(() {
-                widget.borderColor = Colors.black;
-                widget.dropdownValue = newValue;
-                widget.value = newValue;
-                widget.onChange(newValue);
-              });
-            },
-            items: widget.array.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Row(
-                  children: <Widget>[
-                    if (widget.icon != null)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 0, left: 4),
-                        child: Image.asset(
-                          widget.icon!,
-                          scale: 3.3,
+                isExpanded: true,
+                value: widget.dropdownValue,
+                iconEnabledColor: ColorUtils.main_black,
+                borderRadius:
+                BorderRadius.circular(20),
+                icon: SizedBox(
+                  width: 25.w,
+                  height: 15,
+                  child: Image.asset(
+                    ImageUtils.downarrow,
+                    scale: 3.5,
+                    color: Colors.black,
+                  ),
+                ),
+                elevation: 16,
+                style: TextStyle(
+                  height: 1.2,
+                  fontSize:  18.sp,
+                  color: ColorUtils.dividerColor,
+                  fontFamily:  FontUtils.almarenaRegular,
+                ),
+                // underline: Container(
+                //   height: 0,
+                //   color: Colors.transparent,
+                // ),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    widget.borderColor = Colors.black;
+                    widget.dropdownValue = newValue;
+                    widget.value = newValue;
+                    widget.onChange(newValue);
+                  });
+                },
+                items: widget.array.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Row(
+                      children: <Widget>[
+                        if (widget.icon != null)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 0, left: 4),
+                            child: Image.asset(
+                              widget.icon!,
+                              scale: 3.3,
+                            ),
+                          ),
+                        SizedBox(
+                          width: (widget.icon != null) ? 13 : 0,
                         ),
-                      ),
-                    SizedBox(
-                      width: (widget.icon != null) ? 13 : 0,
+                        Text(
+                          value,
+                          style: TextStyle(
+                            height: 1.2,
+                            fontSize:  18.sp,
+                            color: ColorUtils.dividerColor,
+                            fontFamily:  FontUtils.almarenaRegular,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      value,
-                      style: TextStyle(
-                        height: 1.2,
-                        fontSize:  14.sp,
-                        color: ColorUtils.darkGreyTwo.withOpacity(0.7),
-                        fontFamily:  FontUtils.almarenaRegular,
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
+                  );
+                }).toList(),
+              ),
+              Divider(
+                height: 0.5.h,
+                color: ColorUtils.dividerColor,
+                thickness: 0.9,
+              ),
+            ],
           ),
         ),
       ],
@@ -1563,8 +1545,8 @@ class CurveEditText extends StatelessWidget {
               ? IconButton(
             splashColor: Colors.transparent,
             icon: (obscure ?? false)
-                ? ImageIcon(AssetImage(ImageUtils.eyecross),size: 25, color: ColorUtils.hint_color,)
-                : ImageIcon(AssetImage(ImageUtils.eyecross),size: 25,),
+                ? ImageIcon(AssetImage(ImageUtils.downarrow),size: 25, color: ColorUtils.hint_color,)
+                : ImageIcon(AssetImage(ImageUtils.downarrow),size: 25,),
             color:
             (obscure ?? false) ? ColorUtils.hint_color : ColorUtils.marigold,
             onPressed: suffixClick,
@@ -2039,8 +2021,8 @@ class DescriptionEditText extends StatelessWidget {
               ? IconButton(
             splashColor: Colors.transparent,
             icon: (obscure ?? false)
-                ? ImageIcon(AssetImage(ImageUtils.eyecross),size: 25, color: ColorUtils.charcoalGrey,)
-                : ImageIcon(AssetImage(ImageUtils.eyecross),size: 25, color: ColorUtils.charcoalGrey,),
+                ? ImageIcon(AssetImage(ImageUtils.downarrow),size: 25, color: ColorUtils.charcoalGrey,)
+                : ImageIcon(AssetImage(ImageUtils.downarrow),size: 25, color: ColorUtils.charcoalGrey,),
             // color:
             //     (obscure ?? false) ? ColorUtils.charcoalGrey : ColorUtils.marigold,
             onPressed: suffixClick,
@@ -2214,7 +2196,7 @@ class _SimpleSpinnerState extends State<SimpleSpinner> {
           width: 25.w,
           height: 15,
           child: Image.asset(
-            ImageUtils.eyecross,
+            ImageUtils.downarrow,
             scale: 3.5,
             color: Colors.black,
           ),

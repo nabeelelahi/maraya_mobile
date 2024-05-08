@@ -119,7 +119,7 @@ class _CartScreenState extends State<CartScreen> {
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h, right: 5.w),
                 child: Image.asset(ImageUtils.person,
-                  scale: 1.7,)),
+                  scale: 2.5,)),
           )
         ],
         systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -741,7 +741,7 @@ class _CartScreenState extends State<CartScreen> {
 
                                                     ],
                                                   ),
-                                                  SizedBox(height: 10.h,),
+                                                  SizedBox(height: 15.h,),
                                                   SizedBox(
                                                     width: double.infinity,
                                                     child: Row(
@@ -753,7 +753,7 @@ class _CartScreenState extends State<CartScreen> {
                                                           style: TextStyle(
                                                               color: ColorUtils.black,
                                                               fontFamily: FontUtils.almarenaRegular,
-                                                              fontSize: 14.sp),),
+                                                              fontSize: 13.sp),),
                                                         SizedBox(width: 1.w,),
                                                         InkWell(
                                                           onTap: (){
@@ -1127,7 +1127,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                 color: ColorUtils.black,
                                                                 decoration: TextDecoration.underline,
                                                                 fontFamily: FontUtils.almarenaRegular,
-                                                                fontSize: 13.sp),
+                                                                fontSize: 14.sp),
                                                           ),
                                                         )
                                                       ],
@@ -1736,7 +1736,7 @@ class _CartScreenState extends State<CartScreen> {
 
                                                   ],
                                                 ),
-                                                SizedBox(height: 10.h,),
+                                                SizedBox(height: 15.h,),
                                                 Row(
                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -1746,7 +1746,7 @@ class _CartScreenState extends State<CartScreen> {
                                                       style: TextStyle(
                                                           color: ColorUtils.black,
                                                           fontFamily: FontUtils.almarenaRegular,
-                                                          fontSize: 14.sp),),
+                                                          fontSize: 13.sp),),
                                                     SizedBox(width: 1.w,),
                                                     InkWell(
                                                       onTap: (){
@@ -2120,7 +2120,7 @@ class _CartScreenState extends State<CartScreen> {
                                                             color: ColorUtils.black,
                                                             decoration: TextDecoration.underline,
                                                             fontFamily: FontUtils.almarenaRegular,
-                                                            fontSize: 13.sp),
+                                                            fontSize: 14.sp),
                                                       ),
                                                     )
                                                   ],

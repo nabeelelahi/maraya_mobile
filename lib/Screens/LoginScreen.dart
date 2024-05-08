@@ -185,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Container(
                         width: 90.w,
                         height: 42.h,
-                        padding: EdgeInsets.symmetric(vertical: 9.h),
+                        padding: EdgeInsets.symmetric(vertical: 7.5.h),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Divider(
                               height: 2.h,
                               color: ColorUtils.dividerColor,
-                              thickness: 0.8,
+                              thickness: 1.0,
                             ),
                           ],
                         ),
@@ -249,7 +249,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.of(context, rootNavigator: true)
                         .push(MaterialPageRoute(builder: (context) =>
                         VerificationScreen()));
-                    // Navigator.pushNamed(context, AppRoutes.Verfication);
                   },
                 ),
                 SizedBox(

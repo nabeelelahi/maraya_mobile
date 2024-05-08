@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.home),
-              color: ColorUtils.white,
+              color: ColorUtils.dotGreen,
             ),
           ),
         ),
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             fontSize: 12.sp,
             fontStyle: FontStyle.normal),
         title: translate('strings.Home'),
-        activeColorPrimary: ColorUtils.white,
+        activeColorPrimary: ColorUtils.dotGreen,
         inactiveColorPrimary: ColorUtils.white,
       ),
       PersistentBottomNavBarItem(
@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.brands),
-              color: ColorUtils.white,
+              color: ColorUtils.dotGreen,
             ),
           ),
         ),
@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             fontSize: 12.sp,
             fontStyle: FontStyle.normal),
         title: translate('strings.Brands'),
-        activeColorPrimary: ColorUtils.white,
+        activeColorPrimary: ColorUtils.dotGreen,
         inactiveColorPrimary: ColorUtils.white,
       ),
 
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.category),
-              color: ColorUtils.white,
+              color: ColorUtils.dotGreen,
             ),
           ),
         ),
@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             fontSize: 12.sp,
             fontStyle: FontStyle.normal),
         title: translate('strings.Category'),
-        activeColorPrimary: ColorUtils.white,
+        activeColorPrimary: ColorUtils.dotGreen,
         inactiveColorPrimary: ColorUtils.white,
       ),
       PersistentBottomNavBarItem(
@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
             child: ImageIcon(
               AssetImage(ImageUtils.cart_black),
-              color: ColorUtils.white,
+              color: ColorUtils.dotGreen,
             ),
           ),
         ),
@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             fontSize: 12.sp,
             fontStyle: FontStyle.normal),
         title: translate('strings.Cart'),
-        activeColorPrimary: ColorUtils.white,
+        activeColorPrimary: ColorUtils.dotGreen,
         inactiveColorPrimary: ColorUtils.white,
       ),
 

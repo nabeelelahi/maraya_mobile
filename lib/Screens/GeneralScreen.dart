@@ -54,119 +54,65 @@ class _GeneralScreenState extends State<GeneralScreen> {
   Widget body() {
     return Column(
       children: [
-        Expanded(
-          child: Container(
-            // height: 130.h,
-            width: double.infinity,
-            color: ColorUtils.white,
-            child: Padding(
-              padding: EdgeInsets.only(left: 15.w, bottom: 15.h),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  translate('strings.StartShopping'),
-                  style: TextStyle(
-                      fontFamily: FontUtils.almarenaRegular,
-                      color: ColorUtils.dividerColor,
-                      // decoration: TextDecoration.underline,
-                      fontSize: 40.sp,
-                      fontStyle: FontStyle.normal),
-                ),
+        Container(
+          height: 130.h,
+          width: double.infinity,
+          color: ColorUtils.white,
+          child: Padding(
+            padding: EdgeInsets.only(left: 15.w, bottom: 15.h),
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                translate('strings.StartShopping'),
+                style: TextStyle(
+                    fontFamily: FontUtils.almarenaRegular,
+                    color: ColorUtils.dividerColor,
+                    // decoration: TextDecoration.underline,
+                    fontSize: 40.sp,
+                    fontStyle: FontStyle.normal),
               ),
             ),
           ),
         ),
-        Expanded(
-          flex: 2,
-          child: InkWell(
-            onTap: (){
-              Navigator.of(context, rootNavigator: true)
-                  .pushReplacement(MaterialPageRoute(builder: (context) =>
-                  HomeScreen()));
-              // Navigator.pushReplacementNamed(context, AppRoutes.Home);
-            },
-            child: Stack(
-              children: [
-                Container(
-                  // height: 250.h,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: ColorUtils.white,
-                    image: DecorationImage(
-                      image: AssetImage(ImageUtils.womenImage),
-                      fit: BoxFit.fill,
-                    ),
+        InkWell(
+          onTap: (){
+            Navigator.of(context, rootNavigator: true)
+                .pushReplacement(MaterialPageRoute(builder: (context) =>
+                HomeScreen()));
+            // Navigator.pushReplacementNamed(context, AppRoutes.Home);
+          },
+          child: Stack(
+            children: [
+              Container(
+                height: 250.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: ColorUtils.white,
+                  image: DecorationImage(
+                    image: AssetImage(ImageUtils.womenImage),
+                    fit: BoxFit.fill,
                   ),
                 ),
-                Container(
-                  color: ColorUtils.black.withOpacity(0.30),
-                  width: double.infinity,
-                ),
-                Positioned(
-                  bottom: 10.h,
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.of(context, rootNavigator: true)
-                          .pushReplacement(MaterialPageRoute(builder: (context) =>
-                          HomeScreen()));
-                      // Navigator.pushReplacementNamed(context, AppRoutes.Home);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 15.w, bottom: 20.h),
-                      child: Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Text(
-                          translate('strings.ForWomen'),
-                          style: TextStyle(
-                              fontFamily: FontUtils.almarenaRegular,
-                              color: ColorUtils.white,
-                              decoration: TextDecoration.underline,
-                              decorationColor: ColorUtils.dotGreen,
-                              fontSize: 40.sp,
-                              fontStyle: FontStyle.normal),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: InkWell(
-            onTap: (){
-              Navigator.of(context, rootNavigator: true)
-                  .pushReplacement(MaterialPageRoute(builder: (context) =>
-                  HomeScreen()));
-              // Navigator.pushReplacementNamed(context, AppRoutes.Home);
-            },
-            child: Stack(
-              children: [
-                Container(
-                  // height: 250.h,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: ColorUtils.white,
-                    image: DecorationImage(
-                      image: AssetImage(ImageUtils.menImage),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-                Container(
-                  color: ColorUtils.black.withOpacity(0.30),
-                  width: double.infinity,
-                ),
-                Positioned(
-                  bottom: 10.h,
+              ),
+              Container(
+                color: ColorUtils.black.withOpacity(0.30),
+                width: double.infinity,
+              ),
+              Positioned(
+                bottom: 10.h,
+                child: InkWell(
+                  onTap: (){
+                    Navigator.of(context, rootNavigator: true)
+                        .pushReplacement(MaterialPageRoute(builder: (context) =>
+                        HomeScreen()));
+                    // Navigator.pushReplacementNamed(context, AppRoutes.Home);
+                  },
                   child: Padding(
                     padding: EdgeInsets.only(left: 15.w, bottom: 20.h),
                     child: Align(
                       alignment: Alignment.bottomLeft,
                       child: Text(
-                        translate('strings.ForMen'),
+                        translate('strings.ForWomen'),
                         style: TextStyle(
                             fontFamily: FontUtils.almarenaRegular,
                             color: ColorUtils.white,
@@ -178,8 +124,54 @@ class _GeneralScreenState extends State<GeneralScreen> {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
+          ),
+        ),
+        InkWell(
+          onTap: (){
+            Navigator.of(context, rootNavigator: true)
+                .pushReplacement(MaterialPageRoute(builder: (context) =>
+                HomeScreen()));
+            // Navigator.pushReplacementNamed(context, AppRoutes.Home);
+          },
+          child: Stack(
+            children: [
+              Container(
+                height: 250.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: ColorUtils.white,
+                  image: DecorationImage(
+                    image: AssetImage(ImageUtils.menImage),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Container(
+                color: ColorUtils.black.withOpacity(0.30),
+                width: double.infinity,
+              ),
+              Positioned(
+                bottom: 10.h,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 15.w, bottom: 20.h),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      translate('strings.ForMen'),
+                      style: TextStyle(
+                          fontFamily: FontUtils.almarenaRegular,
+                          color: ColorUtils.white,
+                          decoration: TextDecoration.underline,
+                          decorationColor: ColorUtils.dotGreen,
+                          fontSize: 40.sp,
+                          fontStyle: FontStyle.normal),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],

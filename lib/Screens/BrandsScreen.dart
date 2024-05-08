@@ -125,7 +125,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h),
                 child: Image.asset(ImageUtils.cart_black,
-                  scale: 1.7,)),
+                  scale: 2.5,)),
           ),
           InkWell(
             onTap: (){
@@ -133,7 +133,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
             child: Padding(
                 padding: EdgeInsets.only(top: 1.h, right: 5.w),
                 child: Image.asset(ImageUtils.person,
-                  scale: 1.7,)),
+                  scale: 2.5,)),
           )
         ],
         systemOverlayStyle: SystemUiOverlayStyle.dark,

@@ -27,9 +27,15 @@ class AppTheme {
 
 
 class FadePageTransitionsBuilder extends PageTransitionsBuilder {
+
+  final Duration transitionDuration;
+
+  FadePageTransitionsBuilder({this.transitionDuration = const Duration(milliseconds: 100)});
+
+
+
   @override
   Widget buildTransitions<T>(PageRoute<T> route, BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
-    // Fade transition animation
     return FadeTransition(
       opacity: animation,
       child: child,

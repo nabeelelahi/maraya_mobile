@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:maraya_flutter/Screens/GeneralScreen.dart';
 import 'package:maraya_flutter/Screens/LoginScreen.dart';
 import '../../Utils/app_routes.dart';
 import '../../Utils/color_utils.dart';

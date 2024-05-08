@@ -485,9 +485,9 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
         SizedBox(height: 10.h,),
         RangeSlider(
           min: 50,
-          max: 50000,
-          divisions: 50, //slide interval
-          labels: RangeLabels("SAR. $startval1", "SAR. $endval1"),
+          max: 25000,
+          divisions: 450, //slide interval
+          labels: null,
           values: RangeValues(startval1, endval1),
           activeColor: ColorUtils.dividerColor,
           inactiveColor: ColorUtils.hintColor,
@@ -495,8 +495,8 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
             setState(() {
               startval1 = value.start;
               endval1 = value.end;
-              maxTextController.text = "${value.end.toInt().toString()} SAR";
-              minTextController.text = "${value.start.toInt().toString()} SAR";
+              maxTextController.text = "${value.end.toInt().toString()}";
+              minTextController.text = "${value.start.toInt().toString()}";
             });
           },
         ),
@@ -560,7 +560,7 @@ class _FilterScreenTypeState extends State<FilterScreenType> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Text(
-            "Minimum Price (SAR)",
+            "Maximum Price (SAR)",
             style: TextStyle(
                 color: ColorUtils.dividerColor,
                 fontFamily: FontUtils.almarenaRegular,

@@ -8,7 +8,7 @@ class AppScreenTransition{
   static PageTransition setTransition(Widget widget) {
     var animation = PageTransitionType.fade;
     return PageTransition(
-        child: widget, type: animation, duration: const Duration(milliseconds: 150));
+        child: widget, type: animation, duration: const Duration(milliseconds: 0));
   }
 
   Future<bool> onWillPop() {

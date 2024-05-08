@@ -62,4 +62,18 @@ class ImageUtils {
   static String tabby = "assets/images/tabby.png";
   static String tamara = "assets/images/tamara.png";
   static String apple_pay = "assets/images/apple_pay.png";
+  static String carousel_image = "assets/images/carousel_image.png";
+  static String feature1 = "assets/images/feature1.png";
+  static String feature2 = "assets/images/feature2.png";
+  static String feature3 = "assets/images/feature3.png";
+  static String feature4 = "assets/images/feature4.png";
+  static String feature5 = "assets/images/feature5.png";
+  static String about_armani = "assets/images/about_armani.png";
+  static String instagram_image = "assets/images/instagram_image.png";
+  static String tiktok_image = "assets/images/tiktok_image.png";
+  static String snapchat_image = "assets/images/snapchat_image.png";
+  static String facebook_image = "assets/images/facebook_image.png";
+  static String mulabis_image = "assets/images/mulabis_image.png";
+  static String timeless_image = "assets/images/timeless_image.png";
+  static String brand_demo = "assets/images/brand_demo.png";
 }

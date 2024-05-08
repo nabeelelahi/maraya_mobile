@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -328,7 +329,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Container(
                         width: 90.w,
                         height: 42.h,
-                        padding: EdgeInsets.symmetric(vertical: 9.h),
+                        padding: EdgeInsets.symmetric(vertical: 7.5.h),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -354,15 +355,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Divider(
                               height: 2.h,
                               color: ColorUtils.dividerColor,
-                              thickness: 0.8,
+                              thickness: 1.0,
                             ),
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       height: 32.h,
                       width: 220.w,
+                      // color: Colors.red,
                       child: EditText(
                         context: context,
                         hintText: "Phone Number",
@@ -416,7 +418,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   readonly: true,
                   ONTAP: () async {
                     BottomPicker.date(
+                      height: MediaQuery.of(context).size.height,
                       title:  "",
+                      dateOrder: DatePickerDateOrder.dmy,
                       titleStyle:  TextStyle(
                           fontWeight:  FontWeight.bold,
                           fontSize:  15,

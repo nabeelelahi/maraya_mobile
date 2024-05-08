@@ -212,7 +212,7 @@ class _FilterScreenState extends State<FilterScreen> {
         return  InkWell(
           onTap: (){
             setState(() {
-              Navigator.of(context, rootNavigator: false)
+              Navigator.of(context, rootNavigator: true)
                   .push(MaterialPageRoute(builder: (context) =>
                   FilterScreenType(title: categories[index]["title"],))).then((value){
                     if(value == true){
