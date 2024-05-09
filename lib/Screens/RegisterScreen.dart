@@ -290,7 +290,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     InkWell(
                       onTap: (){
@@ -329,7 +329,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Container(
                         width: 90.w,
                         height: 42.h,
-                        padding: EdgeInsets.symmetric(vertical: 7.5.h),
+                        padding: EdgeInsets.only(top: 8.5.h),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -362,7 +362,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     Container(
-                      height: 32.h,
+                      height: 42.h,
                       width: 220.w,
                       // color: Colors.red,
                       child: EditText(

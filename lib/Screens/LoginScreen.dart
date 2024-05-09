@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     InkWell(
                       onTap: (){
@@ -185,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Container(
                         width: 90.w,
                         height: 42.h,
-                        padding: EdgeInsets.symmetric(vertical: 7.5.h),
+                        padding: EdgeInsets.only(top: 9.2.h),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -209,7 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             SizedBox(height: 5.h,),
                             Divider(
-                              height: 2.h,
+                              height: 0.5.h,
                               color: ColorUtils.dividerColor,
                               thickness: 1.0,
                             ),
@@ -218,7 +218,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 32.h,
+                      height: 42.h,
                       width: 220.w,
                       child: EditText(
                         context: context,

@@ -249,7 +249,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   padding: EdgeInsets.only(bottom: 25.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         "02",
@@ -258,11 +258,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             fontFamily: FontUtils.almarenaRegular,
                             fontSize: 20.sp),
                       ),
-                      VerticalDivider(
-                        color: Colors.black,
-                        thickness: 1,
-                        width: 10.w,
+                      SizedBox(height: 10.h,),
+                      SizedBox(
+                        height: 60.h,
+                        child: VerticalDivider(
+                          color: Colors.black,
+                          thickness: 1,
+                          width: 10.w,
+                        ),
                       ),
+                      SizedBox(height: 10.h,),
                       Text(
                         "01",
                         style: TextStyle(
@@ -502,7 +507,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   padding: EdgeInsets.only(bottom: 25.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         "02",
@@ -511,11 +516,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             fontFamily: FontUtils.almarenaRegular,
                             fontSize: 20.sp),
                       ),
-                      VerticalDivider(
-                        color: Colors.black,
-                        thickness: 1,
-                        width: 10.w,
+                      SizedBox(height: 10.h,),
+                      SizedBox(
+                        height: 60.h,
+                        child: VerticalDivider(
+                          color: Colors.black,
+                          thickness: 1,
+                          width: 10.w,
+                        ),
                       ),
+                      SizedBox(height: 10.h,),
                       Text(
                         "01",
                         style: TextStyle(
