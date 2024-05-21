@@ -945,6 +945,7 @@ class _SpinnerState extends State<Spinner> {
             children: [
               DropdownButton<String>(
                 dropdownColor: ColorUtils.white,
+                underline: Divider( height: 0.5.h, color: ColorUtils.dividerColor, thickness: 1.0,),
                 hint: Text(
                   widget.hint,
                   style: TextStyle(
@@ -1015,11 +1016,11 @@ class _SpinnerState extends State<Spinner> {
                   );
                 }).toList(),
               ),
-              Divider(
-                height: 0.5.h,
-                color: ColorUtils.dividerColor,
-                thickness: 0.9,
-              ),
+              // Divider(
+              //   height: 0.1.h,
+              //   color: ColorUtils.dividerColor,
+              //   thickness: 0.9,
+              // ),
             ],
           ),
         ),

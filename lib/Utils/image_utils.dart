@@ -76,4 +76,22 @@ class ImageUtils {
   static String mulabis_image = "assets/images/mulabis_image.png";
   static String timeless_image = "assets/images/timeless_image.png";
   static String brand_demo = "assets/images/brand_demo.png";
+  static String contactp = "assets/images/contactp.png";
+  static String accountp = "assets/images/accountp.png";
+  static String paymentp = "assets/images/paymentp.png";
+  static String deliveryp = "assets/images/deliveryp.png";
+  static String profilep = "assets/images/profilep.png";
+  static String orderp = "assets/images/orderp.png";
+  static String wishlistp = "assets/images/wishlistp.png";
+  static String heart_red = "assets/images/heart_red.png";
+  static String switchon = "assets/images/switchon.png";
+  static String switchoff = "assets/images/switchoff.png";
+  static String ads = "assets/images/ads.png";
+  static String notification = "assets/images/notification.png";
+  static String language = "assets/images/language.png";
+
+
+
+
+
 }

@@ -14,6 +14,7 @@ import '../../Utils/font_utils.dart';
 import '../../Utils/image_utils.dart';
 import '../../Utils/string_utils.dart';
 import 'CategoriesScreen.dart';
+import 'ProfileScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   int? index = 0;
@@ -32,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       DashboardScreen(),
       BrandsScreen(),
       CategoriesScreen(),
+      ProfileScreen(),
       CartScreen(),
     ];
   }
@@ -127,6 +129,36 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             fontSize: 12.sp,
             fontStyle: FontStyle.normal),
         title: translate('strings.Category'),
+        activeColorPrimary: ColorUtils.dotGreen,
+        inactiveColorPrimary: ColorUtils.white,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Transform.scale(
+          scale: 2.5,
+          child: Padding(
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
+            child: ImageIcon(
+              AssetImage(ImageUtils.person),
+              color: ColorUtils.dotGreen,
+            ),
+          ),
+        ),
+        inactiveIcon: Transform.scale(
+          scale: 2.5,
+          child: Padding(
+            padding: Platform.isAndroid ? EdgeInsets.only(top: 8) : EdgeInsets.only(top: 5),
+            child: ImageIcon(
+              AssetImage(ImageUtils.person),
+              color: ColorUtils.white,
+            ),
+          ),
+        ),
+        textStyle: TextStyle(
+            fontFamily: FontUtils.almarenaRegular,
+            color: ColorUtils.white,
+            fontSize: 12.sp,
+            fontStyle: FontStyle.normal),
+        title: "Profile",
         activeColorPrimary: ColorUtils.dotGreen,
         inactiveColorPrimary: ColorUtils.white,
       ),

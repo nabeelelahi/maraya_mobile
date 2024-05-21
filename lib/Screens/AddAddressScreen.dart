@@ -279,6 +279,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             fontFamily: FontUtils.almarenaRegular,
                             fontSize: 16.sp,
                             color: ColorUtils.dividerColor)),
+                    SizedBox(height: 5.h,),
                     EditText(
                       context: context,
                       hintText: "eg. 11 Kaiyuan Road",
@@ -297,6 +298,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             fontFamily: FontUtils.almarenaRegular,
                             fontSize: 16.sp,
                             color: ColorUtils.dividerColor)),
+                    SizedBox(height: 5.h,),
                     EditText(
                       context: context,
                       hintText: "eg. Apartment 2102",
