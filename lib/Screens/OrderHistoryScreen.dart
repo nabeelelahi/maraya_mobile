@@ -9,6 +9,7 @@ import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:keyboard_actions/keyboard_actions_config.dart';
 import 'package:maraya_flutter/Screens/BrowseScreen.dart';
 import 'package:maraya_flutter/Screens/EditProfile.dart';
+import 'package:maraya_flutter/Screens/ViewMultipleOrderScreen.dart';
 import 'package:maraya_flutter/Screens/ViewOrderScreen.dart';
 import 'package:maraya_flutter/Screens/WishlistScreen.dart';
 import 'package:oktoast/oktoast.dart';
@@ -45,28 +46,33 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
         "title": "Edit Profile",
         "color": ColorUtils.white,
         "image": ImageUtils.profilep,
+        "status": "In Delivery",
       },
       {
         "title": "Wish List",
         "color": ColorUtils.listColor,
         "image": ImageUtils.wishlistp,
+        "status": "Collecting Items",
       },
 
       {
         "title": "Order History",
         "color": ColorUtils.white,
         "image": ImageUtils.orderp,
+        "status": "Delivered",
       },
       {
         "title": "Change Delivery Address",
         "color": ColorUtils.listColor,
         "image": ImageUtils.deliveryp,
+        "status": "In Delivery",
       },
 
       {
         "title": "Payment Method",
         "color": ColorUtils.white,
         "image": ImageUtils.paymentp,
+        "status": "Delivered",
       },
       {
         "title": "Account Settings",
@@ -150,93 +156,6 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
         ),
         SizedBox(height: 10.h,),
         _renderSteps(),
-        // Padding(
-        //   padding: EdgeInsets.symmetric(horizontal: 15.w),
-        //   child: Column(
-        //     mainAxisAlignment: MainAxisAlignment.start,
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: [
-        //       Row(
-        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: [
-        //           Text(
-        //             "Order # 1234",
-        //             style: TextStyle(
-        //                 color: ColorUtils.dividerColor,
-        //                 fontFamily: FontUtils.almarenaRegular,
-        //                 fontWeight: FontWeight.w400,
-        //                 fontSize: 16.sp),
-        //           ),
-        //           Text(
-        //             "Status: In Delivery",
-        //             style: TextStyle(
-        //                 color: ColorUtils.dividerColor,
-        //                 fontFamily: FontUtils.almarenaRegular,
-        //                 fontWeight: FontWeight.w700,
-        //                 fontSize: 12.sp),
-        //           ),
-        //         ],
-        //       ),
-        //       SizedBox(height: 15.h,),
-        //       Text(
-        //         "Order Placed on 9 May",
-        //         style: TextStyle(
-        //             color: ColorUtils.hintColor,
-        //             fontFamily: FontUtils.almarenaRegular,
-        //             fontWeight: FontWeight.w400,
-        //             fontSize: 12.sp),
-        //       ),
-        //       SizedBox(height: 10.h,),
-        //       Text(
-        //         "Price: 2,000 SAR",
-        //         style: TextStyle(
-        //             color: ColorUtils.hintColor,
-        //             fontFamily: FontUtils.almarenaRegular,
-        //             fontWeight: FontWeight.w400,
-        //             fontSize: 12.sp),
-        //       ),
-        //       SizedBox(height: 15.h,),
-        //       Row(
-        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: [
-        //           Text(
-        //             "Long-sleeve Max...",
-        //             style: TextStyle(
-        //                 color: ColorUtils.hintColor,
-        //                 fontFamily: FontUtils.almarenaRegular,
-        //                 fontWeight: FontWeight.w400,
-        //                 fontSize: 12.sp),
-        //           ),
-        //           Row(
-        //             mainAxisAlignment: MainAxisAlignment.start,
-        //             crossAxisAlignment: CrossAxisAlignment.center,
-        //             children: [
-        //               Text(
-        //                 "View Order",
-        //                 style: TextStyle(
-        //                     color: ColorUtils.dividerColor,
-        //                     fontFamily: FontUtils.almarenaRegular,
-        //                     fontWeight: FontWeight.w400,
-        //                     decoration: TextDecoration.underline,
-        //                     decorationColor: ColorUtils.dotGreen,
-        //                     fontSize: 12.sp),
-        //               ),
-        //               Icon(
-        //                 Icons.keyboard_arrow_right_sharp,
-        //                 color: ColorUtils.dividerColor,
-        //                 size: 16.0,
-        //               ),
-        //             ],
-        //           )
-        //         ],
-        //       ),
-        //
-        //     ],
-        //   ),
-        // ),
-        // _renderSteps(),
 
       ],
     );
@@ -252,9 +171,16 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
       itemBuilder: (BuildContext context, int index) {
         return  InkWell(
           onTap: (){
-            Navigator.of(context, rootNavigator: true)
-                .push(MaterialPageRoute(builder: (context) =>
-                ViewOrderScreen()));
+            if(categories[index]['status'] == "In Delivery"){
+              Navigator.of(context, rootNavigator: true)
+                  .push(MaterialPageRoute(builder: (context) =>
+                  ViewOrderScreen()));
+            }
+            else if(categories[index]['status'] == "Delivered"){
+              Navigator.of(context, rootNavigator: true)
+                  .push(MaterialPageRoute(builder: (context) =>
+                  ViewMultipleOrderScreen()));
+            }
           },
           child: Container(
             color: categories[index]['color'],
@@ -277,7 +203,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                           fontSize: 16.sp),
                     ),
                     Text(
-                      "Status: In Delivery",
+                      "Status: ${categories[index]['status']}",
                       style: TextStyle(
                           color: ColorUtils.dividerColor,
                           fontFamily: FontUtils.almarenaRegular,

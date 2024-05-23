@@ -9,6 +9,7 @@ import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:keyboard_actions/keyboard_actions_config.dart';
 import 'package:maraya_flutter/Screens/BrowseScreen.dart';
 import 'package:maraya_flutter/Screens/EditProfile.dart';
+import 'package:maraya_flutter/Screens/LoginScreen.dart';
 import 'package:maraya_flutter/Screens/OrderHistoryScreen.dart';
 import 'package:maraya_flutter/Screens/WishlistScreen.dart';
 import 'package:oktoast/oktoast.dart';
@@ -532,7 +533,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   context: context,
                   isDismissible: true,
                   // useRootNavigator: true,
-                  isScrollControlled: true,
+                  // isScrollControlled: true,
                   builder: (context) {
                     return Padding(
                       padding: EdgeInsets.only(
@@ -540,7 +541,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: StatefulBuilder(
                         builder: (BuildContext context, StateSetter setstate){
                           return Container(
-                            height: 600.h,
+                            // height: 600.h,
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
                               child: Column(
@@ -737,34 +738,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                   ),
 
-                                  SizedBox(height: 50.h,),
-
-
+                                  SizedBox(height: 30.h,),
                                   Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 10.w),
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 42.h,
-                                      decoration: BoxDecoration(
-                                        color: ColorUtils.white,
-                                        border: Border.all(
-                                          width: 1.5,
-                                          color: Colors.black,
+                                    child: InkWell(
+                                      onTap: (){
+                                        Navigator.pop(context);
+                                        Navigator.of(context, rootNavigator: true)
+                                            .pushReplacement(MaterialPageRoute(builder: (context) =>
+                                            LoginScreen()));
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 42.h,
+                                        decoration: BoxDecoration(
+                                          color: ColorUtils.white,
+                                          border: Border.all(
+                                            width: 1.5,
+                                            color: Colors.black,
+                                          ),
                                         ),
-                                      ),
-                                      child: Center(
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "Sign Out",
-                                              style: TextStyle(
-                                                  color: ColorUtils.black,
-                                                  fontFamily: FontUtils.almarenaDisplayRegular,
-                                                  fontSize: 20.sp),
-                                            ),
-                                          ],
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Sign Out",
+                                                style: TextStyle(
+                                                    color: ColorUtils.black,
+                                                    fontFamily: FontUtils.almarenaDisplayRegular,
+                                                    fontSize: 20.sp),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -1255,29 +1262,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(height: 30.h,),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: Container(
-                            width: double.infinity,
-                            height: 42.h,
-                            decoration: BoxDecoration(
-                              color: ColorUtils.white,
-                              border: Border.all(
-                                width: 1.5,
-                                color: Colors.black,
+                          child: InkWell(
+                            onTap: (){
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 42.h,
+                              decoration: BoxDecoration(
+                                color: ColorUtils.white,
+                                border: Border.all(
+                                  width: 1.5,
+                                  color: Colors.black,
+                                ),
                               ),
-                            ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Delete Account",
-                                    style: TextStyle(
-                                        color: ColorUtils.black,
-                                        fontFamily: FontUtils.almarenaDisplayRegular,
-                                        fontSize: 20.sp),
-                                  ),
-                                ],
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Delete Account",
+                                      style: TextStyle(
+                                          color: ColorUtils.black,
+                                          fontFamily: FontUtils.almarenaDisplayRegular,
+                                          fontSize: 20.sp),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
